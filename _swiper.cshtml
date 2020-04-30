@@ -1,7 +1,54 @@
 @* This tells the compiler to use the new RazorComponent - see https://r.2sxc.org/RazorComponent *@ 
 @inherits ToSic.Sxc.Dnn.RazorComponent
 
+<link rel="stylesheet" href="@App.Path/node_modules/swiper/css/swiper.min.css">
+<link rel="stylesheet" href="@App.Path/dist/styles.min.css">
+
 @* The following DIV will show a edit-hover-toolbar to admins - see https://r.2sxc.org/EditToolbar *@
 <div @Edit.TagToolbar(Content)>
-    Put your content here
+    <!-- Slider main container -->
+    <div class="swiper-container">
+        <!-- Additional required wrapper -->
+        <div class="swiper-wrapper">
+            <!-- Slides -->
+            <div class="swiper-slide">Slide 1</div>
+            <div class="swiper-slide">Slide 2</div>
+            <div class="swiper-slide">Slide 3</div>
+            ...
+        </div>
+        <!-- If we need pagination -->
+        <div class="swiper-pagination"></div>
+
+        <!-- If we need navigation buttons -->
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+
+        <!-- If we need scrollbar -->
+        <div class="swiper-scrollbar"></div>
+    </div>
 </div>
+
+<script src="@App.Path/node_modules/swiper/js/swiper.min.js"></script>
+<script>
+  var mySwiper = new Swiper ('.swiper-container', {
+    // Optional parameters
+    loop: true,
+
+    // If we need pagination
+    pagination: {
+      el: '.swiper-pagination',
+    },
+
+    // Navigation arrows
+    navigation: {
+      nextEl: '.swiper-button-next',
+      prevEl: '.swiper-button-prev',
+    },
+
+    // And if we need scrollbar
+    scrollbar: {
+      el: '.swiper-scrollbar',
+    },
+  })
+</script>
+

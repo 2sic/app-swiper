@@ -1,0 +1,1 @@
+{"version":3,"sources":["Z:\\Portals\\Swiper\\2sxc\\Swiper/src\\scss\\_styles.scss"],"names":[],"mappings":"AAAA,kBACE,WAAY,CACZ,YAAa","file":"styles.min.css","sourcesContent":[".swiper-container {\r\n  width: 600px;\r\n  height: 300px;\r\n}"]}
