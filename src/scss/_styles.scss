@@ -1,4 +1,28 @@
-.swiper-container {
-  width: 600px;
-  height: 300px;
+@import "../../../_default/Skins/Bootstrap 4 Instant/src/scss/_variables.scss";
+@import "../../../_default/Skins/Bootstrap 4 Instant/node_modules/bootstrap/scss/mixins/_breakpoints.scss";
+
+@media all {
+  .swiper-container {
+    width: 100%;
+    height: 50vh;
+
+    .swiper-slide {
+      .image-wrapper {
+        width: 100%;
+        height: 100%;
+        background-repeat: no-repeat;
+        background-size: cover;
+        background-position: center;
+      }
+    }
+
+    .swiper-button-next,
+    .swiper-button-prev {
+      color: $primary;
+    }
+
+    .swiper-pagination-bullet-active {
+      background-color: $primary;
+    }
+  }
 }
