@@ -13,7 +13,7 @@
   }
   <div class="swiper-container swiper-@Dnn.Module.ModuleID" style="width: @sliderStyleWidth; height: @sliderStyleHeight">
     @* Additional required wrapper *@
-    <div class="swiper-wrapper" data-swiper-autoplay="@Content.AutoplayDelay">
+    <div class="swiper-wrapper" data-swiper-autoplay="@(Text.Has(Content.AutoplayDelay) ? Content.AutoplayDelay : App.Settings.AutoplayDelay)">
       @* Slides *@
       @foreach (var slide in Content.Slides)
       {
@@ -22,17 +22,17 @@
             <div class="container-fluid h-100">
               <div class="row h-100 justify-content-center align-items-center">
                 <div class="col-12 col-md-6 text-center">
-                @if(!String.IsNullOrEmpty(slide.Title)){
+                @if(Text.Has(slide.Title)){
                   <p class="lead">
                     @slide.Title
                   </p>
                 }
-                @if(!String.IsNullOrEmpty(slide.Text)){
+                @if(Text.Has(slide.Text)){
                   <div class="co-slidertext">
                     @Html.Raw(slide.Text)
                   </div>
                 }
-                @if(!String.IsNullOrEmpty(slide.LinkText)){
+                @if(Text.Has(slide.LinkText)){
                   <a class="btn btn-primary" href="@Tags.SafeUrl(slide.Link)" target="@(slide.LinkBlankTarget == true ? "_blank" : "_self")">@slide.LinkBlankTarget @slide.LinkText</a>
                 }
                 </div>
