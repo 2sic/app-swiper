@@ -1,15 +1,18 @@
 @* This tells the compiler to use the new RazorComponent - see https://r.2sxc.org/RazorComponent *@ 
 @inherits ToSic.Sxc.Dnn.RazorComponent
+@using ToSic.Razor.Blade;
 
 <link rel="stylesheet" href="@App.Path/node_modules/swiper/css/swiper.min.css">
 <link rel="stylesheet" href="@App.Path/dist/styles.min.css">
 
 @* The following DIV will show a edit-hover-toolbar to admins - see https://r.2sxc.org/EditToolbar *@
 <div @Edit.TagToolbar(Content)>
-  <h1>@Content.Title</h1>
+  @if(Edit.Enabled) {
+    <p>Edit Slider</p>
+  }
 
   <!-- Slider main container -->
-  <div class="swiper-container" style="width: @Content.Width; height: @Content.Height;">
+  <div class="swiper-container" style='@(Text.Has(Content.Width) ? "width: Content.Width;" : "") @(Text.Has(Content.Height) ? "height: Content.Height;" : "")'>
     <!-- Additional required wrapper -->
     <div class="swiper-wrapper" data-swiper-autoplay="@Content.AutoplayDelay">
       <!-- Slides -->
