@@ -1,25 +1,24 @@
-@* This tells the compiler to use the new RazorComponent - see https://r.2sxc.org/RazorComponent *@ 
 @inherits ToSic.Sxc.Dnn.RazorComponent
 @using ToSic.Razor.Blade;
 
 <link rel="stylesheet" href="@App.Path/node_modules/swiper/css/swiper.min.css">
 <link rel="stylesheet" href="@App.Path/dist/styles.min.css">
 
-@* The following DIV will show a edit-hover-toolbar to admins - see https://r.2sxc.org/EditToolbar *@
-<div @Edit.TagToolbar(Content)>
-  @if(Edit.Enabled) {
-    <p>Edit Slider</p>
-  }
+<div @Edit.TagToolbar(Content, toolbar: new [] { "settings&hover=left&color=dimgray&autoAddMore=start" })>
 
-  <!-- Slider main container -->
-  <div class="swiper-container" style='@(Text.Has(Content.Width) ? "width: Content.Width;" : "") @(Text.Has(Content.Height) ? "height: Content.Height;" : "")'>
-    <!-- Additional required wrapper -->
+  @* Slider main container *@
+  @{
+    var sliderStyleWidth = Text.Has(Content.Width) ? Content.Width : App.Settings.Width;
+    var sliderStyleHeight = Text.Has(Content.Height) ? Content.Height : App.Settings.Height;
+  }
+  <div class="swiper-container swiper-@Dnn.Module.ModuleID" style="width: @sliderStyleWidth; height: @sliderStyleHeight">
+    @* Additional required wrapper *@
     <div class="swiper-wrapper" data-swiper-autoplay="@Content.AutoplayDelay">
-      <!-- Slides -->
+      @* Slides *@
       @foreach (var slide in Content.Slides)
       {
-        <div class="swiper-slide" @Edit.TagToolbar(slide)>
-          <div class="image-wrapper" style="background-image: url(@slide.Image?w=1600&q=80)">
+        <div class="swiper-slide" @Edit.TagToolbar(slide, toolbar: new[] { "%layout&show=false", "%delete&show=true" } )>
+          <div class="image-wrapper" style='background-image: url(@Tags.SafeUrl(slide.Image + "?w=1600&q=80"))'>
             <div class="container-fluid h-100">
               <div class="row h-100 justify-content-center align-items-center">
                 <div class="col-12 col-md-6 text-center">
@@ -34,7 +33,7 @@
                   </div>
                 }
                 @if(!String.IsNullOrEmpty(slide.LinkText)){
-                  <a class="btn btn-primary" href="@slide.Link" target="@(slide.LinkBlankTarget is bool && slide.LinkBlankTarget ? "_blank" : "_self")">@slide.LinkText</a>
+                  <a class="btn btn-primary" href="@Tags.SafeUrl(slide.Link)" target="@(slide.LinkBlankTarget == true ? "_blank" : "_self")">@slide.LinkBlankTarget @slide.LinkText</a>
                 }
                 </div>
               </div>
@@ -44,15 +43,20 @@
       }
     </div>
 
-    <!-- If we need pagination -->
-    @if(Content.Pagination) {
+    @* If we need pagination *@
+    @if(!Content.Pagination) { } else if(Content.Pagination || App.Settings.Pagination) {
       <div class="swiper-pagination"></div>
     }
 
-    <!-- If we need navigation buttons -->
+    @* If we need navigation buttons *@
     @if(Content.Navigation) {
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>
+    } else {
+      if(App.Settings.Navigation) {
+        <div class="swiper-button-prev"></div>
+        <div class="swiper-button-next"></div>
+      }
     }
   </div>
 </div>
@@ -60,14 +64,12 @@
 <script src="@App.Path/node_modules/swiper/js/swiper.min.js"></script>
 
 <script>
-  var mySwiper = new Swiper ('.swiper-container', {
+  var configured = {
     // Optional parameters
     loop: true,
     autoplay: ('@Content.Autoplay' === 'True'),
 
-    keyboard: {
-      enabled: true,
-    },
+    speed: @(Text.Has(Content.Speed) ? Content.Speed : App.Settings.Speed),
 
     // If we need pagination
     pagination: {
@@ -79,8 +81,10 @@
       nextEl: '.swiper-button-next',
       prevEl: '.swiper-button-prev',
     },
-
-    effect: '@Content.SlideEffect',
-  })
+  };
+  var effectDefaults = @Html.Raw(Content.Effect.Configuration);
+  var fallback = @Html.Raw(App.Settings.EffectFallback);
+  var merged = Object.assign(fallback, effectDefaults, configured);
+  var mySwiper = new Swiper ('.swiper-@Dnn.Module.ModuleID', merged);
 </script>
 
