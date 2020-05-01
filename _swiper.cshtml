@@ -49,14 +49,9 @@
     }
 
     @* If we need navigation buttons *@
-    @if(Content.Navigation) {
+    @if(!Content.Navigation) { } else if(Content.Navigation || App.Settings.Navigation) {
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>
-    } else {
-      if(App.Settings.Navigation) {
-        <div class="swiper-button-prev"></div>
-        <div class="swiper-button-next"></div>
-      }
     }
   </div>
 </div>
