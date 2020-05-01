@@ -17,7 +17,25 @@
       {
         <div class="swiper-slide" @Edit.TagToolbar(slide)>
           <div class="image-wrapper" style="background-image: url(@slide.Image?w=1600&q=80)">
-            @slide.Title
+            <div class="container-fluid h-100">
+              <div class="row h-100 justify-content-center align-items-center">
+                <div class="col-12 col-md-6 text-center">
+                @if(!String.IsNullOrEmpty(slide.Title)){
+                  <p class="lead">
+                    @slide.Title
+                  </p>
+                }
+                @if(!String.IsNullOrEmpty(slide.Text)){
+                  <div class="co-slidertext">
+                    @Html.Raw(slide.Text)
+                  </div>
+                }
+                @if(!String.IsNullOrEmpty(slide.LinkText)){
+                  <a class="btn btn-primary" href="@slide.Link" target="@(slide.LinkBlankTarget is bool && slide.LinkBlankTarget ? "_blank" : "_self")">@slide.LinkText</a>
+                }
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       }
@@ -43,6 +61,10 @@
     // Optional parameters
     loop: true,
     autoplay: ('@Content.Autoplay' === 'True'),
+
+    keyboard: {
+      enabled: true,
+    },
 
     // If we need pagination
     pagination: {
