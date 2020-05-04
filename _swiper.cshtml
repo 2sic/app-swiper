@@ -49,12 +49,12 @@
     </div>
 
     @* If we need pagination *@
-    @if(!Content.Pagination) { } else if(Content.Pagination || App.Settings.Pagination) {
+    @if(Content.Pagination != null ? Content.Pagination : App.Settings.Pagination ?? false) {
       <div class="swiper-pagination"></div>
     }
 
     @* If we need navigation buttons *@
-    @if(!Content.Navigation) { } else if(Content.Navigation || App.Settings.Navigation) {
+    @if(Content.Navigation != null ? Content.Navigation : App.Settings.Navigation ?? false) {
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>
     }
