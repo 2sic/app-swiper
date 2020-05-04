@@ -2,6 +2,8 @@
 @using ToSic.Razor.Blade;
 @{
   var helpers = CreateInstance("_helpers.cshtml");
+  var sliderStyleWidth = Text.Has(Content.Width) ? Content.Width : App.Settings.Width;
+  var sliderStyleHeight = Text.Has(Content.Height) ? Content.Height : App.Settings.Height;
 }
 
 <link rel="stylesheet" href="@App.Path/node_modules/swiper/css/swiper.min.css" data-enableoptimizations="true">
@@ -9,14 +11,9 @@
 
 <div @Edit.TagToolbar(Content, toolbar: new [] { "settings&hover=left&color=dimgray&autoAddMore=start" })>
 
-  @* Slider main container *@
-  @{
-    var sliderStyleWidth = Text.Has(Content.Width) ? Content.Width : App.Settings.Width;
-    var sliderStyleHeight = Text.Has(Content.Height) ? Content.Height : App.Settings.Height;
-  }
+  @* Slider main container and wrapper *@
   <div class="swiper-container swiper-@Dnn.Module.ModuleID" style="width: @sliderStyleWidth; height: @sliderStyleHeight">
-    @* Additional required wrapper *@
-    <div class="swiper-wrapper" data-swiper-autoplay="@(Text.Has(Content.AutoplayDelay) ? Content.AutoplayDelay : App.Settings.AutoplayDelay)">
+    <div class="swiper-wrapper" data-swiper-autoplay="@(Content.AutoplayDelay ?? App.Settings.AutoplayDelay)">
       @* Slides *@
       @foreach (var slide in Content.Slides)
       {
@@ -37,7 +34,7 @@
                 }
                 @if(Text.Has(slide.LinkText)){
                   <div data-swiper-parallax="-750">
-                    <a class="btn btn-primary" href="@Tags.SafeUrl(slide.Link)" target="@(slide.LinkBlankTarget == true ? "_blank" : "_self")">@slide.LinkText</a>
+                    <a class="btn btn-primary" href="@Tags.SafeUrl(slide.Link)" target='(slide.LinkBlankTarget == true ? "_blank" : "")'>@slide.LinkText</a>
                   </div>
                 }
                 </div>
@@ -48,31 +45,30 @@
       }
     </div>
 
-    @* If we need pagination *@
-    @if(Content.Pagination != null ? Content.Pagination : App.Settings.Pagination ?? false) {
+    @* Pagination *@
+    @if(Content.Pagination ?? App.Settings.Pagination) {
       <div class="swiper-pagination"></div>
     }
 
-    @* If we need navigation buttons *@
-    @if(Content.Navigation != null ? Content.Navigation : App.Settings.Navigation ?? false) {
+    @* Navigation buttons (right left arrows) *@
+    @if(Content.Navigation ?? App.Settings.Navigation) {
       <div class="swiper-button-prev"></div>
       <div class="swiper-button-next"></div>
     }
   </div>
 </div>
 
-<script src="@App.Path/node_modules/swiper/js/swiper.min.js" data-enableoptimizations="true"></script>
+<script src="@App.Path/dist/libs/swiper.min.js" data-enableoptimizations="true"></script>
+<script src="@App.Path/dist/scripts.min.js" data-enableoptimizations="true"></script>
 
 <script>
-  document.addEventListener("DOMContentLoaded", function(event) {
-    var configured = {
-      autoplay: ('@Content.Autoplay' === 'True'),
-      speed: @(Text.Has(Content.Speed) ? Content.Speed : App.Settings.Speed),
-    };
-    var effectDefaults = @Html.Raw(Content.Effect.Configuration);
-    var fallback = @Html.Raw(App.Settings.EffectFallback);
-    var merged = Object.assign(fallback, effectDefaults, configured);
-    var mySwiper = new Swiper ('.swiper-@Dnn.Module.ModuleID', merged);
-  });
+  // Initialize the swiper which is identiifed by the ModuleId
+  appSwiperInit(
+    @Dnn.Module.ModuleID, 
+    '@Content.Autoplay', 
+    @(Text.Has(Content.Speed) ? Content.Speed : App.Settings.Speed),
+    @Html.Raw(Content.Effect.Configuration),
+    @Html.Raw(App.Settings.EffectFallback),
+  );
 </script>
 
