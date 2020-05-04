@@ -65,8 +65,8 @@
   // Initialize the swiper which is identiifed by the ModuleId
   appSwiperInit(
     @Dnn.Module.ModuleID, 
-    '@Content.Autoplay', 
-    @(Text.Has(Content.Speed) ? Content.Speed : App.Settings.Speed),
+    '@(Content.Autoplay ?? App.Settings.Autoplay)', 
+    @(Content.Speed ?? App.Settings.Speed),
     @Html.Raw(Content.Effect.Configuration),
     @Html.Raw(App.Settings.EffectFallback),
   );
