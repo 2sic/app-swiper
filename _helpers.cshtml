@@ -1,0 +1,11 @@
+@inherits ToSic.Sxc.Dnn.RazorComponent
+@using ToSic.Razor.Blade;
+
+@helper RowClasses(dynamic data) {
+<text> row h-100 @(data.TextPosition == "cl" || data.TextPosition == "cc" || data.TextPosition == "cr" ? "align-items-center" : "") @(data.TextPosition == "bl" || data.TextPosition == "bc" || data.TextPosition == "br" ? "align-items-end" : "")</text>
+}
+
+@helper ContentClasses(dynamic data) {
+<text>col-12 py-4 @(data.TextPosition == "tc" || data.TextPosition == "cc" || data.TextPosition == "bc" ? "text-center" : "") @(data.TextPosition == "tr" || data.TextPosition == "cr" || data.TextPosition == "br" ? "text-right" : "")</text>
+}
+

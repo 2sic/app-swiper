@@ -1,8 +1,11 @@
 @inherits ToSic.Sxc.Dnn.RazorComponent
 @using ToSic.Razor.Blade;
+@{
+  var helpers = CreateInstance("_helpers.cshtml");
+}
 
-<link rel="stylesheet" href="@App.Path/node_modules/swiper/css/swiper.min.css">
-<link rel="stylesheet" href="@App.Path/dist/styles.min.css">
+<link rel="stylesheet" href="@App.Path/node_modules/swiper/css/swiper.min.css" data-enableoptimizations="true">
+<link rel="stylesheet" href="@App.Path/dist/styles.min.css" data-enableoptimizations="true">
 
 <div @Edit.TagToolbar(Content, toolbar: new [] { "settings&hover=left&color=dimgray&autoAddMore=start" })>
 
@@ -20,20 +23,22 @@
         <div class="swiper-slide" @Edit.TagToolbar(slide, toolbar: new[] { "%layout&show=false", "%delete&show=true" } )>
           <div class="image-wrapper" style='background-image: url(@Tags.SafeUrl(slide.Image + "?w=1600&q=80"))'>
             <div class="container-fluid h-100">
-              <div class="row h-100 justify-content-center align-items-center">
-                <div class="col-12 col-md-6 text-center">
+              <div class="@helpers.RowClasses(slide)">
+                <div class="@helpers.ContentClasses(slide)">
                 @if(Text.Has(slide.Title)){
-                  <p class="lead">
+                  <p class="lead" data-swiper-parallax="-250">
                     @slide.Title
                   </p>
                 }
                 @if(Text.Has(slide.Text)){
-                  <div class="co-slidertext">
+                  <div class="co-slidertext" data-swiper-parallax="-500">
                     @Html.Raw(slide.Text)
                   </div>
                 }
                 @if(Text.Has(slide.LinkText)){
-                  <a class="btn btn-primary" href="@Tags.SafeUrl(slide.Link)" target="@(slide.LinkBlankTarget == true ? "_blank" : "_self")">@slide.LinkBlankTarget @slide.LinkText</a>
+                  <div data-swiper-parallax="-750">
+                    <a class="btn btn-primary" href="@Tags.SafeUrl(slide.Link)" target="@(slide.LinkBlankTarget == true ? "_blank" : "_self")">@slide.LinkText</a>
+                  </div>
                 }
                 </div>
               </div>
@@ -56,7 +61,7 @@
   </div>
 </div>
 
-<script src="@App.Path/node_modules/swiper/js/swiper.min.js"></script>
+<script src="@App.Path/node_modules/swiper/js/swiper.min.js" data-enableoptimizations="true"></script>
 
 <script>
   var configured = {
