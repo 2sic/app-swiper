@@ -64,27 +64,15 @@
 <script src="@App.Path/node_modules/swiper/js/swiper.min.js" data-enableoptimizations="true"></script>
 
 <script>
-  var configured = {
-    // Optional parameters
-    loop: true,
-    autoplay: ('@Content.Autoplay' === 'True'),
-
-    speed: @(Text.Has(Content.Speed) ? Content.Speed : App.Settings.Speed),
-
-    // If we need pagination
-    pagination: {
-      el: '.swiper-pagination',
-    },
-
-    // Navigation arrows
-    navigation: {
-      nextEl: '.swiper-button-next',
-      prevEl: '.swiper-button-prev',
-    },
-  };
-  var effectDefaults = @Html.Raw(Content.Effect.Configuration);
-  var fallback = @Html.Raw(App.Settings.EffectFallback);
-  var merged = Object.assign(fallback, effectDefaults, configured);
-  var mySwiper = new Swiper ('.swiper-@Dnn.Module.ModuleID', merged);
+  document.addEventListener("DOMContentLoaded", function(event) {
+    var configured = {
+      autoplay: ('@Content.Autoplay' === 'True'),
+      speed: @(Text.Has(Content.Speed) ? Content.Speed : App.Settings.Speed),
+    };
+    var effectDefaults = @Html.Raw(Content.Effect.Configuration);
+    var fallback = @Html.Raw(App.Settings.EffectFallback);
+    var merged = Object.assign(fallback, effectDefaults, configured);
+    var mySwiper = new Swiper ('.swiper-@Dnn.Module.ModuleID', merged);
+  });
 </script>
 
