@@ -6,13 +6,10 @@ const TerserPlugin = require('terser-webpack-plugin');
 const WebpackBar = require('webpackbar');
 
 module.exports = {
-  entry: {
-    styles: './src/scss/_styles.scss',
-    scripts: './src/ts/scripts.ts',
-  },
+  entry: ['./src/ts/scripts.ts'],
   output: {
     path: path.resolve(__dirname, 'dist'),
-    filename: '[name].min.js',
+    filename: 'scripts.min.js',
   },
   mode: 'production',
   devtool: 'source-map',
@@ -47,7 +44,7 @@ module.exports = {
   },
   plugins: [
     new MiniCssExtractPlugin({
-      filename: '[name].min.css',
+      filename: 'styles.min.css',
     }),
     new WebpackBar(),
     new FriendlyErrorsWebpackPlugin()

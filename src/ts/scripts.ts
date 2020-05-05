@@ -1,5 +1,6 @@
 import Swiper from 'swiper';
 import 'swiper/css/swiper.css';
+require('../scss/_Styles.scss');
 
 (window as any).appSwiperInit = function appSwiperInit(moduleID: string, autoplay: string, speed: string, effectDefaults: any, fallback: any) {
   var configured = {
