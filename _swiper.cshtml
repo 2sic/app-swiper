@@ -16,7 +16,10 @@
       @* Slides *@
       @foreach (var slide in Content.Slides)
       {
-        <div class="swiper-slide" @Edit.TagToolbar(slide, toolbar: new[] { "%layout&show=false", "%delete&show=true" } )>
+        <div class="swiper-slide">
+          @if(!Content.IsDemoItem) {
+            @Edit.Toolbar(slide, toolbar: new[] { "%layout&show=false", "%delete&show=true" } )
+          }
           <div class="image-wrapper" style='background-image: url(@Tags.SafeUrl(slide.Image + "?w=1600&q=80"))'>
             <div class="container-fluid h-100">
               <div class="@helpers.RowClasses(slide)">
