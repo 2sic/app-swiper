@@ -26,7 +26,9 @@
                 @Edit.Toolbar(slide, toolbar: new[] { "%layout&show=false", "%delete&show=true" } )
               }
               <div class="image-wrapper content-position-@slide.TextPosition @contentEffectClass" style='background-image: url(@Tags.SafeUrl(slide.Image + "?w=1600&q=80"))'>
-                <div class="overlay overlay-@contentEeffect"></div>
+                @if(Text.Has(slide.Title) || Text.Has(slide.Text) || Text.Has(slide.LinkText)){
+                  <div class="overlay overlay-@contentEeffect"></div>
+                }
                 <div class="container-fluid h-100">
                   <div class="@helpers.RowClasses(slide)">
                     <div class="col-12 py-4">

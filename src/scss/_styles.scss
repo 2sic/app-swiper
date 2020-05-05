@@ -113,7 +113,8 @@
       p {
         color: #fff;
 				font-size: $font-size-base*1.25;
-				text-shadow: 0px 0px 16px rgba(0, 0, 0, 0.8);
+        text-shadow: 0px 0px 16px rgba(0, 0, 0, 0.8);
+        margin: 0 0 $font-size-base * 0.6875;
         
         &.lead { 
           margin-bottom: $grid-gutter-width/2;
