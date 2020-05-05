@@ -22,7 +22,7 @@ module.exports = {
     assets: true
   },
   resolve: {
-    extensions: ['.ts', '.tsx', '.js', '.scss']
+    extensions: ['.ts', '.tsx', '.js', '.scss', '.css']
   },
   optimization: {
     minimize: true,
@@ -79,6 +79,7 @@ module.exports = {
           }
         ],
       },
+      { test: /\.css$/, loader: "style-loader!css-loader" },
       {
         test: /\.ts$/,
         exclude: /node_modules/,
