@@ -9,54 +9,65 @@
 <link rel="stylesheet" href="@App.Path/dist/styles.min.css" data-enableoptimizations="true">
 
 <div @Edit.TagToolbar(Content, toolbar: new [] { "settings&hover=left&color=dimgray&autoAddMore=start" })>
+  <div class='aspect-ratio height-@sliderStyleHeight.Replace(":", "-")'>
+    <div class="inner">
 
-  @* Slider main container and wrapper *@
-  <div class="swiper-container swiper-@Dnn.Module.ModuleID" style="width: @sliderStyleWidth; height: @sliderStyleHeight">
-    <div class="swiper-wrapper" data-swiper-autoplay="@(Content.AutoplayDelay ?? App.Settings.AutoplayDelay)">
-      @* Slides *@
-      @foreach (var slide in Content.Slides)
-      {
-        <div class="swiper-slide">
-          @if(!Content.IsDemoItem) {
-            @Edit.Toolbar(slide, toolbar: new[] { "%layout&show=false", "%delete&show=true" } )
-          }
-          <div class="image-wrapper" style='background-image: url(@Tags.SafeUrl(slide.Image + "?w=1600&q=80"))'>
-            <div class="container-fluid h-100">
-              <div class="@helpers.RowClasses(slide)">
-                <div class="@helpers.ContentClasses(slide)">
-                @if(Text.Has(slide.Title)){
-                  <p class="lead" data-swiper-parallax="-250">
-                    @slide.Title
-                  </p>
-                }
-                @if(Text.Has(slide.Text)){
-                  <div class="co-slidertext" data-swiper-parallax="-500">
-                    @Html.Raw(slide.Text)
+      @* Slider main container and wrapper *@
+      <div class="swiper-container swiper-@Dnn.Module.ModuleID" style="width: @sliderStyleWidth; height: @sliderStyleHeight">
+        <div class="swiper-wrapper" data-swiper-autoplay="@(Content.AutoplayDelay ?? App.Settings.AutoplayDelay)">
+          @* Slides *@
+          @foreach (var slide in Content.Slides)
+          {
+            var contentEeffect = Text.First(slide.ContentEffect, Content.ContentEffect, App.Settings.ContentEffect, "none");
+            var contentEffectClass = "content-effect-" + contentEeffect;
+
+            <div class="swiper-slide">
+              @if(!Content.IsDemoItem) {
+                @Edit.Toolbar(slide, toolbar: new[] { "%layout&show=false", "%delete&show=true" } )
+              }
+              <div class="image-wrapper content-position-@slide.TextPosition @contentEffectClass" style='background-image: url(@Tags.SafeUrl(slide.Image + "?w=1600&q=80"))'>
+                <div class="overlay overlay-@contentEeffect"></div>
+                <div class="container-fluid h-100">
+                  <div class="@helpers.RowClasses(slide)">
+                    <div class="col-12 py-4">
+                      <div class="@helpers.ContentClasses(slide)">
+                      @if(Text.Has(slide.Title)){
+                        <p class="lead" data-swiper-parallax="-250">
+                          @slide.Title
+                        </p>
+                      }
+                      @if(Text.Has(slide.Text)){
+                        <div class="co-slidertext" data-swiper-parallax="-500">
+                          @Html.Raw(slide.Text)
+                        </div>
+                      }
+                      @if(Text.Has(slide.LinkText)){
+                        <div data-swiper-parallax="-750">
+                          <a class="btn btn-primary" href="@Tags.SafeUrl(slide.Link)" target='(slide.LinkBlankTarget == true ? "_blank" : "")'>@slide.LinkText</a>
+                        </div>
+                      }
+                      </div>
+                    </div>
                   </div>
-                }
-                @if(Text.Has(slide.LinkText)){
-                  <div data-swiper-parallax="-750">
-                    <a class="btn btn-primary" href="@Tags.SafeUrl(slide.Link)" target='(slide.LinkBlankTarget == true ? "_blank" : "")'>@slide.LinkText</a>
-                  </div>
-                }
                 </div>
               </div>
             </div>
-          </div>
+          }
         </div>
-      }
+
+        @* Pagination *@
+        @if(Content.Pagination ?? App.Settings.Pagination) {
+          <div class="swiper-pagination"></div>
+        }
+
+        @* Navigation buttons (right left arrows) *@
+        @if(Content.Navigation ?? App.Settings.Navigation) {
+          <div class="swiper-button-prev"></div>
+          <div class="swiper-button-next"></div>
+        }
+      </div>
+
     </div>
-
-    @* Pagination *@
-    @if(Content.Pagination ?? App.Settings.Pagination) {
-      <div class="swiper-pagination"></div>
-    }
-
-    @* Navigation buttons (right left arrows) *@
-    @if(Content.Navigation ?? App.Settings.Navigation) {
-      <div class="swiper-button-prev"></div>
-      <div class="swiper-button-next"></div>
-    }
   </div>
 </div>
 
