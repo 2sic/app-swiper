@@ -4,6 +4,8 @@
 
 @media all {
   .aspect-ratio {
+    position: relative;
+    
     &.height-16-9 {
       padding-top: 56.25%;
     }
