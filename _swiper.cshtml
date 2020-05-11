@@ -13,7 +13,7 @@
     <div class="inner">
 
       @* Slider main container and wrapper *@
-      <div class="swiper-container swiper-@Dnn.Module.ModuleID" style="width: @sliderStyleWidth; height: @sliderStyleHeight">
+      <div class="swiper-container swiper-@Content.EntityId" style="width: @sliderStyleWidth; height: @sliderStyleHeight">
         <div class="swiper-wrapper" data-swiper-autoplay="@(Content.AutoplayDelay ?? App.Settings.AutoplayDelay)">
           @* Slides *@
           @foreach (var slide in Content.Slides)
@@ -73,9 +73,9 @@
 <script src="@App.Path/dist/scripts.min.js" data-enableoptimizations="true"></script>
 
 <script>
-  // Initialize the swiper which is identiifed by the ModuleId
+  // Initialize the swiper which is identified by the Id of this configuration
   appSwiperInit(
-    @Dnn.Module.ModuleID, 
+    @Content.EntityId, 
     '@(Content.Autoplay ?? App.Settings.Autoplay)', 
     @(Content.Speed ?? App.Settings.Speed),
     @Html.Raw(Content.Effect.Configuration),
