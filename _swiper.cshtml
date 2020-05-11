@@ -8,7 +8,7 @@
 
 <link rel="stylesheet" href="@App.Path/dist/styles.min.css" data-enableoptimizations="true">
 
-<div @Edit.TagToolbar(Content, toolbar: new [] { "settings&hover=left&color=dimgray&autoAddMore=start" })>
+<div @Edit.TagToolbar(Content, toolbar: new [] { "settings&hover=left&autoAddMore=start" })>
   <div class='aspect-ratio height-@sliderStyleHeight.Replace(":", "-")'>
     <div class="inner">
 
@@ -21,10 +21,7 @@
             var contentEeffect = Text.First(slide.ContentEffect, Content.ContentEffect, App.Settings.ContentEffect, "none");
             var contentEffectClass = "content-effect-" + contentEeffect;
 
-            <div class="swiper-slide">
-              @if(!Content.IsDemoItem) {
-                @Edit.Toolbar(slide, toolbar: new[] { "%layout&show=false", "%delete&show=true" } )
-              }
+            <div class="swiper-slide" @(Content.IsDemoItem ? "" : Edit.TagToolbar(slide, toolbar: new[] { "%delete&show=true" } ))>
               <div class="image-wrapper content-position-@slide.TextPosition @contentEffectClass" style='background-image: url(@Tags.SafeUrl(slide.Image + "?w=1600&q=80"))'>
                 @if(Text.Has(slide.Title) || Text.Has(slide.Text) || Text.Has(slide.LinkText)){
                   <div class="overlay overlay-@contentEeffect"></div>
