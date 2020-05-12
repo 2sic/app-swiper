@@ -9,22 +9,21 @@
 <link rel="stylesheet" href="@App.Path/dist/styles.min.css" data-enableoptimizations="true">
 
 <div @Edit.TagToolbar(Content, toolbar: new [] { "settings&hover=left&autoAddMore=start" })>
-  <div class='aspect-ratio height-@sliderStyleHeight.Replace(":", "-")'>
+  <div class='aspect-ratio height-@sliderStyleHeight.Replace(":", "-")' style='@(sliderStyleHeight.IndexOf(":") > 0 ? "--aspect-ratio:" + sliderStyleHeight.Replace(":", "/") : "")'>
     <div class="inner">
-
       @* Slider main container and wrapper *@
       <div class="swiper-container swiper-@Content.EntityId" style="width: @sliderStyleWidth; height: @sliderStyleHeight">
         <div class="swiper-wrapper" data-swiper-autoplay="@(Content.AutoplayDelay ?? App.Settings.AutoplayDelay)">
           @* Slides *@
           @foreach (var slide in Content.Slides)
           {
-            var contentEeffect = Text.First(slide.ContentEffect, Content.ContentEffect, App.Settings.ContentEffect, "none");
-            var contentEffectClass = "content-effect-" + contentEeffect;
+            var contentEffect = Text.First(slide.ContentEffect, Content.ContentEffect, App.Settings.ContentEffect, "none");
+            var contentEffectClass = "content-effect-" + contentEffect;
 
             <div class="swiper-slide" @(Content.IsDemoItem ? "" : Edit.TagToolbar(slide, toolbar: new[] { "%delete&show=true" } ))>
               <div class="image-wrapper content-position-@slide.TextPosition @contentEffectClass" style='background-image: url(@Tags.SafeUrl(slide.Image + "?w=1600&q=80"))'>
                 @if(Text.Has(slide.Title) || Text.Has(slide.Text) || Text.Has(slide.LinkText)){
-                  <div class="overlay overlay-@contentEeffect"></div>
+                  <div class="overlay overlay-@contentEffect"></div>
                 }
                 <div class="container-fluid h-100">
                   <div class="@helpers.RowClasses(slide)">
@@ -58,7 +57,7 @@
               <div class="line"></div>
               <div class="point"></div>
             </div>
-            <div class="container" @* TOOLBAR HIER? *@>
+            <div class="container" @* TOOLBAR HIER? *@ @Edit.TagToolbar(Content.Slides, toolbar: new[] { "%delete&show=true" } )>
               <div class="row h-100 align-items-center">
                 <div class="col-12 text-center">
                   <h2>Empty Slider</h2>
@@ -94,7 +93,17 @@
     '@(Content.Autoplay ?? App.Settings.Autoplay)', 
     @(Content.Speed ?? App.Settings.Speed),
     @Html.Raw(Content.Effect.Configuration),
-    @Html.Raw(App.Settings.EffectFallback),
+    @Html.Raw(App.Settings.EffectFallback)
   );
 </script>
+
+<style>
+  @@supports (--custom:property) {
+    [style*="--aspect-ratio"] {
+      position: relative;
+      width: 100%;
+      padding-top: calc(100% / (var(--aspect-ratio)));
+    }
+  }
+</style>
 
