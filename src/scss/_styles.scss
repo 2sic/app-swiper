@@ -161,11 +161,16 @@
 
     .swiper-button-next,
     .swiper-button-prev {
-      color: $primary;
+      color: #fff;
+      text-shadow: 0px 0px 8px rgba(0, 0, 0, 1);
+    }
+
+    .swiper-pagination-bullet {
+      box-shadow: 0px 0px 5px 0px rgba(0,0,0,0.75);
     }
 
     .swiper-pagination-bullet-active {
-      background-color: $primary;
+      background-color: #fff;
     }
   }
 
@@ -181,7 +186,7 @@
   .line {
     margin-top: 14px;
     width: 90px;
-    background: $primary;
+    background: #000;
     height: 10px;
     float: left;
   }
@@ -191,7 +196,7 @@
     height: 0;
     border-top: 20px solid transparent;
     border-bottom: 20px solid transparent;
-    border-left: 30px solid $primary;
+    border-left: 30px solid #000;
     float: right;
   }
 }

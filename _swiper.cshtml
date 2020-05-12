@@ -13,14 +13,14 @@
     <div class="inner">
       @* Slider main container and wrapper *@
       <div class="swiper-container swiper-@Content.EntityId" style="width: @sliderStyleWidth; height: @sliderStyleHeight">
-        <div class="swiper-wrapper" data-swiper-autoplay="@(Content.AutoplayDelay ?? App.Settings.AutoplayDelay)">
+        <div class="swiper-wrapper">
           @* Slides *@
           @foreach (var slide in Content.Slides)
           {
             var contentEffect = Text.First(slide.ContentEffect, Content.ContentEffect, App.Settings.ContentEffect, "none");
             var contentEffectClass = "content-effect-" + contentEffect;
 
-            <div class="swiper-slide" @(Content.IsDemoItem ? "" : Edit.TagToolbar(slide, toolbar: new[] { "%delete&show=true" } ))>
+            <div class="swiper-slide" data-swiper-autoplay="@(Content.AutoplayDelay ?? App.Settings.AutoplayDelay)" @(Content.IsDemoItem ? "" : Edit.TagToolbar(slide, toolbar: new[] { "%delete&show=true" } ))>
               <div class="image-wrapper content-position-@slide.TextPosition @contentEffectClass" style='background-image: url(@Tags.SafeUrl(slide.Image + "?w=1600&q=80"))'>
                 @if(Text.Has(slide.Title) || Text.Has(slide.Text) || Text.Has(slide.LinkText)){
                   <div class="overlay overlay-@contentEffect"></div>
