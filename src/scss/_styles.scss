@@ -153,4 +153,30 @@
       background-color: $primary;
     }
   }
+
+  .arrow {
+    position: absolute;
+    width: 120px;
+    top: 20px;
+    right: 50px;
+    transform: rotate(-45deg);
+    transform-origin: top right;
+  }
+  
+  .line {
+    margin-top: 14px;
+    width: 90px;
+    background: $primary;
+    height: 10px;
+    float: left;
+  }
+  
+  .point {
+    width: 0;
+    height: 0;
+    border-top: 20px solid transparent;
+    border-bottom: 20px solid transparent;
+    border-left: 30px solid $primary;
+    float: right;
+  }
 }
