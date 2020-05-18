@@ -18,11 +18,9 @@
           @foreach (var slide in Content.Slides)
           {
             var contentEffect = Text.First(slide.ContentEffect, Content.ContentEffect, App.Settings.ContentEffect, "none");
-            var contentEffectClass = "content-effect-" + contentEffect;
-            var contentTextPosition = Text.First(slide.TextPosition, Content.TextPosition, App.Settings.TextPosition, "none");
 
             <div class="swiper-slide" data-swiper-autoplay="@(slide.ShowDuration ?? Content.ShowDuration ?? App.Settings.ShowDuration)" @(Content.IsDemoItem ? "" : Edit.TagToolbar(slide, toolbar: new[] { "%delete&show=true" } ))>
-              <div class="image-wrapper content-position-@contentTextPosition @contentEffectClass" style='background-image: url(@Tags.SafeUrl(slide.Image + "?w=1600&q=80"))'>
+              <div class="image-wrapper @helpers.WrapperClasses(slide)" style='background-image: url(@Tags.SafeUrl(slide.Image + "?w=1600&q=80"))'>
                 @if(Text.Has(slide.Title) || Text.Has(slide.Text) || Text.Has(slide.LinkText)){
                   <div class="overlay overlay-@contentEffect"></div>
                 }
@@ -32,7 +30,7 @@
                       <div class="@helpers.ContentClasses(slide)">
                       @if(Text.Has(slide.Title)){
                         <p class="lead" data-swiper-parallax="-250">
-                          @slide.Title
+                          @slide.Title 
                         </p>
                       }
                       @if(Text.Has(slide.Text)){

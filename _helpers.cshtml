@@ -11,3 +11,9 @@ var textPosition = Text.First(data.TextPosition, Content.TextPosition, App.Setti
 <text>@(textPosition == "tc" || textPosition == "cc" || textPosition == "bc" ? "text-center" : "") @(textPosition == "tr" || textPosition == "cr" || textPosition == "br" ? "text-right" : "")</text>
 }
 
+@helper WrapperClasses(dynamic data) {
+var contentEffect = Text.First(data.ContentEffect, Content.ContentEffect, App.Settings.ContentEffect, "none");
+var contentTextPosition = Text.First(data.TextPosition, Content.TextPosition, App.Settings.TextPosition, "none");
+<text>content-position-@contentTextPosition content-effect-@contentEffect @(data.DarkContent ?? Content.DarkContent ?? App.Settings.DarkContent ? "dark-content" : "light-content")</text>
+}
+
