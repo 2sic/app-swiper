@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="11.00.01" ExportDate="2020-05-13T11:28:40.6819838+02:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="11.01.00" ExportDate="2020-05-18T09:32:37.9313315+02:00">
   <Header>
     <App Guid="ff3acff6-ec03-4612-aace-47bb54fe1c8d" />
     <Language Default="en-US" />
@@ -363,6 +363,13 @@
             <Value Key="EnableTextEntry" Value="False" Type="Boolean">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
+          </Entity>
+        </Attribute>
+        <Attribute StaticName="DarkContent" Type="Boolean" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="f8667b98-5907-414f-bfcb-ae5e9c6a7134" Json="True" KeyNumber="4112">
+            <Value Key="InputType" Value="boolean-tristate" Type="String" />
+            <Value Key="Name" Value="DarkContent" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
           </Entity>
         </Attribute>
       </Attributes>
@@ -762,6 +769,31 @@
             <Value Key="DefaultCollapsed" Value="True" Type="Boolean">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
+          </Entity>
+        </Attribute>
+        <Attribute StaticName="DarkContent" Type="Boolean" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="9bc4c51a-bd1e-4259-9112-14939a51a242" Json="True" KeyNumber="4110">
+            <Value Key="CustomJavaScript" Value="" Type="String">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultValue" Value="" Type="String">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="Disabled" Value="False" Type="Boolean">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="boolean-tristate" Type="String" />
+            <Value Key="Name" Value="Dark Content" Type="String" />
+            <Value Key="Notes" Value="&lt;p&gt;Switch from light Font/Overlaycolors to dark.&lt;/p&gt;" Type="String">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
           </Entity>
         </Attribute>
         <Attribute StaticName="ContentEffect" Type="String" IsTitle="false">
@@ -1226,6 +1258,13 @@
             </Value>
           </Entity>
         </Attribute>
+        <Attribute StaticName="DarkContent" Type="Boolean" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="5ee8355a-4a20-43cf-84d5-7c1c71fdc88b" Json="True" KeyNumber="4111">
+            <Value Key="InputType" Value="boolean-tristate" Type="String" />
+            <Value Key="Name" Value="DarkContent" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+          </Entity>
+        </Attribute>
         <Attribute StaticName="TextPosition" Type="String" IsTitle="false">
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="c48aa042-983f-4ee9-a58f-16c2b622326d" Json="True" KeyNumber="4008">
             <Value Key="CustomJavaScript" Value="" Type="String">
@@ -1569,7 +1608,7 @@
       <Value Key="SupportsAjaxReload" Value="False" Type="Boolean">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
-      <Value Key="Version" Value="01.00.02" Type="String" />
+      <Value Key="Version" Value="01.00.03" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="App" AttributeSetStaticName="App-Settings" AttributeSetName="App-Settings" EntityGUID="2ca9c5f5-f3ef-456b-954a-2c2c6c36e6a9" KeyNumber="182">
       <Value Key="AnimationDuration" Value="1000" Type="Number">
@@ -1581,7 +1620,10 @@
       <Value Key="ContentEffect" Value="none" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
-      <Value Key="EffectFallback" Value="{&#xA;  keyboard: {&#xA;    enabled: true,&#xA;  },&#xA;  loop: true,&#xA;  pagination: {&#xA;    el: '.swiper-pagination',&#xA;  },&#xA;  navigation: {&#xA;    nextEl: '.swiper-button-next',&#xA;    prevEl: '.swiper-button-prev',&#xA;  }&#xA;}" Type="String">
+      <Value Key="DarkContent" Value="False" Type="Boolean">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="EffectFallback" Value="{&#xA;  keyboard: {&#xA;    enabled: true,&#xA;  },&#xA;  loop: true,&#xA;  pagination: {&#xA;    clickable: true,&#xA;    el: '.swiper-pagination',&#xA;  },&#xA;  navigation: {&#xA;    nextEl: '.swiper-button-next',&#xA;    prevEl: '.swiper-button-prev',&#xA;  }&#xA;}" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
       <Value Key="Height" Value="50vh" Type="String">
@@ -1650,6 +1692,9 @@
     </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="46bfd97d-7852-48b1-b24d-3415734ca6cd" AttributeSetName="Slide" EntityGUID="d1668b0a-4df0-4735-81a6-e4693d6912d6">
       <Value Key="ContentEffect" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="DarkContent" Value="" Type="Boolean">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
       <Value Key="Image" Value="file:4411" Type="Hyperlink">
@@ -1838,6 +1883,9 @@
       <Value Key="ContentEffect" Value="gradient" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
+      <Value Key="DarkContent" Value="True" Type="Boolean">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
       <Value Key="Effect" Value="aa6c59cf-ba5b-429e-a111-6364fdb37b6e" Type="Entity" />
       <Value Key="Height" Value="" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
@@ -1849,6 +1897,9 @@
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
       <Value Key="Slides" Value="d1668b0a-4df0-4735-81a6-e4693d6912d6,14efad4a-95d2-4e91-bdf8-3dd7d13457c7" Type="Entity" />
+      <Value Key="TextPosition" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
       <Value Key="Title" Value="Coverflow Slider" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
@@ -1901,6 +1952,12 @@
       </Value>
     </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="46bfd97d-7852-48b1-b24d-3415734ca6cd" AttributeSetName="Slide" EntityGUID="c3d47ff8-10bf-4171-b1c0-b48b002be63b">
+      <Value Key="ContentEffect" Value="gradient" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="DarkContent" Value="True" Type="Boolean">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
       <Value Key="Image" Value="file:4411" Type="Hyperlink">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
@@ -1919,7 +1976,7 @@
       <Value Key="TextPosition" Value="tl" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
-      <Value Key="Title" Value="Demo Slide TL" Type="String">
+      <Value Key="Title" Value="Demo Slide Dark TL Gradient" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
     </Entity>
@@ -1928,6 +1985,9 @@
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
       <Value Key="ContentEffect" Value="none" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="DarkContent" Value="False" Type="Boolean">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
       <Value Key="Effect" Value="a5578ca5-6df0-4f69-96d7-2d3dd7befb2e" Type="Entity" />
@@ -1941,6 +2001,9 @@
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
       <Value Key="Slides" Value="d1668b0a-4df0-4735-81a6-e4693d6912d6,14efad4a-95d2-4e91-bdf8-3dd7d13457c7,c3d47ff8-10bf-4171-b1c0-b48b002be63b,786b2783-558a-48b8-b0a6-b57c345a6b01,799aa532-51cb-4eca-bccc-097797c51c5f,beed9185-94e4-473e-a17c-26c399eb8dee,091d81af-5d6b-458c-89e0-617a5dc47068,3b63271f-cba3-458a-8738-f318bcbafb71" Type="Entity" />
+      <Value Key="TextPosition" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
       <Value Key="Title" Value="Position Slider" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
