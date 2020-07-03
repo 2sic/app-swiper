@@ -1,7 +1,7 @@
 @inherits ToSic.Sxc.Dnn.RazorComponent
 @using ToSic.Razor.Blade;
 @{
-  var helpers = CreateInstance("_helpers.cshtml");
+  var parts = CreateInstance("_Parts.cshtml");
   var sliderStyleWidth = Text.Has(Content.Width) ? Content.Width : App.Settings.Width;
   var sliderStyleHeight = Text.Has(Content.Height) ? Content.Height : App.Settings.Height;
 }
@@ -20,14 +20,14 @@
             var contentEffect = Text.First(slide.ContentEffect, Content.ContentEffect, App.Settings.ContentEffect, "none");
 
             <div class="swiper-slide" data-swiper-autoplay="@(slide.ShowDuration ?? Content.ShowDuration ?? App.Settings.ShowDuration)" @(Content.IsDemoItem ? "" : Edit.TagToolbar(slide, toolbar: new[] { "%delete&show=true" } ))>
-              <div class="image-wrapper @helpers.WrapperClasses(slide)" style='background-image: url(@Tags.SafeUrl(slide.Image + "?w=1600&q=80"))'>
+              <div class="image-wrapper @parts.WrapperClasses(slide)" style='background-image: url(@Tags.SafeUrl(slide.Image + "?w=1600&q=80"))'>
                 @if(Text.Has(slide.Title) || Text.Has(slide.Text) || Text.Has(slide.LinkText)){
                   <div class="overlay overlay-@contentEffect"></div>
                 }
                 <div class="container-fluid h-100">
-                  <div class="@helpers.RowClasses(slide)">
+                  <div class="@parts.RowClasses(slide)">
                     <div class="col-12 py-4">
-                      <div class="@helpers.ContentClasses(slide)">
+                      <div class="@parts.ContentClasses(slide)">
                       @if(Text.Has(slide.Title)){
                         <p class="lead" data-swiper-parallax="-250">
                           @slide.Title 
@@ -84,7 +84,7 @@
   </div>
 </div>
 
-<script src="@App.Path/dist/scripts.min.js" data-enableoptimizations="true"></script>
+<script src="@App.Path/dist/scripts.min.js" data-enableoptimizations="false"></script>
 
 <script>
   // Initialize the swiper which is identified by the Id of this configuration
