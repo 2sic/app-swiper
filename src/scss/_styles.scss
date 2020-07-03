@@ -3,6 +3,20 @@
 @import "../../../_default/Skins/Bootstrap 4 Instant/node_modules/bootstrap/scss/mixins/_breakpoints.scss";
 
 @media all {
+  picture {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+
+    img {
+      object-fit: cover;
+      width: 100%;
+      height: 100%;
+    }
+  }
+  
   .aspect-ratio {
     position: relative;
     

@@ -20,7 +20,9 @@
             var contentEffect = Text.First(slide.ContentEffect, Content.ContentEffect, App.Settings.ContentEffect, "none");
 
             <div class="swiper-slide" data-swiper-autoplay="@(slide.ShowDuration ?? Content.ShowDuration ?? App.Settings.ShowDuration)" @(Content.IsDemoItem ? "" : Edit.TagToolbar(slide, toolbar: new[] { "%delete&show=true" } ))>
-              <div class="image-wrapper @parts.WrapperClasses(slide)" style='background-image: url(@Tags.SafeUrl(slide.Image + "?w=1600&q=80"))'>
+              <div class="image-wrapper @parts.WrapperClasses(slide)">
+                @Picture(slide.Image.ToLower(), slide.Title)
+
                 @if(Text.Has(slide.Title) || Text.Has(slide.Text) || Text.Has(slide.LinkText)){
                   <div class="overlay overlay-@contentEffect"></div>
                 }
@@ -107,3 +109,34 @@
   }
 </style>
 
+@functions {
+  string RatioParams(float ratio, float wReal) {
+    var hReal = Convert.ToInt32(wReal / ratio);
+    return "&w=" + wReal + "&h=" + hReal;
+  }
+
+  string SrcSet(string url, float ratio, int width) {
+    return Tags.SafeUrl(url + RatioParams(ratio, width)) + " " + width + "w";
+  }
+}
+
+@helper Picture(string imgUrl, string title) {
+  var jpgQ = 70;
+  var webpQ = 60;
+  var defW = 800;
+  var defH = 350;
+  var ratio = Convert.ToSingle(defW) / defH;
+  var sizes = new[] { 320, 480, 640, 800, 1000, 1600 };
+  imgUrl = imgUrl + "?mode=crop&scale=both";
+  var imgWebp = imgUrl + "&format=webp&quality=" + webpQ;
+  var imgJpg = imgUrl + "&format=jpeg&quality=" + jpgQ;
+  var setWebp = string.Join(",\n", sizes.Select(s => SrcSet(imgWebp, ratio, s)));
+  var setJpg = string.Join(",\n", sizes.Select(s => SrcSet(imgJpg, ratio, s)));
+  <picture>
+    @if(App.Settings.OptimizationsEnableWebP != null && App.Settings.OptimizationsEnableWebP) {
+      <source srcset='@setWebp' type="image/webp">
+      <source srcset='@setJpg' type="image/jpeg">
+    }
+    <img src="@Tags.SafeUrl(imgJpg + RatioParams(ratio, 1600))" alt="@title" />
+  </picture>
+}
