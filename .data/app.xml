@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="11.01.00" ExportDate="2020-05-18T09:32:37.9313315+02:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.00.00" ModuleVersion="11.03.00" ExportDate="2020-07-09T09:44:57.6079331+02:00">
   <Header>
     <App Guid="ff3acff6-ec03-4612-aace-47bb54fe1c8d" />
     <Language Default="en-US" />
@@ -49,7 +49,7 @@
             <Value Key="AddressMask" Value="" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
-            <Value Key="Decimals" Value="0.0" Type="Number">
+            <Value Key="Decimals" Value="0" Type="Number">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
             <Value Key="InputType" Value="" Type="String">
@@ -116,7 +116,7 @@
             <Value Key="AddressMask" Value="" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
-            <Value Key="Decimals" Value="0.0" Type="Number">
+            <Value Key="Decimals" Value="0" Type="Number">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
             <Value Key="InputType" Value="" Type="String">
@@ -275,7 +275,7 @@
             </Value>
           </Entity>
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-default" AttributeSetName="@string-default" EntityGUID="22c293cb-9f9d-4313-b0a3-199cff64f26f" Json="True" KeyNumber="3919">
-            <Value Key="RowCount" Value="20.0" Type="Number">
+            <Value Key="RowCount" Value="20" Type="Number">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
           </Entity>
@@ -372,6 +372,84 @@
             <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
           </Entity>
         </Attribute>
+        <Attribute StaticName="GroupOptimizations" Type="Empty" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="7056518d-6c83-4323-b950-74f6fa5439fe" Json="True" KeyNumber="4344">
+            <Value Key="CustomJavaScript" Value="" Type="String">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultValue" Value="" Type="String">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="Disabled" Value="False" Type="Boolean">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="DisableTranslation" Value="False" Type="Boolean">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="empty-default" Type="String" />
+            <Value Key="Name" Value="Optimizations" Type="String" />
+            <Value Key="Notes" Value="" Type="String">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="Placeholder" Value="" Type="String">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+          </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@empty-default" AttributeSetName="@empty-default" EntityGUID="efabc883-8d0f-4b69-bd81-ec2744c8e4cc" Json="True" KeyNumber="4344">
+            <Value Key="DefaultCollapsed" Value="True" Type="Boolean">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+          </Entity>
+        </Attribute>
+        <Attribute StaticName="OptimizationsEnableWebP" Type="Boolean" IsTitle="false">
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="7c039a09-9b28-411b-b486-94a2339bc356" Json="True" KeyNumber="4345">
+            <Value Key="CustomJavaScript" Value="" Type="String">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="DefaultValue" Value="" Type="String">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="Disabled" Value="False" Type="Boolean">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="DisableTranslation" Value="False" Type="Boolean">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="boolean-tristate" Type="String" />
+            <Value Key="Name" Value="Enable WebP" Type="String" />
+            <Value Key="Notes" Value="&lt;p&gt;Support the WebP image format. Requires at least 2sxc 11.03, but there it's still beta.&amp;nbsp;&lt;/p&gt;" Type="String">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="Placeholder" Value="" Type="String">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="Required" Value="False" Type="Boolean">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="ValidationRegExJavaScript" Value="" Type="String">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+          </Entity>
+          <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Boolean" AttributeSetName="@Boolean" EntityGUID="66a0351b-7c48-48a8-9c68-4ed9bd5f3600" Json="True" KeyNumber="4345">
+            <Value Key="TitleFalse" Value="Disable WebP Image Format" Type="String">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="TitleIndeterminate" Value="Use WebP once it's a stable feature" Type="String">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="TitleTrue" Value="Enable WebP Image Format" Type="String">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+          </Entity>
+        </Attribute>
       </Attributes>
     </AttributeSet>
     <AttributeSet StaticName="71e437b6-431e-463b-9717-de8aa9c92527" Name="Effect" Description="" Scope="2SexyContent" AlwaysShareConfiguration="false">
@@ -414,7 +492,7 @@
             <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
           </Entity>
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@custom-json-editor" AttributeSetName="@custom-json-editor" EntityGUID="f2e8bb53-c5b7-4cfc-961c-8a70620d33e2" Json="True" KeyNumber="4004">
-            <Value Key="Rows" Value="20.0" Type="Number">
+            <Value Key="Rows" Value="20" Type="Number">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
           </Entity>
@@ -918,7 +996,7 @@
             <Value Key="AddressMask" Value="" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
-            <Value Key="Decimals" Value="0.0" Type="Number">
+            <Value Key="Decimals" Value="0" Type="Number">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
             <Value Key="InputType" Value="" Type="String">
@@ -1091,7 +1169,7 @@
             <Value Key="AddressMask" Value="" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
-            <Value Key="Decimals" Value="0.0" Type="Number">
+            <Value Key="Decimals" Value="0" Type="Number">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
             <Value Key="InputType" Value="" Type="String">
@@ -1167,7 +1245,7 @@
             <Value Key="AddressMask" Value="" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
-            <Value Key="Decimals" Value="0.0" Type="Number">
+            <Value Key="Decimals" Value="0" Type="Number">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
             <Value Key="InputType" Value="" Type="String">
@@ -1608,7 +1686,7 @@
       <Value Key="SupportsAjaxReload" Value="False" Type="Boolean">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
-      <Value Key="Version" Value="01.00.03" Type="String" />
+      <Value Key="Version" Value="01.01.00" Type="String" />
     </Entity>
     <Entity AssignmentObjectType="App" AttributeSetStaticName="App-Settings" AttributeSetName="App-Settings" EntityGUID="2ca9c5f5-f3ef-456b-954a-2c2c6c36e6a9" KeyNumber="182">
       <Value Key="AnimationDuration" Value="1000" Type="Number">
@@ -1630,6 +1708,9 @@
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
       <Value Key="Navigation" Value="True" Type="Boolean">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="OptimizationsEnableWebP" Value="" Type="Boolean">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
       <Value Key="Pagination" Value="True" Type="Boolean">
@@ -1668,7 +1749,7 @@
       <Value Key="Name" Value="Swiper" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
-      <Value Key="Path" Value="_swiper.cshtml" Type="String">
+      <Value Key="Path" Value="_Swiper.cshtml" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
       <Value Key="PresentationTypeStaticName" Value="" Type="String">
@@ -1697,7 +1778,7 @@
       <Value Key="DarkContent" Value="" Type="Boolean">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
-      <Value Key="Image" Value="file:4411" Type="Hyperlink">
+      <Value Key="Image" Value="file:4563" Type="Hyperlink">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
       <Value Key="Link" Value="/" Type="Hyperlink">
@@ -1846,10 +1927,16 @@
       </Value>
     </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="4d6daa73-e644-4e33-afed-448c6e1c0e88" AttributeSetName="Slider" EntityGUID="f43d1be1-dd2c-49bd-b20b-03c1eb60bdbe">
-      <Value Key="Autoplay" Value="True" Type="Boolean">
+      <Value Key="AnimationDuration" Value="" Type="Number">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Autoplay" Value="False" Type="Boolean">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
       <Value Key="ContentEffect" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="DarkContent" Value="" Type="Boolean">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
       <Value Key="Effect" Value="a5578ca5-6df0-4f69-96d7-2d3dd7befb2e" Type="Entity" />
@@ -1866,6 +1953,9 @@
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
       <Value Key="Slides" Value="d1668b0a-4df0-4735-81a6-e4693d6912d6,14efad4a-95d2-4e91-bdf8-3dd7d13457c7" Type="Entity" />
+      <Value Key="TextPosition" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
       <Value Key="Title" Value="Parallax Slider" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
@@ -1981,6 +2071,9 @@
       </Value>
     </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="4d6daa73-e644-4e33-afed-448c6e1c0e88" AttributeSetName="Slider" EntityGUID="95426cb5-404e-4488-8200-ca8b0ea29bb2">
+      <Value Key="AnimationDuration" Value="" Type="Number">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
       <Value Key="Autoplay" Value="True" Type="Boolean">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
@@ -1991,13 +2084,16 @@
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
       <Value Key="Effect" Value="a5578ca5-6df0-4f69-96d7-2d3dd7befb2e" Type="Entity" />
-      <Value Key="Height" Value="" Type="String">
+      <Value Key="Height" Value="480px" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
       <Value Key="Navigation" Value="False" Type="Boolean">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
       <Value Key="Pagination" Value="False" Type="Boolean">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="ShowDuration" Value="" Type="Number">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
       <Value Key="Slides" Value="d1668b0a-4df0-4735-81a6-e4693d6912d6,14efad4a-95d2-4e91-bdf8-3dd7d13457c7,c3d47ff8-10bf-4171-b1c0-b48b002be63b,786b2783-558a-48b8-b0a6-b57c345a6b01,799aa532-51cb-4eca-bccc-097797c51c5f,beed9185-94e4-473e-a17c-26c399eb8dee,091d81af-5d6b-458c-89e0-617a5dc47068,3b63271f-cba3-458a-8738-f318bcbafb71" Type="Entity" />
@@ -2235,10 +2331,16 @@
       </Value>
     </Entity>
     <Entity AssignmentObjectType="Default" AttributeSetStaticName="4d6daa73-e644-4e33-afed-448c6e1c0e88" AttributeSetName="Slider" EntityGUID="322d247d-d8ba-40c8-b5e2-25be1f10fddb">
+      <Value Key="AnimationDuration" Value="" Type="Number">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
       <Value Key="Autoplay" Value="" Type="Boolean">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
       <Value Key="ContentEffect" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="DarkContent" Value="" Type="Boolean">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
       <Value Key="Effect" Value="7ace9b52-9d89-410e-ace3-2c72dabd4042" Type="Entity" />
@@ -2251,7 +2353,13 @@
       <Value Key="Pagination" Value="" Type="Boolean">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
+      <Value Key="ShowDuration" Value="" Type="Number">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
       <Value Key="Slides" Value="091d81af-5d6b-458c-89e0-617a5dc47068,c3d47ff8-10bf-4171-b1c0-b48b002be63b" Type="Entity" />
+      <Value Key="TextPosition" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
       <Value Key="Title" Value="50vh" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
@@ -2285,8 +2393,10 @@
     </Entity>
   </Entities>
   <PortalFiles>
-    <File Id="4411" RelativePath="adam\Swiper\Cotm0fBNNUeBpuRpPWkS1g\Image\Demo-2.jpg" />
+    <File Id="4563" RelativePath="adam\Swiper\Cotm0fBNNUeBpuRpPWkS1g\Image\uhu.jpg" />
     <File Id="4412" RelativePath="adam\Swiper\Sq3vFNKVkU69-D3X0TRXxw\Image\Demo-1.jpg" />
+    <File Id="4411" RelativePath="adam\Swiper\Cotm0fBNNUeBpuRpPWkS1g\Image\Demo-2.jpg" />
+    <File Id="4562" RelativePath="adam\Swiper\Cotm0fBNNUeBpuRpPWkS1g\Image\parrot-3250578_1920.jpg" />
   </PortalFiles>
   <PortalFolders>
     <Folder Id="7833" RelativePath="adam/Swiper/Cotm0fBNNUeBpuRpPWkS1g/Image/" />
