@@ -1,7 +1,7 @@
-@inherits ToSic.Sxc.Dnn.RazorComponent
+@inherits Custom.Hybrid.Razor12
 @using ToSic.Razor.Blade;
 @{
-  var parts = CreateInstance("_Parts.cshtml");
+  var parts = CreateInstance("Parts.cs");
   var sliderStyleWidth = Text.Has(Content.Width) ? Content.Width : App.Settings.Width;
   var sliderStyleHeight = Text.Has(Content.Height) ? Content.Height : App.Settings.Height;
 }
