@@ -118,25 +118,29 @@
   string SrcSet(string url, float ratio, int width) {
     return Tags.SafeUrl(url + RatioParams(ratio, width)) + " " + width + "w";
   }
-}
 
-@helper Picture(string imgUrl, string title) {
-  var jpgQ = 70;
-  var webpQ = 60;
-  var defW = 800;
-  var defH = 350;
-  var ratio = Convert.ToSingle(defW) / defH;
-  var sizes = new[] { 320, 480, 640, 800, 1000, 1600 };
-  imgUrl = imgUrl + "?mode=crop&scale=both";
-  var imgWebp = imgUrl + "&format=webp&quality=" + webpQ;
-  var imgJpg = imgUrl + "&format=jpeg&quality=" + jpgQ;
-  var setWebp = string.Join(",\n", sizes.Select(s => SrcSet(imgWebp, ratio, s)));
-  var setJpg = string.Join(",\n", sizes.Select(s => SrcSet(imgJpg, ratio, s)));
-  <picture>
-    @if(App.Settings.OptimizationsEnableWebP != null && App.Settings.OptimizationsEnableWebP) {
-      <source srcset='@setWebp' type="image/webp">
-      <source srcset='@setJpg' type="image/jpeg">
+  dynamic Picture(string imgUrl, string title) {
+    var jpgQ = 70;
+    var webpQ = 60;
+    var defW = 800;
+    var defH = 350;
+    var ratio = Convert.ToSingle(defW) / defH;
+    var sizes = new[] { 320, 480, 640, 800, 1000, 1600 };
+    imgUrl = imgUrl + "?mode=crop&scale=both";
+    var imgWebp = imgUrl + "&format=webp&quality=" + webpQ;
+    var imgJpg = imgUrl + "&format=jpeg&quality=" + jpgQ;
+    var setWebp = string.Join(",\n", sizes.Select(s => SrcSet(imgWebp, ratio, s)));
+    var setJpg = string.Join(",\n", sizes.Select(s => SrcSet(imgJpg, ratio, s)));
+    var pictureTag = Tag.Picture();
+    if(App.Settings.OptimizationsEnableWebP == true){
+      pictureTag.Add(
+        Tag.Source().Srcset(setWebp).Type("image/webp"),
+        Tag.Source().Srcset(setJpg).Type("image/jpeg")
+      );
     }
-    <img src="@Tags.SafeUrl(imgJpg + RatioParams(ratio, 1600))" alt="@title" />
-  </picture>
+    pictureTag.Add(
+      Tag.Img().Src(imgJpg + RatioParams(ratio, 1600)).Alt(title)
+    );
+    return pictureTag;
+  }
 }
