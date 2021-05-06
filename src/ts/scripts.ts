@@ -1,5 +1,4 @@
 import Swiper from 'swiper';
-import 'swiper/css/swiper.css';
 require('../scss/_styles.scss');
 
 function appSwiper(moduleID: string, autoplay: string, speed: string, effectDefaults: any, fallback: any) {
