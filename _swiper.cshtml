@@ -42,7 +42,7 @@
                       }
                       @if(Text.Has(slide.LinkText)){
                         <div data-swiper-parallax="-750">
-                          <a class="btn btn-primary" href="@Tags.SafeUrl(slide.Link)" target='(slide.LinkBlankTarget == true ? "_blank" : "")'>@slide.LinkText</a>
+                          <a class="btn btn-primary" href="@Tags.SafeUrl(slide.Link)" target='@(slide.LinkBlankTarget == true ? "_blank" : "")'>@slide.LinkText</a>
                         </div>
                       }
                       </div>
