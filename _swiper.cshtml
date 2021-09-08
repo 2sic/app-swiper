@@ -3,8 +3,9 @@
 @using ToSic.Razor.Blade;
 @{
   var parts = CreateInstance("Parts.cs");
-  var sliderStyleWidth = Text.Has(Content.Width) ? Content.Width : App.Settings.Width;
-  var sliderStyleHeight = Text.Has(Content.Height) ? Content.Height : App.Settings.Height;
+  var sliderSettings = AsDynamic(Content, Settings);
+  var sliderStyleWidth = sliderSettings.Width;
+  var sliderStyleHeight = sliderSettings.Height;
 
   // sets aspect ratio if containes ratio
   var aspectRatioStyle = sliderStyleHeight.IndexOf(":") > 0 ? "--aspect-ratio:calc(" + sliderStyleHeight.Replace(":", "/")  + ")": "";
@@ -22,20 +23,21 @@
           @* Slides *@
           @foreach (var slide in Content.Slides)
           {
-            var contentEffect = Text.First(slide.ContentEffect, Content.ContentEffect, App.Settings.ContentEffect, "none");
-            var duration = slide.ShowDuration ?? Content.ShowDuration ?? App.Settings.ShowDuration;
+            var sldSettings = AsDynamic(slide, Content, Settings);
+            var contentEffect = sldSettings.ContentEffect;
+            var duration = sldSettings.ShowDuration;
 
             <div class="swiper-slide" data-swiper-autoplay="@duration" @(Content.IsDemoItem ? "" : Edit.TagToolbar(slide, toolbar: new[] { "%delete&show=true" } ))>
-              <div class="image-wrapper @parts.WrapperClasses(slide)">
+              <div class="image-wrapper @parts.WrapperClasses(sldSettings)">
                 @PictureTag(slide.Image.ToLower(), slide.Title)
 
                 @if (Text.Has(slide.Title) || Text.Has(slide.Text) || Text.Has(slide.LinkText)) {
                   <div class="overlay overlay-@contentEffect"></div>
                 }
                 <div class="container-fluid h-100">
-                  <div class="@parts.RowClasses(slide)">
+                  <div class="@parts.RowClasses(sldSettings)">
                     <div class="col-12 py-4">
-                      <div class="@parts.ContentClasses(slide)">
+                      <div class="@parts.ContentClasses(sldSettings)">
                       @if (Text.Has(slide.Title)) {
                         <p class="lead" data-swiper-parallax="-250">@slide.Title</p>
                       }
@@ -59,12 +61,12 @@
         </div>
 
         @* Pagination *@
-        @if (Content.Pagination ?? App.Settings.Pagination) {
+        @if (sliderSettings.Pagination) {
           <div class="swiper-pagination"></div>
         }
 
         @* Navigation buttons (right left arrows) *@
-        @if (Content.Navigation ?? App.Settings.Navigation) {
+        @if (sliderSettings.Navigation) {
           <div class="swiper-button-prev"></div>
           <div class="swiper-button-next"></div>
         }

@@ -7,14 +7,16 @@
 @{
   var page = GetService<ToSic.Sxc.Web.IPageService>();
   page.Activate("turnOn"); // see https://r.2sxc.org/turnon
+  
+  var swiperSettings = AsDynamic(Content, Settings);
 
   var swiperData = new {
     moduleId = Content.EntityId,
     options = new {
-      autoplay = (Content.Autoplay ?? App.Settings.Autoplay),
-      speed = (Content.AnimationDuration ?? App.Settings.AnimationDuration),
-      effectDefaults = JsonConvert.DeserializeObject(Content.Effect.Configuration),
-      fallback = JsonConvert.DeserializeObject(App.Settings.EffectFallback)
+      autoplay = swiperSettings.Autoplay,
+      speed = swiperSettings.AnimationDuration,
+      effectDefaults = JsonConvert.DeserializeObject(swiperSettings.Effect.Configuration),
+      fallback = JsonConvert.DeserializeObject(swiperSettings.EffectFallback)
     }
   };
 
