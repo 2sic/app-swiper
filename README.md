@@ -1,8 +1,10 @@
 <img src="app-icon.png" width="250" align="right">
 
-# Swiper Slider/Carousel App for DNN & 2sxc
+# Swiper 2 - Slider/Carousel App
 
-DNN / 2sxc Slider App using the popular [Swiper JS](https://swiperjs.com/)
+> This is a 2sxc App for DNN & Oqtane
+
+DNN / 2sxc Slider App using the popular [Swiper JS](https://swiperjs.com/). It does not use jQuery 😉.
 
 ## Check it out
 

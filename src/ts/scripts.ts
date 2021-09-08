@@ -1,14 +1,23 @@
 import Swiper from 'swiper/bundle';
-
 require('../scss/_styles.scss');
 
-function appSwiper(moduleID: string, autoplay: string, speed: string, effectDefaults: any, fallback: any) {
-  var configured = {
-    autoplay: (autoplay === 'True'),
-    speed: speed
-  };
-  var merged = Object.assign(fallback, effectDefaults, configured);
-  var mySwiper = new Swiper (`.swiper-${moduleID}`, merged);
+interface SwiperOptions {
+  autoplay: string;
+  speed: string;
+  effectDefaults: any;
+  fallback: any; // see effect fallback in custom app settings
 }
 
-(window as any).appSwiperInit = appSwiper
+function initAppSwiper({ moduleId, options } : { moduleId: string, options: SwiperOptions }) {
+  let configured = {
+    autoplay: (options.autoplay === 'True'),
+    speed: options.speed
+  };
+  let merged = Object.assign(options.fallback, options.effectDefaults, configured);
+  new Swiper (`.swiper-${moduleId}`, merged);
+}
+
+// so it can be called from the HTML when content re-initializes dynamically
+const winAny = (window as any);
+winAny.appSwiper2 ??= {};
+winAny.appSwiper2.initAppSwiper ??= initAppSwiper;
