@@ -5,12 +5,16 @@
   var parts = CreateInstance("Parts.cs");
   var sliderStyleWidth = Text.Has(Content.Width) ? Content.Width : App.Settings.Width;
   var sliderStyleHeight = Text.Has(Content.Height) ? Content.Height : App.Settings.Height;
+
+  // sets aspect ratio if containes ratio
+  var aspectRatioStyle = sliderStyleHeight.IndexOf(":") > 0 ? "--aspect-ratio:calc(" + sliderStyleHeight.Replace(":", "/")  + ")": "";
+
 }
 
 <link rel="stylesheet" href="@App.Path/dist/styles.min.css" data-enableoptimizations="true">
 
-<div @Edit.TagToolbar(Content, toolbar: new [] { "settings&hover=left&autoAddMore=start" })>
-  <div class='aspect-ratio height-@sliderStyleHeight.Replace(":", "-")' style='@(sliderStyleHeight.IndexOf(":") > 0 ? "--aspect-ratio:" + sliderStyleHeight.Replace(":", "/") : "")'>
+<div class="app-swiper2" @Edit.TagToolbar(Content, toolbar: new [] { "settings&hover=left&autoAddMore=start" })>
+  <div class='aspect-ratio height-@sliderStyleHeight.Replace(":", "-")' style='@aspectRatioStyle'>
     <div class="inner">
       @* Slider main container and wrapper *@
       <div class="swiper-container swiper-@Content.EntityId" style="width: @sliderStyleWidth; height: @sliderStyleHeight">
@@ -19,31 +23,28 @@
           @foreach (var slide in Content.Slides)
           {
             var contentEffect = Text.First(slide.ContentEffect, Content.ContentEffect, App.Settings.ContentEffect, "none");
+            var duration = slide.ShowDuration ?? Content.ShowDuration ?? App.Settings.ShowDuration;
 
-            <div class="swiper-slide" data-swiper-autoplay="@(slide.ShowDuration ?? Content.ShowDuration ?? App.Settings.ShowDuration)" @(Content.IsDemoItem ? "" : Edit.TagToolbar(slide, toolbar: new[] { "%delete&show=true" } ))>
+            <div class="swiper-slide" data-swiper-autoplay="@duration" @(Content.IsDemoItem ? "" : Edit.TagToolbar(slide, toolbar: new[] { "%delete&show=true" } ))>
               <div class="image-wrapper @parts.WrapperClasses(slide)">
-                @Picture(slide.Image.ToLower(), slide.Title)
+                @PictureTag(slide.Image.ToLower(), slide.Title)
 
-                @if(Text.Has(slide.Title) || Text.Has(slide.Text) || Text.Has(slide.LinkText)){
+                @if (Text.Has(slide.Title) || Text.Has(slide.Text) || Text.Has(slide.LinkText)) {
                   <div class="overlay overlay-@contentEffect"></div>
                 }
                 <div class="container-fluid h-100">
                   <div class="@parts.RowClasses(slide)">
                     <div class="col-12 py-4">
                       <div class="@parts.ContentClasses(slide)">
-                      @if(Text.Has(slide.Title)){
-                        <p class="lead" data-swiper-parallax="-250">
-                          @slide.Title 
-                        </p>
+                      @if (Text.Has(slide.Title)) {
+                        <p class="lead" data-swiper-parallax="-250">@slide.Title</p>
                       }
-                      @if(Text.Has(slide.Text)){
-                        <div class="co-slidertext" data-swiper-parallax="-500">
-                          @Html.Raw(slide.Text)
-                        </div>
+                      @if (Text.Has(slide.Text)) {
+                        <div class="co-slidertext" data-swiper-parallax="-500">@Html.Raw(slide.Text)</div>
                       }
-                      @if(Text.Has(slide.LinkText)){
+                      @if (Text.Has(slide.LinkText)) {
                         <div data-swiper-parallax="-750">
-                          <a class="btn btn-primary" href="@Tags.SafeUrl(slide.Link)" target='@(slide.LinkBlankTarget == true ? "_blank" : "")'>@slide.LinkText</a>
+                          <a class="btn btn-primary" href="@Link.Image(slide.Link)" target='@(slide.LinkBlankTarget == true ? "_blank" : "")'>@slide.LinkText</a>
                         </div>
                       }
                       </div>
@@ -53,102 +54,58 @@
               </div>
             </div>
           }
-
           @* if we don't have slides, show a dummy slide and provide buttons to start adding *@
-          @if(Content.Slides.Count == 0) {
-            <div class="container" @Edit.TagToolbar(Content.Slides)>
-              <div class="arrow">
-                <div class="line"></div>
-                <div class="point"></div>
-              </div>
-              <div class="row h-100 align-items-center">
-                <div class="col-12 text-center">
-                  <h2>Empty Slider</h2>
-                  <p>Please use the toolbar in the top right corner to add new slides.</p>
-                </div>
-              </div>
-            </div>
-          }
+          @Html.Partial("./_Swiper.Empty.cshtml")
         </div>
 
         @* Pagination *@
-        @if(Content.Pagination ?? App.Settings.Pagination) {
+        @if (Content.Pagination ?? App.Settings.Pagination) {
           <div class="swiper-pagination"></div>
         }
 
         @* Navigation buttons (right left arrows) *@
-        @if(Content.Navigation ?? App.Settings.Navigation) {
+        @if (Content.Navigation ?? App.Settings.Navigation) {
           <div class="swiper-button-prev"></div>
           <div class="swiper-button-next"></div>
         }
       </div>
-
     </div>
   </div>
 </div>
 
-<script src="@App.Path/dist/scripts.min.js" data-enableoptimizations="false"></script>
-@{
-  var page = GetService<ToSic.Sxc.Web.IPageService>();
-  page.Activate("turnOn"); // see https://r.2sxc.org/turnon
-
-  var swiperData = new {
-    moduleId = Content.EntityId,
-    options = new {
-      autoplay = (Content.Autoplay ?? App.Settings.Autoplay),
-      speed = (Content.AnimationDuration ?? App.Settings.AnimationDuration),
-      effectDefaults = JsonConvert.DeserializeObject(Content.Effect.Configuration),
-      fallback = JsonConvert.DeserializeObject(App.Settings.EffectFallback)
-    }
-  };
-
-  var swiperDataJson = JsonConvert.SerializeObject(swiperData);
-}
-<turnOn turn-on='{"await": ["window.appSwiper2"], "run": "window.appSwiper2.initAppSwiper()", "data": @Html.Raw(swiperDataJson) }'></turnOn>
-
-@* todo: ask 2ro why this is in-page *@
-<style>
-  @@supports (--custom:property) {
-    [style*="--aspect-ratio"] {
-      position: relative;
-      width: 100%;
-      padding-top: calc(100% / (var(--aspect-ratio)));
-    }
-  }
-</style>
+@Html.Partial("./_Swiper.Script.cshtml")
 
 @functions {
-  string RatioParams(float ratio, float wReal) {
-    var hReal = Convert.ToInt32(wReal / ratio);
-    return "&w=" + wReal + "&h=" + hReal;
-  }
-
-  string SrcSet(string url, float ratio, int width) {
-    return Tags.SafeUrl(url + RatioParams(ratio, width)) + " " + width + "w";
-  }
-
-  dynamic Picture(string imgUrl, string title) {
+  // todo: 2dm - it needs the real ratio!
+  dynamic PictureTag(string imgUrlOrig, string title) {
     var jpgQ = 70;
     var webpQ = 60;
     var defW = 800;
     var defH = 350;
     var ratio = Convert.ToSingle(defW) / defH;
-    var sizes = new[] { 320, 480, 640, 800, 1000, 1600 };
-    imgUrl = imgUrl + "?mode=crop&scale=both";
-    var imgWebp = imgUrl + "&format=webp&quality=" + webpQ;
-    var imgJpg = imgUrl + "&format=jpeg&quality=" + jpgQ;
-    var setWebp = string.Join(",\n", sizes.Select(s => SrcSet(imgWebp, ratio, s)));
-    var setJpg = string.Join(",\n", sizes.Select(s => SrcSet(imgJpg, ratio, s)));
+    var widths = new[] { 320, 480, 640, 800, 1000, 1600 };
+    var imgDefault = Link.Image(imgUrlOrig, format: "jpg", quality: jpgQ, resizeMode: "crop", scaleMode: "both", width: 1600);
+    var setJpg = string.Join(",\n", widths.Select(width => SrcSetLine(imgUrlOrig, ratio, width, "jpg", jpgQ)));
+
     var pictureTag = Tag.Picture();
+    pictureTag.Add(Tag.Source().Srcset(setJpg).Type("image/jpeg"));
+
     if(App.Settings.OptimizationsEnableWebP == true){
-      pictureTag.Add(
-        Tag.Source().Srcset(setWebp).Type("image/webp"),
-        Tag.Source().Srcset(setJpg).Type("image/jpeg")
-      );
+      var setWebp = string.Join(",\n", widths.Select(s => SrcSetLine(imgUrlOrig, ratio, s, "webp", webpQ)));
+      pictureTag.Add(Tag.Source().Srcset(setWebp).Type("image/webp"));
     }
     pictureTag.Add(
-      Tag.Img().Src(imgJpg + RatioParams(ratio, 1600)).Alt(title)
+      Tag.Img().Src(imgDefault + RatioParams(ratio, 1600)).Alt(title)
     );
     return pictureTag;
+  }
+
+  string SrcSetLine(string url, float ratio, int width, string format, int quality) {
+    return Link.Image(url, width: width, aspectRatio: ratio, format: format, quality: quality, resizeMode: "crop", scaleMode: "both") + " " + width + "w";
+  }
+
+  string RatioParams(float ratio, float wReal) {
+    var hReal = Convert.ToInt32(wReal / ratio);
+    return "&w=" + wReal + "&h=" + hReal;
   }
 }
