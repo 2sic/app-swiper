@@ -1,14 +1,17 @@
-
 @inherits Custom.Hybrid.Razor12
 @using Newtonsoft.Json;
 @using ToSic.Razor.Blade;
 
+@* todo: rename to .Assets *@
+
+<link rel="stylesheet" href="@App.Path/dist/styles.min.css" data-enableoptimizations="true">
 <script src="@App.Path/dist/scripts.min.js" data-enableoptimizations="false"></script>
+
 @{
   var page = GetService<ToSic.Sxc.Web.IPageService>();
   page.Activate("turnOn"); // see https://r.2sxc.org/turnon
   
-  var swiperSettings = AsDynamic(Content, Settings);
+  var swiperSettings = DynamicModel.SwiperSettings;
 
   var swiperData = new {
     moduleId = Content.EntityId,

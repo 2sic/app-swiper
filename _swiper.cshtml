@@ -2,23 +2,21 @@
 @using Newtonsoft.Json;
 @using ToSic.Razor.Blade;
 @{
-  var parts = CreateInstance("Parts.cs");
+  var helpers = CreateInstance("Helpers.cs");
   var sliderSettings = AsDynamic(Content, Settings);
-  var sliderStyleWidth = sliderSettings.Width;
-  var sliderStyleHeight = sliderSettings.Height;
+  var sliderWidth = sliderSettings.Width;
+  var sliderHeightOrRatio = sliderSettings.Height; // contains height or if ratio saparated by :
 
-  // sets aspect ratio if containes ratio
-  var aspectRatioStyle = sliderStyleHeight.IndexOf(":") > 0 ? "--aspect-ratio:calc(" + sliderStyleHeight.Replace(":", "/")  + ")": "";
-
+  // Prepare style to set aspect ratio if containes ratio
+  var isRatio = sliderHeightOrRatio.IndexOf(":") > 0;
+  var aspectRatioStyle = isRatio ? "--aspect-ratio:calc(" + sliderHeightOrRatio.Replace(":", "/")  + ")": "";
 }
 
-<link rel="stylesheet" href="@App.Path/dist/styles.min.css" data-enableoptimizations="true">
-
 <div class="app-swiper2" @Edit.TagToolbar(Content, toolbar: new [] { "settings&hover=left&autoAddMore=start" })>
-  <div class='aspect-ratio height-@sliderStyleHeight.Replace(":", "-")' style='@aspectRatioStyle'>
+  <div style="@(aspectRatioStyle ?? aspectRatioStyle)">
     <div class="inner">
       @* Slider main container and wrapper *@
-      <div class="swiper-container swiper-@Content.EntityId" style="width: @sliderStyleWidth; height: @sliderStyleHeight">
+      <div class="swiper-container swiper-@Content.EntityId" style="width: @sliderWidth; @(!isRatio ? "height: " + sliderHeightOrRatio + ";" : "")">
         <div class="swiper-wrapper">
           @* Slides *@
           @foreach (var slide in Content.Slides)
@@ -28,27 +26,31 @@
             var duration = sldSettings.ShowDuration;
 
             <div class="swiper-slide" data-swiper-autoplay="@duration" @(Content.IsDemoItem ? "" : Edit.TagToolbar(slide, toolbar: new[] { "%delete&show=true" } ))>
-              <div class="image-wrapper @parts.WrapperClasses(sldSettings)">
-                @PictureTag(slide.Image.ToLower(), slide.Title)
+              <div class="image-wrapper @helpers.WrapperClasses(sldSettings)">
+                @* Add the <picture> tag with all the sources *@
+                @helpers.PictureTag(slide.Image.ToLower(), slide.Title)
 
                 @if (Text.Has(slide.Title) || Text.Has(slide.Text) || Text.Has(slide.LinkText)) {
                   <div class="overlay overlay-@contentEffect"></div>
                 }
                 <div class="container-fluid h-100">
-                  <div class="@parts.RowClasses(sldSettings)">
+                  <div class="@helpers.RowClasses(sldSettings)">
                     <div class="col-12 py-4">
-                      <div class="@parts.ContentClasses(sldSettings)">
-                      @if (Text.Has(slide.Title)) {
-                        <p class="lead" data-swiper-parallax="-250">@slide.Title</p>
-                      }
-                      @if (Text.Has(slide.Text)) {
-                        <div class="co-slidertext" data-swiper-parallax="-500">@Html.Raw(slide.Text)</div>
-                      }
-                      @if (Text.Has(slide.LinkText)) {
-                        <div data-swiper-parallax="-750">
-                          <a class="btn btn-primary" href="@Link.Image(slide.Link)" target='@(slide.LinkBlankTarget == true ? "_blank" : "")'>@slide.LinkText</a>
-                        </div>
-                      }
+                      <div class="@helpers.ContentClasses(sldSettings)">
+                        @* Show Title in overlay *@  
+                        @if (Text.Has(slide.Title)) {
+                          <p class="lead" data-swiper-parallax="-250">@slide.Title</p>
+                        }
+                        @* Show Description / additional Text in overlay *@  
+                        @if (Text.Has(slide.Text)) {
+                          <div class="co-slidertext" data-swiper-parallax="-500">@Html.Raw(slide.Text)</div>
+                        }
+                        @* Show Link in overlay *@  
+                        @if (Text.Has(slide.LinkText)) {
+                          <div data-swiper-parallax="-750">
+                            <a class="btn btn-primary" href="@Link.Image(slide.Link)" target='@(slide.LinkBlankTarget == true ? "_blank" : "")'>@slide.LinkText</a>
+                          </div>
+                        }
                       </div>
                     </div>
                   </div>
@@ -75,39 +77,4 @@
   </div>
 </div>
 
-@Html.Partial("./_Swiper.Script.cshtml")
-
-@functions {
-  // todo: 2dm - it needs the real ratio!
-  dynamic PictureTag(string imgUrlOrig, string title) {
-    var jpgQ = 70;
-    var webpQ = 60;
-    var defW = 800;
-    var defH = 350;
-    var ratio = Convert.ToSingle(defW) / defH;
-    var widths = new[] { 320, 480, 640, 800, 1000, 1600 };
-    var imgDefault = Link.Image(imgUrlOrig, format: "jpg", quality: jpgQ, resizeMode: "crop", scaleMode: "both", width: 1600);
-    var setJpg = string.Join(",\n", widths.Select(width => SrcSetLine(imgUrlOrig, ratio, width, "jpg", jpgQ)));
-
-    var pictureTag = Tag.Picture();
-    pictureTag.Add(Tag.Source().Srcset(setJpg).Type("image/jpeg"));
-
-    if(App.Settings.OptimizationsEnableWebP == true){
-      var setWebp = string.Join(",\n", widths.Select(s => SrcSetLine(imgUrlOrig, ratio, s, "webp", webpQ)));
-      pictureTag.Add(Tag.Source().Srcset(setWebp).Type("image/webp"));
-    }
-    pictureTag.Add(
-      Tag.Img().Src(imgDefault + RatioParams(ratio, 1600)).Alt(title)
-    );
-    return pictureTag;
-  }
-
-  string SrcSetLine(string url, float ratio, int width, string format, int quality) {
-    return Link.Image(url, width: width, aspectRatio: ratio, format: format, quality: quality, resizeMode: "crop", scaleMode: "both") + " " + width + "w";
-  }
-
-  string RatioParams(float ratio, float wReal) {
-    var hReal = Convert.ToInt32(wReal / ratio);
-    return "&w=" + wReal + "&h=" + hReal;
-  }
-}
+@Html.Partial("./_Swiper.Script.cshtml", new { SwiperSettings = sliderSettings })
