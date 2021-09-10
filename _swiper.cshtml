@@ -59,7 +59,9 @@
             </div>
           }
           @* if we don't have slides, show a dummy slide and provide buttons to start adding *@
-          @Html.Partial("./_Swiper.Empty.cshtml")
+          @if(Content.Slides.Count == 0) {
+            @Html.Partial("./_Swiper.Empty.cshtml")
+          }
         </div>
 
         @* Pagination *@
