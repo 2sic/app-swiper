@@ -18,8 +18,9 @@
     options = new {
       autoplay = swiperSettings.Autoplay,
       speed = swiperSettings.AnimationDuration,
-      effectDefaults = JsonConvert.DeserializeObject(swiperSettings.Effect.Configuration),
-      fallback = JsonConvert.DeserializeObject(swiperSettings.EffectFallback)
+      // The following two values are JSON strings, so we must turn them into an object
+      effectDefaults = AsDynamic(swiperSettings.Effect.Configuration),
+      fallback = AsDynamic(swiperSettings.EffectFallback)
     }
   };
 
