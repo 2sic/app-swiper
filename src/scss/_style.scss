@@ -1,7 +1,11 @@
-// Adjust these paths to your skin path if you want to recompile the SASS
-@import "../../../_default/Skins/Bootstrap 4 Instant/src/scss/_variables.scss";
-@import "../../../_default/Skins/Bootstrap 4 Instant/node_modules/bootstrap/scss/mixins/_breakpoints.scss";
-@import "../../node_modules/swiper/swiper-bundle.css";
+//
+// This SCSS generates the css for the general styles
+//
+// It is used by all CSS generators (Bootstrap3/4, etc.)
+// To keep things simple, it uses the standard variables of
+// bootstrap 4 conventions.
+
+// imports mixin to reduce redundant code
 @import "./mixins";
 
 .app-swiper2 {
@@ -128,7 +132,7 @@
   }
 }
 
-.empty-slides {
+.app-swiper2-empty-slides {
   .arrow {
     position: absolute;
     width: 120px;

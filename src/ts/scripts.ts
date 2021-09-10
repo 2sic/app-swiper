@@ -1,5 +1,5 @@
 import Swiper from 'swiper/bundle';
-require('../scss/_styles.scss');
+require('../scss/bs4.scss');
 
 interface SwiperOptions {
   autoplay: string;
