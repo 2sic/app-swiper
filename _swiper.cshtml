@@ -60,7 +60,7 @@
           }
           @* if we don't have slides, show a dummy slide and provide buttons to start adding *@
           @if(Content.Slides.Count == 0) {
-            @Html.Partial("./_Swiper.Empty.cshtml")
+            @Html.Partial("./_Swiper.PartEmpty.cshtml")
           }
         </div>
 
@@ -79,4 +79,4 @@
   </div>
 </div>
 
-@Html.Partial("./_Swiper.Script.cshtml", new { SwiperSettings = sliderSettings })
+@Html.Partial("./_Swiper.PartAssets.cshtml", new { SwiperSettings = sliderSettings })
