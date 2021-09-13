@@ -2,37 +2,44 @@
 @using Newtonsoft.Json;
 @using ToSic.Razor.Blade;
 @{
+  // Get some helper commands for later on
   var helpers = CreateInstance("Helpers.cs");
-  var swiperSettings = AsDynamic(Content, Settings);
-  var sliderWidth = swiperSettings.Width;
-  var sliderHeightOrRatio = swiperSettings.Height; // contains height or if ratio saparated by :
 
-  // Prepare style to set aspect ratio if containes ratio
+  // Merge the settings on Content with the predefined Settings
+  var swiper = Content; // Give it a better name, to make the code more readable
+  var swiperSettings = AsDynamic(swiper, Settings);
+
+  // Figure out width and height
+  var sliderWidth = swiperSettings.Width;
+  var sliderHeightOrRatio = swiperSettings.Height; // contains height like "100vh" or a ratio like "x:y"
+
+  // Prepare style to set height or aspect ratio (determined by the ":" in the height)
   var isRatio = sliderHeightOrRatio.IndexOf(":") > 0;
   var aspectRatioStyle = isRatio ? "--aspect-ratio:calc(" + sliderHeightOrRatio.Replace(":", "/")  + ")": "";
   var swiperContainerHeight = isRatio ? "" : "height: " + sliderHeightOrRatio + ";";
 }
 
-<div class="app-swiper2" @Edit.TagToolbar(Content, toolbar: new [] { "settings&hover=left&autoAddMore=start" })>
+<div class="app-swiper2" @Edit.TagToolbar(swiper, toolbar: new [] { "settings&hover=left&autoAddMore=start" })>
   <div style="@aspectRatioStyle">
     <div class="inner">
       @* Slider main container and wrapper *@
-      <div class="swiper-container swiper-@Content.EntityId" style="width: @sliderWidth; @swiperContainerHeight">
+      <div class="swiper-container swiper-@swiper.EntityId" style="width: @sliderWidth; @swiperContainerHeight">
         <div class="swiper-wrapper">
           @* Slides *@
-          @foreach (var slide in Content.Slides)
+          @foreach (var slide in swiper.Slides)
           {
-            var sldSettings = AsDynamic(slide, Content, Settings);
-            var contentEffect = sldSettings.ContentEffect;
-            var duration = sldSettings.ShowDuration;
+            // Merge settings of the current slide, the swiper defaults and the App settings/defaults
+            var sldSettings = AsDynamic(slide, swiper, Settings);
+            var overlayEffect = sldSettings.OverlayEffect;    // Positioning
+            var duration = sldSettings.ShowDuration;          // time the slide will show if auto-playing
 
-            <div class="swiper-slide" data-swiper-autoplay="@duration" @(Content.IsDemoItem ? "" : Edit.TagToolbar(slide, toolbar: new[] { "%delete&show=true" } ))>
+            <div class="swiper-slide" data-swiper-autoplay="@duration" @(swiper.IsDemoItem ? "" : Edit.TagToolbar(slide, toolbar: new[] { "%delete&show=true" } ))>
               <div class="image-wrapper @helpers.WrapperClasses(sldSettings)">
                 @* Add the <picture> tag with all the sources *@
                 @helpers.PictureTag(slide.Image.ToLower(), slide.Title)
 
                 @if (Text.Has(slide.Title) || Text.Has(slide.Text) || Text.Has(slide.LinkText)) {
-                  <div class="overlay overlay-@contentEffect"></div>
+                  <div class="overlay overlay-@overlayEffect"></div>
                 }
                 <div class="container-fluid h-100">
                   <div class="@helpers.RowClasses(sldSettings)">
@@ -60,18 +67,18 @@
             </div>
           }
           @* if we don't have slides, show a dummy slide and provide buttons to start adding *@
-          @if(Content.Slides.Count == 0) {
+          @if(swiper.Slides.Count == 0) {
             @Html.Partial("./_Swiper.PartEmpty.cshtml")
           }
         </div>
 
         @* Pagination *@
-        @if (swiperSettings.Pagination) {
+        @if (swiperSettings.ShowPaginationDots) {
           <div class="swiper-pagination"></div>
         }
 
         @* Navigation buttons (right left arrows) *@
-        @if (swiperSettings.Navigation) {
+        @if (swiperSettings.ShowPaginationArrows) {
           <div class="swiper-button-prev"></div>
           <div class="swiper-button-next"></div>
         }
