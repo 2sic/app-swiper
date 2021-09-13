@@ -1,9 +1,5 @@
 @inherits Custom.Hybrid.Razor12
 @using ToSic.Razor.Blade;
-
-<link rel="stylesheet" href="@App.Path/dist/styles.min.css" data-enableoptimizations="true">
-<script src="@App.Path/dist/scripts.min.js" data-enableoptimizations="false"></script>
-
 @{
   var page = GetService<ToSic.Sxc.Web.IPageService>();
   page.Activate("turnOn"); // see https://r.2sxc.org/turnon
@@ -21,7 +17,10 @@
     }
   };
 
+  // Convert the configuration to JSON to add to turnOn
   var jsonService = GetService<ToSic.Sxc.Web.IJsonService>();
   var swiperJson = jsonService.ToJson(swiperData);
 }
 <turnOn turn-on='{"await": ["window.appSwiper2"], "run": "window.appSwiper2.init()", "data": @Html.Raw(swiperJson) }'></turnOn>
+<link rel="stylesheet" href="@App.Path/dist/styles.min.css" data-enableoptimizations="true">
+<script src="@App.Path/dist/scripts.min.js" data-enableoptimizations="false"></script>

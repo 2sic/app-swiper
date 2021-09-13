@@ -3,20 +3,21 @@
 @using ToSic.Razor.Blade;
 @{
   var helpers = CreateInstance("Helpers.cs");
-  var sliderSettings = AsDynamic(Content, Settings);
-  var sliderWidth = sliderSettings.Width;
-  var sliderHeightOrRatio = sliderSettings.Height; // contains height or if ratio saparated by :
+  var swiperSettings = AsDynamic(Content, Settings);
+  var sliderWidth = swiperSettings.Width;
+  var sliderHeightOrRatio = swiperSettings.Height; // contains height or if ratio saparated by :
 
   // Prepare style to set aspect ratio if containes ratio
   var isRatio = sliderHeightOrRatio.IndexOf(":") > 0;
   var aspectRatioStyle = isRatio ? "--aspect-ratio:calc(" + sliderHeightOrRatio.Replace(":", "/")  + ")": "";
+  var swiperContainerHeight = isRatio ? "" : "height: " + sliderHeightOrRatio + ";";
 }
 
 <div class="app-swiper2" @Edit.TagToolbar(Content, toolbar: new [] { "settings&hover=left&autoAddMore=start" })>
-  <div style="@(aspectRatioStyle ?? aspectRatioStyle)">
+  <div style="@aspectRatioStyle">
     <div class="inner">
       @* Slider main container and wrapper *@
-      <div class="swiper-container swiper-@Content.EntityId" style="width: @sliderWidth; @(!isRatio ? "height: " + sliderHeightOrRatio + ";" : "")">
+      <div class="swiper-container swiper-@Content.EntityId" style="width: @sliderWidth; @swiperContainerHeight">
         <div class="swiper-wrapper">
           @* Slides *@
           @foreach (var slide in Content.Slides)
@@ -65,12 +66,12 @@
         </div>
 
         @* Pagination *@
-        @if (sliderSettings.Pagination) {
+        @if (swiperSettings.Pagination) {
           <div class="swiper-pagination"></div>
         }
 
         @* Navigation buttons (right left arrows) *@
-        @if (sliderSettings.Navigation) {
+        @if (swiperSettings.Navigation) {
           <div class="swiper-button-prev"></div>
           <div class="swiper-button-next"></div>
         }
@@ -79,4 +80,4 @@
   </div>
 </div>
 
-@Html.Partial("./_Swiper.PartAssets.cshtml", new { SwiperSettings = sliderSettings })
+@Html.Partial("./_Swiper.PartAssets.cshtml", new { SwiperSettings = swiperSettings })
