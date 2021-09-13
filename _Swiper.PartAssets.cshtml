@@ -5,7 +5,6 @@
 <script src="@App.Path/dist/scripts.min.js" data-enableoptimizations="false"></script>
 
 @{
-  var json = GetService<ToSic.Sxc.Web.IJsonService>();
   var page = GetService<ToSic.Sxc.Web.IPageService>();
   page.Activate("turnOn"); // see https://r.2sxc.org/turnon
   
@@ -22,5 +21,7 @@
     }
   };
 
+  var jsonService = GetService<ToSic.Sxc.Web.IJsonService>();
+  var swiperJson = jsonService.ToJson(swiperData);
 }
-<turnOn turn-on='{"await": ["window.appSwiper2"], "run": "window.appSwiper2.init()", "data": @Html.Raw(json.ToJson(swiperData)) }'></turnOn>
+<turnOn turn-on='{"await": ["window.appSwiper2"], "run": "window.appSwiper2.init()", "data": @Html.Raw(swiperJson) }'></turnOn>
