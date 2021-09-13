@@ -19,15 +19,21 @@
   var swiperContainerHeight = isRatio ? "" : "height: " + sliderHeightOrRatio + ";";
 }
 
+@* TODO: 2RO - five! DIVs which are just in each-other. Do we really need app-swiper2/aspect-ratio/inner/swiper-container/swiper-wrapper in separate DIVs? if yes, pls doc, or change *@
 <div class="app-swiper2" @Edit.TagToolbar(swiper, toolbar: new [] { "settings&hover=left&autoAddMore=start" })>
   <div style="@aspectRatioStyle">
     <div class="inner">
       @* Slider main container and wrapper *@
       <div class="swiper-container swiper-@swiper.EntityId" style="width: @sliderWidth; @swiperContainerHeight">
         <div class="swiper-wrapper">
-          @* Slides *@
-          @foreach (var slide in swiper.Slides)
-          {
+
+          @* if we don't have slides, show a dummy slide and provide buttons to start adding *@
+          @if(swiper.Slides.Count == 0) {
+            @Html.Partial("./_Swiper.PartEmpty.cshtml")
+          }
+
+          @* Slides - Add each one (if there are any) *@
+          @foreach (var slide in swiper.Slides) {
             // Merge settings of the current slide, the swiper defaults and the App settings/defaults
             var sldSettings = AsDynamic(slide, swiper, Settings);
             var overlayEffect = sldSettings.OverlayEffect;    // Positioning
@@ -38,9 +44,12 @@
                 @* Add the <picture> tag with all the sources *@
                 @helpers.PictureTag(slide.Image.ToLower(), slide.Title)
 
+                @* TODO: 2RO - WHY IS THIS div separate from everything? if it's correct, pls explain here *@
                 @if (Text.Has(slide.Title) || Text.Has(slide.Text) || Text.Has(slide.LinkText)) {
                   <div class="overlay overlay-@overlayEffect"></div>
                 }
+                @* TODO: 2RO - SHOULD THE IF(...) above not also wrap this? and only add these things if there is anything to add? *@
+                @* TODO: 2RO - there are a lot of DIVs in DIVs - do we really need that stack? if yes, pls doc or fix *@
                 <div class="container-fluid h-100">
                   <div class="@helpers.RowClasses(sldSettings)">
                     <div class="col-12 py-4">
@@ -66,10 +75,7 @@
               </div>
             </div>
           }
-          @* if we don't have slides, show a dummy slide and provide buttons to start adding *@
-          @if(swiper.Slides.Count == 0) {
-            @Html.Partial("./_Swiper.PartEmpty.cshtml")
-          }
+
         </div>
 
         @* Pagination *@
