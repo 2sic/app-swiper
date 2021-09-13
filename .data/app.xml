@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="12.04.01" ExportDate="2021-09-13T20:13:49.4229463+02:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="12.04.01" ExportDate="2021-09-13T20:40:48.9961757+02:00">
   <Header>
     <App Guid="8c3d9f27-4c23-4ac7-a9ea-c7d1551c5ba7" />
     <Language Default="en-us" />
@@ -2203,6 +2203,12 @@
       <Value Key="ContentTypeStaticName" Value="4d6daa73-e644-4e33-afed-448c6e1c0e88" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
+      <Value Key="Icon" Value="" Type="Hyperlink">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Identifier" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
       <Value Key="IsHidden" Value="False" Type="Boolean">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
@@ -2212,19 +2218,25 @@
       <Value Key="ListPresentationTypeStaticName" Value="" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
-      <Value Key="Location" Value="Portal File System" Type="String">
+      <Value Key="Location" Value="Site" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
       <Value Key="Name" Value="Swiper" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
-      <Value Key="Path" Value="_Swiper.cshtml" Type="String">
+      <Value Key="Path" Value="bs4/_Swiper.cshtml" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
       <Value Key="PresentationTypeStaticName" Value="" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
       <Value Key="PublishData" Value="False" Type="Boolean">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="SearchIndexingDisabled" Value="False" Type="Boolean">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="SearchIndexingStreams" Value="" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
       <Value Key="StreamsToPublish" Value="" Type="String">
@@ -2234,6 +2246,9 @@
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
       <Value Key="UseForList" Value="False" Type="Boolean">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="ViewController" Value="" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
       <Value Key="ViewNameInUrl" Value="" Type="String">
