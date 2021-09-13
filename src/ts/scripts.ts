@@ -20,4 +20,4 @@ function initAppSwiper({ moduleId, options } : { moduleId: string, options: Swip
 // so it can be called from the HTML when content re-initializes dynamically
 const winAny = (window as any);
 winAny.appSwiper2 ??= {};
-winAny.appSwiper2.initAppSwiper ??= initAppSwiper;
+winAny.appSwiper2.init ??= initAppSwiper;

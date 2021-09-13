@@ -1,10 +1,10 @@
 {
-  "name": "swiperslider",
-  "version": "01.00.00",
-  "description": "A slider app for 2sxc",
+  "name": "app-swiper",
+  "version": "02.00.00",
+  "description": "An Image-Slider app for 2sxc",
   "main": "(none)",
   "scripts": {
-    "build-prod": "webpack"
+    "build-bs4": "webpack"
   },
   "author": "2sic internet solutions",
   "license": "ISC",
