@@ -1,0 +1,26 @@
+@inherits Custom.Hybrid.Razor12
+@using ToSic.Razor.Blade;
+
+<link rel="stylesheet" href="@App.Path/dist/styles.min.css" data-enableoptimizations="true">
+<script src="@App.Path/dist/scripts.min.js" data-enableoptimizations="false"></script>
+
+@{
+  var json = GetService<ToSic.Sxc.Web.IJsonService>();
+  var page = GetService<ToSic.Sxc.Web.IPageService>();
+  page.Activate("turnOn"); // see https://r.2sxc.org/turnon
+  
+  var swiperSettings = DynamicModel.SwiperSettings;
+
+  var swiperData = new {
+    moduleId = Content.EntityId,
+    options = new {
+      autoplay = swiperSettings.Autoplay,
+      speed = swiperSettings.AnimationDuration,
+      // The following two values are JSON strings, so we must turn them into an object
+      effectDefaults = AsDynamic(swiperSettings.Effect.Configuration),
+      fallback = AsDynamic(swiperSettings.EffectFallback)
+    }
+  };
+
+}
+<turnOn turn-on='{"await": ["window.appSwiper2"], "run": "window.appSwiper2.init()", "data": @Html.Raw(json.ToJson(swiperData)) }'></turnOn>
