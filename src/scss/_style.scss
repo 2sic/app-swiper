@@ -10,7 +10,7 @@
 
 .app-swiper2 {
   @supports (--custom:property) {
-    [style*="--aspect-ratio"] {
+    &[style*="--aspect-ratio"] {
       position: relative;
       width: 100%;
       padding-top: calc(100% / (var(--aspect-ratio)));
@@ -31,18 +31,15 @@
     }
   }
 
-  [style*="--aspect-ratio"] {
-    .inner {
+  &[style*="--aspect-ratio"] {
+    .swiper-container {
       position: absolute;
       top: 0;
       left: 0;
       bottom: 0;
       right: 0;
-
-      .swiper-container {
-        width: 100% !important;
-        height: 100% !important;
-      } 
+      width: 100% !important;
+      height: 100% !important;
     }
   }
 
