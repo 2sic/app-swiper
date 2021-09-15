@@ -4,84 +4,61 @@ using System;
 
 public class Helpers: Custom.Hybrid.Code12
 {
-  public dynamic RowClasses(dynamic settingsStack) {
-    var textPosition = settingsStack.TextPosition ?? "none";
-    return (textPosition == "cl" || textPosition == "cc" || textPosition == "cr" ? "align-items-center" : "") + " " + (textPosition == "bl" || textPosition == "bc" || textPosition == "br" ? "align-items-end" : "");
+  /// <summary>
+  /// Generate bootstrap4 css class names for the overlay div, based on the settings of the slide
+  /// </summary>
+  public dynamic OverlayAlignClasses(dynamic settingsStack) {
+    var pos = settingsStack.TextPosition ?? "";
+    return (pos.StartsWith("c") ? "align-items-center" : "")   // center: cl, cc, cr
+      + " " + (pos.StartsWith("b") ? "align-items-end" : "");  // bottom: bl, bc, br
   }
 
-  public dynamic ContentClasses(dynamic settingsStack) {
-    var textPosition = settingsStack.TextPosition ?? "none";
-    return (textPosition == "tc" || textPosition == "cc" || textPosition == "bc" ? "text-center" : "") + " " + (textPosition == "tr" || textPosition == "cr" || textPosition == "br" ? "text-right" : "");
+  /// <summary>
+  /// Generate bootstrap4 css class names for the overlay div, based on the settings of the slide
+  /// </summary>
+  public dynamic OverlayTextAlignClasses(dynamic settingsStack) {
+    var pos = settingsStack.TextPosition ?? "";
+    return (pos.EndsWith("c") ? "text-center" : "")    // center: tc, cc, bc
+      + " " + (pos.EndsWith("r") ? "text-right" : ""); // right:  tr, cr, br
   }
 
-  public dynamic WrapperClasses(dynamic settingsStack) {
-    var contentEffect = settingsStack.ContentEffect ?? "none";
-    var contentTextPosition =settingsStack.TextPosition ?? "none";
-    return "content-position-" + contentTextPosition + " content-effect-" + contentEffect + " " + (settingsStack.DarkContent ? "dark-content" : "light-content");
+  /// <summary>
+  /// Generate custom css class names for the overlay div, based on the settings of the slide
+  /// This changes the effects as well as background gradients
+  /// </summary>
+  public dynamic SlideWrapperClasses(dynamic settingsStack) {
+    return "content-position-" + (settingsStack.TextPosition ?? "none")
+      + " content-effect-" + (settingsStack.OverlayEffect ?? "none")
+      + (settingsStack.DarkContent ? " dark-content" : " light-content");
   }
 
-  // todo: 2dm - it needs the real ratio!
-  // WIP - ALMOST DONE
+  /// <summary>
+  /// Generate a <picture> tag for responsive images, with various resolutions for each screen size
+  /// </summary>
   public dynamic PictureTag(string imgUrlOrig, string title, string probablyRatio) {
-    // Calculate ratio if it was provided
-    float ratio = 1.1f;
-    var help = "";
-    help = "r1:" + probablyRatio;
-    if (Text.Has(probablyRatio) && probablyRatio.IndexOf(":") > 0) {
-      var splitter = probablyRatio.IndexOf(":");
-      if (splitter > 0) {
-        var w = probablyRatio.Substring(0, splitter);
-        var h = probablyRatio.Substring(splitter + 1);
-
-        help += "s:" + splitter + "-w:" + w + "-h:" + h;
-        float wf;
-        float hf;
-        // if(float.TryParse(w, out wf) && wf > 0 && float.TryParse(h, out hf)) {
-        //   help += "gotTo1";
-        // }
-        if (float.TryParse(w, out wf) && wf > 0 && float.TryParse(h, out hf) && hf > 0) {
-          ratio = hf / wf;
-          // help += "got here";
-        }
-
-help += "&rf=" + ratio;
-
-      }
-    }
-    // var jpgQ = 70;
-    // var webpQ = 60;
-    // var defW = 800;
-    // var defH = 350;
-    // var ratio = Convert.ToSingle(defW) / defH;
-    var widths = new[] { 320, 480, 640, 800, 1000, 1600 };
+    // The Default Resize-Settings used
     var resizeSettings = AsDynamic(new {
       Format = "jpg",
       Quality = 70,
       ResizeMode = "crop",
       ScaleMode = "both",
-      Width = 1600
+      Width = 1600,
+      AspectRatio = probablyRatio // Aspect Ratio like "0.75", "16:9" or "16/9". Values like 100vh will be ignored
     });
 
+    // All the widths we'll use for <picture><source srcset="...">
+    var widths = new[] { 320, 480, 640, 800, 1000, 1600 };
 
     var pictureTag = Tag.Picture();
-    var setJpg = string.Join(",\n", widths.Select(width => Link.Image(imgUrlOrig, resizeSettings, width: width, aspectRatio: ratio) + "&r=" + help + " " + width + "w"));
+    var setJpg = string.Join(",\n", widths.Select(width => Link.Image(imgUrlOrig, resizeSettings, width: width)  + " " + width + "w"));
     pictureTag.Add(Tag.Source().Srcset(setJpg).Type("image/jpeg"));
 
-    var imgDefault = Link.Image(imgUrlOrig, resizeSettings);
     pictureTag.Add(
-      Tag.Img().Src(imgDefault + RatioParams(ratio, 1600)).Alt(title)
+      Tag.Img().Src(Link.Image(imgUrlOrig, resizeSettings)).Alt(title)
     );
     return pictureTag;
   }
 
-  private string SrcSetLine(string url, dynamic resizeSettings, int width) {
-    return Link.Image(url, resizeSettings, width: width) + " " + width + "w";
-  }
-
-  private string RatioParams(float ratio, float wReal) {
-    var hReal = Convert.ToInt32(wReal / ratio);
-    return "&w=" + wReal + "&h=" + hReal + "&r=" + ratio;
-  }
 }
 
 

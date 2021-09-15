@@ -37,7 +37,7 @@
           var duration = sldSettings.ShowDuration;          // time the slide will show if auto-playing
 
           <div class="swiper-slide" data-swiper-autoplay="@duration" @(swiper.IsDemoItem ? "" : Edit.TagToolbar(slide, toolbar: new[] { "%delete&show=true" } ))>
-            <div class="image-wrapper @helpers.WrapperClasses(sldSettings)">
+            <div class="image-wrapper @helpers.SlideWrapperClasses(sldSettings)">
               @* Add the <picture> tag with all the sources *@
               @helpers.PictureTag(slide.Image.ToLower(), slide.Title, sliderHeightOrRatio)
 
@@ -45,8 +45,8 @@
                 @* Show Overlay behind text *@
                 <div class="overlay overlay-@overlayEffect"></div>
 
-                <div class="d-flex position-relative h-100 @helpers.RowClasses(sldSettings)">
-                  <div class="w-100 py-3 py-md-4 px-3 px-md-5 @helpers.ContentClasses(sldSettings)">
+                <div class="d-flex position-relative h-100 @helpers.OverlayAlignClasses(sldSettings)">
+                  <div class="w-100 py-3 py-md-4 px-3 px-md-5 @helpers.OverlayTextAlignClasses(sldSettings)">
                     @* Show Title in overlay *@  
                     @if (Text.Has(slide.Title)) {
                       <p class="lead" data-swiper-parallax="-250">@slide.Title</p>
