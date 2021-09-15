@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="12.04.01" ExportDate="2021-09-13T20:40:48.9961757+02:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="12.04.01" ExportDate="2021-09-15T17:43:00.2490552+02:00">
   <Header>
     <App Guid="8c3d9f27-4c23-4ac7-a9ea-c7d1551c5ba7" />
     <Language Default="en-us" />
@@ -999,6 +999,9 @@
             <Value Key="Name" Value="Dark Content" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
+            <Value Key="Name" Value="Dunkler Inhalt" Type="String">
+              <Dimension DimensionID="160" ReadOnly="false" />
+            </Value>
             <Value Key="Notes" Value="" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
@@ -1152,6 +1155,9 @@
             <Value Key="DropdownValues" Value=":Default&#xA;tl:Top Left&#xA;tc:Top Center&#xA;tr:Top Right&#xA;cl:Center Left&#xA;cc:Center Center&#xA;cr:Center Right&#xA;bl:Bottom Left&#xA;bc:Bottom Center&#xA;br:Bottom Right" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
+            <Value Key="DropdownValues" Value=":Standard&#xA;tl:Oben links&#xA;tc:Oben zentriert&#xA;tr:Oben rechts&#xA;cl:Mittig links&#xA;cc:Mittig zentriert&#xA;cr:Mittig rechts&#xA;bl:Unten links&#xA;bc:Unten zentriert&#xA;br:Unten rechts" Type="String">
+              <Dimension DimensionID="160" ReadOnly="false" />
+            </Value>
             <Value Key="DropdownValuesFormat" Value="value-label" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
@@ -1171,13 +1177,26 @@
             <Value Key="Disabled" Value="False" Type="Boolean">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
-            <Value Key="InputType" Value="number-default" Type="String" />
-            <Value Key="Name" Value="Show Duration" Type="String" />
+            <Value Key="DisableTranslation" Value="False" Type="Boolean">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="number-default" Type="String">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Show Duration" Type="String">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Anzeigedauer" Type="String">
+              <Dimension DimensionID="160" ReadOnly="false" />
+            </Value>
             <Value Key="Notes" Value="&lt;p&gt;How long a slide is shown during auto-play until the next animation starts. Time in ms.&lt;/p&gt;" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
             <Value Key="Notes" Value="&lt;p&gt;Wie lange eine Folie w&amp;auml;hrend der automatischen Wiedergabe gezeigt wird, bis die n&amp;auml;chste Animation startet. Zeit in ms.&lt;/p&gt;" Type="String">
               <Dimension DimensionID="160" ReadOnly="false" />
+            </Value>
+            <Value Key="Placeholder" Value="" Type="String">
+              <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
             <Value Key="Required" Value="False" Type="Boolean">
               <Dimension DimensionID="159" ReadOnly="false" />
@@ -1185,7 +1204,9 @@
             <Value Key="ValidationRegExJavaScript" Value="" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
           </Entity>
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Number" AttributeSetName="@Number" EntityGUID="5e785eb0-875c-4100-ad7c-88a40c07dc4d" Json="True" KeyNumber="4027">
             <Value Key="Decimals" Value="0" Type="Number">
@@ -1308,6 +1329,9 @@
             </Value>
             <Value Key="Name" Value="Animation and Effect Settings" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Animations- / Effekteinstellungen" Type="String">
+              <Dimension DimensionID="160" ReadOnly="false" />
             </Value>
             <Value Key="Notes" Value="" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
@@ -1441,13 +1465,26 @@
             <Value Key="Disabled" Value="False" Type="Boolean">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
-            <Value Key="InputType" Value="number-default" Type="String" />
-            <Value Key="Name" Value="Show Duration" Type="String" />
+            <Value Key="DisableTranslation" Value="False" Type="Boolean">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="number-default" Type="String">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Show Duration" Type="String">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Anzeigedauer" Type="String">
+              <Dimension DimensionID="160" ReadOnly="false" />
+            </Value>
             <Value Key="Notes" Value="&lt;p&gt;How long a slide is shown during auto-play until the next animation starts. Time in ms.&lt;/p&gt;" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
-            <Value Key="Notes" Value="&lt;p&gt;Wie lange eine Folioe w&amp;auml;hrend der automatischen Wiedergabe gezeigt wird, bis die n&amp;auml;chste Animation startet. Zeit in ms.&lt;/p&gt;" Type="String">
+            <Value Key="Notes" Value="&lt;p&gt;Wie lange eine Folie w&amp;auml;hrend der automatischen Wiedergabe gezeigt wird, bis die n&amp;auml;chste Animation startet. Zeit in ms.&lt;/p&gt;" Type="String">
               <Dimension DimensionID="160" ReadOnly="false" />
+            </Value>
+            <Value Key="Placeholder" Value="" Type="String">
+              <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
             <Value Key="Required" Value="False" Type="Boolean">
               <Dimension DimensionID="159" ReadOnly="false" />
@@ -1455,7 +1492,9 @@
             <Value Key="ValidationRegExJavaScript" Value="" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
           </Entity>
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@Number" AttributeSetName="@Number" EntityGUID="6e25848e-fc42-4643-8605-ad81bc2fc077" Json="True" KeyNumber="4007">
             <Value Key="Decimals" Value="0" Type="Number">
@@ -1483,6 +1522,9 @@
             </Value>
             <Value Key="Name" Value="Overlay Content (Text / Button)" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Overlay Inhalt (Text / Button)" Type="String">
+              <Dimension DimensionID="160" ReadOnly="false" />
             </Value>
             <Value Key="Notes" Value="" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
@@ -1560,7 +1602,7 @@
             <Value Key="DropdownValues" Value=":Default&#xA;none:None&#xA;gradient:Gradient&#xA;gradient-wide:Gradient Wide" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
-            <Value Key="DropdownValues" Value=":Default&#xA;none:Kein Effekt&#xA;gradient:Verlauf&#xA;gradient-wide:Breiter Verlauf" Type="String">
+            <Value Key="DropdownValues" Value=":Standard&#xA;none:Kein Effekt&#xA;gradient:Verlauf&#xA;gradient-wide:Breiter Verlauf" Type="String">
               <Dimension DimensionID="160" ReadOnly="false" />
             </Value>
             <Value Key="DropdownValuesFormat" Value="value-label" Type="String">
@@ -1590,6 +1632,9 @@
             </Value>
             <Value Key="Name" Value="DarkContent" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Dunkler Inhalt" Type="String">
+              <Dimension DimensionID="160" ReadOnly="false" />
             </Value>
             <Value Key="Notes" Value="" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
@@ -1679,6 +1724,9 @@
             <Value Key="DropdownValues" Value=":Default&#xA;tl:Top Left&#xA;tc:Top Center&#xA;tr:Top Right&#xA;cl:Center Left&#xA;cc:Center Center&#xA;cr:Center Right&#xA;bl:Bottom Left&#xA;bc:Bottom Center&#xA;br:Bottom Right" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
+            <Value Key="DropdownValues" Value=":Standard&#xA;tl:Oben links&#xA;tc:Oben zentriert&#xA;tr:Oben rechts&#xA;cl:Mittig links&#xA;cc:Mittig zentriert&#xA;cr:Mittig rechts&#xA;bl:Unten links&#xA;bc:Unten zentriert&#xA;br:Unten rechts" Type="String">
+              <Dimension DimensionID="160" ReadOnly="false" />
+            </Value>
             <Value Key="DropdownValuesFormat" Value="value-label" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
@@ -1756,6 +1804,9 @@
             <Value Key="Name" Value="Show Pagination Dots" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
+            <Value Key="Name" Value="Pagination anzeigen" Type="String">
+              <Dimension DimensionID="160" ReadOnly="false" />
+            </Value>
             <Value Key="Notes" Value="&lt;p&gt;Show/Hide Pagination&lt;/p&gt;" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
@@ -1815,6 +1866,9 @@
             </Value>
             <Value Key="Name" Value="Show Navigation Arrows" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Navigationspfeile anzeigen" Type="String">
+              <Dimension DimensionID="160" ReadOnly="false" />
             </Value>
             <Value Key="Notes" Value="&lt;p&gt;Show/Hide Navigation Arrows&lt;/p&gt;" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
@@ -1907,10 +1961,17 @@
             <Value Key="Disabled" Value="False" Type="Boolean">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
-            <Value Key="InputType" Value="string-dropdown" Type="String" />
-            <Value Key="Name" Value="Height" Type="String" />
+            <Value Key="DisableTranslation" Value="False" Type="Boolean">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="InputType" Value="string-dropdown" Type="String">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
             <Value Key="Name" Value="Höhe" Type="String">
               <Dimension DimensionID="160" ReadOnly="false" />
+            </Value>
+            <Value Key="Name" Value="Height" Type="String">
+              <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
             <Value Key="Notes" Value="&lt;p&gt;Set the width of the slider in px, % or vh. e.g 50vh. Choose from suggestions or hit the TT-button to type your own value. You can also use a ration like &quot;16:9&quot;.&lt;/p&gt;" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
@@ -1918,13 +1979,18 @@
             <Value Key="Notes" Value="&lt;p&gt;Stellen Sie die Breite des Sliders in px, % oder vh ein. z.B. 50vh. W&amp;auml;hlen Sie aus den Vorschl&amp;auml;gen oder dr&amp;uuml;cken Sie den TT-Knopf, um Ihren eigenen Wert einzugeben. Sie k&amp;ouml;nnen auch ein Verh&amp;auml;ltnis wie &quot;16:9&quot; verwenden.&lt;/p&gt;" Type="String">
               <Dimension DimensionID="160" ReadOnly="false" />
             </Value>
+            <Value Key="Placeholder" Value="" Type="String">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
             <Value Key="Required" Value="False" Type="Boolean">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
             <Value Key="ValidationRegExJavaScript" Value="" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
-            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
           </Entity>
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@String" AttributeSetName="@String" EntityGUID="5dd2470c-fd39-4a69-ba90-55d6c05f1bdb" Json="True" KeyNumber="3900">
             <Value Key="DropdownValues" Value="" Type="String">
@@ -1937,6 +2003,12 @@
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-default" AttributeSetName="@string-default" EntityGUID="6fccfc34-4104-4a57-a7b3-c4bb586b9e85" Json="True" KeyNumber="3900" />
           <Entity AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@string-dropdown" AttributeSetName="@string-dropdown" EntityGUID="d87899ac-e0a1-4916-8d87-bc98329a9e8b" Json="True" KeyNumber="3900">
             <Value Key="DropdownValues" Value="Automatic (use app-settings):&#xA;Exactly 300px:300px&#xA;Exactly 480px:480px&#xA;Ratio 16 to 9:16:9&#xA;Ratio 4 to 3:4:3&#xA;Ratio 8 to 5:8:5&#xA;Ratio 3 to 2:3:2&#xA;Ratio 2 to 1:2:1&#xA;Ratio 1 to 1:1:1&#xA;Screen-Height 50% (50vh):50vh&#xA;Screen-Height 100% (100vh):100vh" Type="String">
+              <Dimension DimensionID="159" ReadOnly="false" />
+            </Value>
+            <Value Key="DropdownValues" Value="Automatisch (benutzt App-Einstellungen):&#xA;Genau 300px:300px&#xA;Genau 480px:480px&#xA;Verhältnis 16 zu 9:16:9&#xA;Verhältnis 4 zu 3:4:3&#xA;Verhältnis 8 zu 5:8:5&#xA;Verhältnis 3 zu 2:3:2&#xA;Verhältnis 2 zu 1:2:1&#xA;Verhältnis 1 zu 1:1:1&#xA;Bildschirmhöhe 50% (50vh):50vh&#xA;Bildschirmhöhe 100% (100vh):100vh" Type="String">
+              <Dimension DimensionID="160" ReadOnly="false" />
+            </Value>
+            <Value Key="DropdownValuesFormat" Value="" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
             <Value Key="EnableTextEntry" Value="True" Type="Boolean">
