@@ -6,10 +6,6 @@
 
 DNN / 2sxc Slider App using the popular [Swiper JS](https://swiperjs.com/). It does not use jQuery 😉.
 
-TODO: @2ro
- - check images in ADAM (size, old unused, etc.)
- - @ro - german labels for slides and slider fields; incl. drop-down values
-
 ## Check it out
 
 * [Blog with live demo](https://2sxc.org/en/blog/post/awesome-swiper-js-slider)

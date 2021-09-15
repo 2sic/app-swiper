@@ -42,36 +42,32 @@
             <div class="swiper-slide" data-swiper-autoplay="@duration" @(swiper.IsDemoItem ? "" : Edit.TagToolbar(slide, toolbar: new[] { "%delete&show=true" } ))>
               <div class="image-wrapper @helpers.WrapperClasses(sldSettings)">
                 @* Add the <picture> tag with all the sources *@
-                @helpers.PictureTag(slide.Image.ToLower(), slide.Title)
+                @helpers.PictureTag(slide.Image.ToLower(), slide.Title, sliderHeightOrRatio)
 
-                @* TODO: 2RO - WHY IS THIS div separate from everything? if it's correct, pls explain here *@
                 @if (Text.Has(slide.Title) || Text.Has(slide.Text) || Text.Has(slide.LinkText)) {
+                  @* Show Overlay behind text *@
                   <div class="overlay overlay-@overlayEffect"></div>
-                }
-                @* TODO: 2RO - SHOULD THE IF(...) above not also wrap this? and only add these things if there is anything to add? *@
-                @* TODO: 2RO - there are a lot of DIVs in DIVs - do we really need that stack? if yes, pls doc or fix *@
-                <div class="container-fluid h-100">
-                  <div class="@helpers.RowClasses(sldSettings)">
-                    <div class="col-12 py-4">
-                      <div class="@helpers.ContentClasses(sldSettings)">
-                        @* Show Title in overlay *@  
-                        @if (Text.Has(slide.Title)) {
-                          <p class="lead" data-swiper-parallax="-250">@slide.Title</p>
-                        }
-                        @* Show Description / additional Text in overlay *@  
-                        @if (Text.Has(slide.Text)) {
-                          <div class="co-slidertext" data-swiper-parallax="-500">@Html.Raw(slide.Text)</div>
-                        }
-                        @* Show Link in overlay *@  
-                        @if (Text.Has(slide.LinkText)) {
-                          <div data-swiper-parallax="-750">
-                            <a class="btn btn-primary" href="@Link.Image(slide.Link)" target='@(slide.LinkBlankTarget == true ? "_blank" : "")'>@slide.LinkText</a>
-                          </div>
-                        }
-                      </div>
+
+                  <div class="d-flex position-relative h-100 @helpers.RowClasses(sldSettings)">
+                    <div class="w-100 py-4 px-3 px-md-5 @helpers.ContentClasses(sldSettings)">
+                      @* Show Title in overlay *@  
+                      @if (Text.Has(slide.Title)) {
+                        <p class="lead" data-swiper-parallax="-250">@slide.Title</p>
+                      }
+                      @* Show Description / additional Text in overlay *@  
+                      @if (Text.Has(slide.Text)) {
+                        <div class="co-slidertext" data-swiper-parallax="-500">@Html.Raw(slide.Text)</div>
+                      }
+                      @* Show Link in overlay *@  
+                      @if (Text.Has(slide.LinkText)) {
+                        <div data-swiper-parallax="-750">
+                          <a class="btn btn-primary" href="@Link.Image(slide.Link)" target='@(slide.LinkBlankTarget == true ? "_blank" : "")'>@slide.LinkText</a>
+                        </div>
+                      }
                     </div>
                   </div>
-                </div>
+                }
+
               </div>
             </div>
           }
