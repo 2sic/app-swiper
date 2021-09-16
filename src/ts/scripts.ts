@@ -1,4 +1,4 @@
-import Swiper from 'swiper/bundle';
+import Swiper from 'swiper';
 require('../scss/bs4.scss');
 
 interface SwiperOptions {
