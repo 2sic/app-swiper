@@ -19,7 +19,7 @@ CMS Slider App using the popular [Swiper JS](https://swiperjs.com/). It does not
 | App Catalog         | ✅    | See [app catalog](https://2sxc.org/en/apps/app/swiper-image-slider-pro-with-parallax-3d-cubes-coverflow-and-more)
 | Best Practices      | ✅    | Uses v12.05 conventions
 | Bootstrap 4         | ✅    | v4 optimized
-| Bootstrap 5         | ✔️    | Tested but not optimized
+| Bootstrap 5         | ✔️    | Works but not optimized
 
 ## Thanks to
 
@@ -27,5 +27,10 @@ CMS Slider App using the popular [Swiper JS](https://swiperjs.com/). It does not
 
 ## History
 
-* 2021-05 Version 2.00 - updated to 2sxc 12.0 standards, compatible with Oqtane. Removed jQuery.
-* 2021-09 Version 2.01 - updated to 2sxc 12.05 standards
+* 2021-05 Version 2.00
+  * updated to 2sxc 12.0 standards
+  * made hybrid / compatible with Oqtane
+  * Removed jQuery
+* 2021-09 Version 2.01
+  * updated to 2sxc 12.05 standards
+  * updated SwiperJs to V7
