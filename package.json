@@ -29,6 +29,7 @@
     "webpackbar": "^4.0.0"
   },
   "dependencies": {
+    "@types/swiper": "^5.4.3",
     "bootstrap": "^4.4.1"
   }
 }

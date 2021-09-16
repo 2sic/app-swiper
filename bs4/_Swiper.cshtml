@@ -21,7 +21,7 @@
 
 <div class="app-swiper2" @Edit.TagToolbar(swiper, toolbar: new [] { "settings&hover=left&autoAddMore=start" }) style="@aspectRatioStyle">
     @* Slider main container and wrapper *@
-    <div class="swiper-container swiper-@swiper.EntityId" style="width: @sliderWidth; @swiperContainerHeight">
+    <div class="swiper swiper-@swiper.EntityId" style="width: @sliderWidth; @swiperContainerHeight">
       <div class="swiper-wrapper">
 
         @* if we don't have slides, show a dummy slide and provide buttons to start adding *@

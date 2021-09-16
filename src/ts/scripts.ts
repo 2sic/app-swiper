@@ -1,4 +1,4 @@
-import Swiper from 'swiper';
+import Swiper, { Navigation, Pagination, Parallax, EffectCoverflow, EffectCube, EffectFade, EffectFlip, Autoplay } from 'swiper';
 require('../scss/bs4.scss');
 
 interface SwiperOptions {
@@ -10,8 +10,9 @@ interface SwiperOptions {
 
 function initAppSwiper({ moduleId, options } : { moduleId: string, options: SwiperOptions }) {
   let configured = {
-    autoplay: (options.autoplay === 'True'),
-    speed: options.speed
+    autoplay: options.autoplay,
+    speed: options.speed,
+    modules: [Navigation, Pagination, Parallax, EffectCoverflow, EffectCube, EffectFade, EffectFlip, Autoplay],
   };
   let merged = Object.assign(options.fallback, options.effectDefaults, configured);
   new Swiper (`.swiper-${moduleId}`, merged);
