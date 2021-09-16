@@ -4,21 +4,22 @@
 
 > This is a 2sxc App for [DNN ☢️](https://www.dnnsoftware.com/) and [Oqtane 💧](https://www.oqtane.org/)
 
-DNN / 2sxc Slider App using the popular [Swiper JS](https://swiperjs.com/). It does not use jQuery 😉.
+CMS Slider App using the popular [Swiper JS](https://swiperjs.com/). It does not use jQuery 😉.
 
 
 | Aspect              | Status | Comments or Version |
 | ------------------- | :----: | ------------------- |
-| 2sxc                | ✅    | Requires v.12.05
+| 2sxc                | ✅    | Requires v12.05
 | Dnn                 | ✅    | For v7, 8 and 9
 | Oqtane 2            | ✅    | Requires v2.02
 | No jQuery           | ✅    | Since v 2.01
 | Live Demo           | ✅    | See [blog with live demo](https://2sxc.org/en/blog/post/awesome-swiper-js-slider)
 | Install Checklist   | ✅    | See [Installation](https://azing.org/2sxc/r/9yfw-D1D) on [azing.org](https://azing.org/2sxc)
-| With Source Code    | ✅    | included
-| License             | ✅    | MIT
+| Source & License    | ✅    | included, MIT
 | App Catalog         | ✅    | See [app catalog](https://2sxc.org/en/apps/app/swiper-image-slider-pro-with-parallax-3d-cubes-coverflow-and-more)
-
+| Best Practices      | ✅    | Uses v12.05 conventions
+| Bootstrap 4         | ✅    | v4 optimized
+| Bootstrap 5         | ✔️    | Tested but not optimized
 
 ## Thanks to
 
