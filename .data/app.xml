@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="12.04.01" ExportDate="2021-09-15T18:17:57.6854292+02:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="12.05.00" ExportDate="2021-09-20T22:50:10.7816352+02:00">
   <Header>
     <App Guid="8c3d9f27-4c23-4ac7-a9ea-c7d1551c5ba7" />
     <Language Default="en-us" />
@@ -2239,7 +2239,7 @@
       <Value Key="DarkContent" Value="False" Type="Boolean">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
-      <Value Key="EffectFallback" Value="{&#xD;&#xA;  &quot;keyboard&quot;: {&#xD;&#xA;    &quot;enabled&quot;: true&#xD;&#xA;  },&#xD;&#xA;  &quot;loop&quot;: true,&#xD;&#xA;  &quot;pagination&quot;: {&#xD;&#xA;    &quot;clickable&quot;: true,&#xD;&#xA;    &quot;el&quot;: &quot;.swiper-pagination&quot;&#xD;&#xA;  },&#xD;&#xA;  &quot;navigation&quot;: {&#xD;&#xA;    &quot;nextEl&quot;: &quot;.swiper-button-next&quot;,&#xD;&#xA;    &quot;prevEl&quot;: &quot;.swiper-button-prev&quot;&#xD;&#xA;  }&#xD;&#xA;}" Type="Custom">
+      <Value Key="EffectFallback" Value="{&#xD;&#xA;  &quot;keyboard&quot;: {&#xD;&#xA;    &quot;enabled&quot;: true&#xD;&#xA;  },&#xD;&#xA;  &quot;loop&quot;: true,&#xD;&#xA;  &quot;pagination&quot;: {&#xD;&#xA;    &quot;el&quot;: &quot;.swiper-pagination&quot;,&#xD;&#xA;    &quot;clickable&quot;: true    &#xD;&#xA;  },&#xD;&#xA;  &quot;navigation&quot;: {&#xD;&#xA;    &quot;nextEl&quot;: &quot;.swiper-button-next&quot;,&#xD;&#xA;    &quot;prevEl&quot;: &quot;.swiper-button-prev&quot;&#xD;&#xA;  }&#xD;&#xA;}" Type="Custom">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
       <Value Key="Height" Value="50vh" Type="String">
@@ -3208,7 +3208,7 @@
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
     </Entity>
-    <Entity AssignmentObjectType="Default" AttributeSetStaticName="1a86b080-9e0d-4207-97d2-04edf80b4f2f" AttributeSetName="⚙️ImagePreset" EntityGUID="164b63f3-ae87-4489-8283-432652f98e87" Json="True">
+    <Entity AssignmentObjectType="Default" AttributeSetStaticName="1a86b080-9e0d-4207-97d2-04edf80b4f2f" AttributeSetName="⚙️Image" EntityGUID="164b63f3-ae87-4489-8283-432652f98e87" Json="True">
       <Value Key="AspectRatio" Value="1.618" Type="Number">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>

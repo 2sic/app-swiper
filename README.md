@@ -37,3 +37,4 @@ CMS Slider App using the popular [Swiper JS](https://swiperjs.com/). It does not
   * renamed app-folder to Swiper2
   * css classes now using a no-conflict model allowing side-by-side install with older swiper
   * App has a new GUID for identification allowing side-by-side install with older swiper
+  * Upgrade to SwiperJS v7
