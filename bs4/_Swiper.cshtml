@@ -34,8 +34,9 @@
           var sldSettings = AsDynamic(slide, swiper, Settings);
           var overlayEffect = sldSettings.OverlayEffect;    // Positioning
           var duration = sldSettings.ShowDuration;          // time the slide will show if auto-playing
+          var toolbar = Edit.TagToolbar(slide, toolbar: new[] { "%delete&show=true" }, condition: !swiper.IsDemoItem );
 
-          <div class="swiper-slide" data-swiper-autoplay="@duration" @(swiper.IsDemoItem ? "" : Edit.TagToolbar(slide, toolbar: new[] { "%delete&show=true" } ))>
+          <div class="swiper-slide" data-swiper-autoplay="@duration" @toolbar>
             <div class="image-wrapper @helpers.SlideWrapperClasses(sldSettings)">
               @* Add the <picture> tag with all the sources *@
               @helpers.PictureTag(slide.Image.ToLower(), slide.Title, sliderHeightOrRatio)
