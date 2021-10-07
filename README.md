@@ -1,8 +1,8 @@
-<img src="app-icon.png" width="250" align="right">
+<image src="app-icon.png" align="right" width="200px">
 
-# Swiper 2 - Slider/Carousel App
+# Swiper 2 - Slider/Carousel App for .net CMSs
 
-> This is a 2sxc App for [DNN ☢️](https://www.dnnsoftware.com/) and [Oqtane 💧](https://www.oqtane.org/)
+> This is a [2sxc](https://2sxc.org) App for [DNN ☢️](https://www.dnnsoftware.com/) and [Oqtane 💧](https://www.oqtane.org/)
 
 CMS Slider App using the popular [Swiper JS](https://swiperjs.com/). It does not use jQuery 😉.
 
@@ -21,9 +21,14 @@ CMS Slider App using the popular [Swiper JS](https://swiperjs.com/). It does not
 | Bootstrap 4         | ✅    | v4 optimized
 | Bootstrap 5         | ✔️    | Works but not optimized
 
+## Customize the App
+
+If you want to customize the CSS, you will usually follow the ["Create Custom Styles in a Standard 2sxc App" checklist](https://azing.org/2sxc/r/gg_aB9FD)
+
+
 ## Thanks to
 
-[SwiperJS](https://swiperjs.com/) for their awesome library
+[SwiperJS](https://swiperjs.com/) for their awesome open-source library
 
 ## History
 
