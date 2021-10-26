@@ -25,6 +25,6 @@
     }
   };
 }
-<turnOn turn-on='{"await": ["window.appSwiper2"], "run": "window.appSwiper2.init()", "data": @Html.Raw(Convert.Json.ToJson(swiperData)) }'></turnOn>
+<turnOn turn-on='{ "run": "window.appSwiper2.init()", "data": @Html.Raw(Convert.Json.ToJson(swiperData)) }'></turnOn>
 <link rel="stylesheet" href="@App.Path/dist/styles.min.css" data-enableoptimizations="true">
 <script src="@App.Path/dist/scripts.min.js" data-enableoptimizations="false"></script>
