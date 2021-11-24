@@ -13,8 +13,13 @@ function initAppSwiper({ moduleId, options } : { moduleId: string, options: Swip
     autoplay: options.autoplay,
     speed: options.speed,
     modules: [Navigation, Pagination, Parallax, EffectCoverflow, EffectCube, EffectFade, EffectFlip, Autoplay],
+    navigation: {
+      nextEl: `.swiper-button-next-${moduleId}`,
+      prevEl: `.swiper-button-prev-${moduleId}`,
+    }
   };
   let merged = Object.assign(options.fallback, options.effectDefaults, configured);
+  console.log(merged)
   new Swiper (`.swiper-${moduleId}`, merged);
 }
 
