@@ -1,5 +1,4 @@
 import Swiper, { Navigation, Pagination, Parallax, EffectCoverflow, EffectCube, EffectFade, EffectFlip, Autoplay } from 'swiper';
-require('../scss/bs4.scss');
 
 interface SwiperOptions {
   autoplay: string;
