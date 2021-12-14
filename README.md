@@ -19,7 +19,7 @@ CMS Slider App using the popular [Swiper JS](https://swiperjs.com/). It does not
 | App Catalog         | ✅    | See [app catalog](https://2sxc.org/en/apps/app/swiper-image-slider-pro-v2-with-parallax-3d-cubes-coverflow-and-more-hybrid-for-dnn-and-oqtane)
 | Best Practices      | ✅    | Uses v12.05 conventions
 | Bootstrap 4         | ✅    | v4 optimized
-| Bootstrap 5         | ✔️    | Works but not optimized
+| Bootstrap 5         | ✅    | v5 optimized
 
 ## Customize the App
 
