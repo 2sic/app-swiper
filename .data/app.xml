@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="13.00.00" ExportDate="2021-12-14T17:36:19.6773055+01:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="13.00.01" ExportDate="2022-01-05T09:48:11.9992547+01:00">
   <Header>
     <App Guid="8c3d9f27-4c23-4ac7-a9ea-c7d1551c5ba7" />
     <Language Default="en-us" />
@@ -2269,7 +2269,7 @@
       <Value Key="SupportsAjaxReload" Value="False" Type="Boolean">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
-      <Value Key="Version" Value="02.03.00" Type="String">
+      <Value Key="Version" Value="02.03.01" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
     </Entity>
@@ -3283,6 +3283,7 @@
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
     </Entity>
+    <Entity AssignmentObjectType="Entity" AttributeSetStaticName="529ba3a2-d7d4-4f40-a81b-ff819de03a9e" AttributeSetName="IsDefaultDecorator" EntityGUID="dabd42f8-3dc3-44eb-a638-6a9754097c2b" Json="True" KeyGuid="d065b403-0cd0-4110-a3f2-36ffda90781a" />
   </Entities>
   <PortalFiles>
     <File Id="4563" RelativePath="adam\Swiper2\Cotm0fBNNUeBpuRpPWkS1g\Image\uhu.jpg" />
