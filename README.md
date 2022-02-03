@@ -43,3 +43,5 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
   * css classes now using a no-conflict model allowing side-by-side install with older swiper
   * App has a new GUID for identification allowing side-by-side install with older swiper
   * Upgrade to SwiperJS v7
+* 2022-02 Version 2.03
+  * Enabled data-optimizations
