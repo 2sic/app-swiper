@@ -8,7 +8,23 @@ interface SwiperOptions {
 }
 
 function initAppSwiper({ moduleId, options } : { moduleId: string, options: SwiperOptions }) {
-  let configured = {
+  let isSingleSlide = document.querySelectorAll(`.swiper-${moduleId} .swiper-slide:not(.swiper-slide-duplicate)`).length == 1;
+  let configured = getSwiperConfiguration(isSingleSlide, options, moduleId);
+  let merged = Object.assign(options.fallback, options.effectDefaults, configured);
+  
+  new Swiper (`.swiper-${moduleId}`, merged);
+}
+
+function getSwiperConfiguration(isSingleSlide: boolean, options: SwiperOptions, moduleId: string) {
+  if (isSingleSlide) {
+    return {
+      autoplay: false,
+      loop: false,      
+      modules: [Navigation, Pagination, Parallax, EffectCoverflow, EffectCube, EffectFade, EffectFlip, Autoplay]
+    };
+  }
+
+  return {
     autoplay: options.autoplay,
     speed: options.speed,
     modules: [Navigation, Pagination, Parallax, EffectCoverflow, EffectCube, EffectFade, EffectFlip, Autoplay],
@@ -16,10 +32,7 @@ function initAppSwiper({ moduleId, options } : { moduleId: string, options: Swip
       nextEl: `.swiper-button-next-${moduleId}`,
       prevEl: `.swiper-button-prev-${moduleId}`,
     }
-  };
-  let merged = Object.assign(options.fallback, options.effectDefaults, configured);
-  console.log(merged)
-  new Swiper (`.swiper-${moduleId}`, merged);
+  }
 }
 
 // so it can be called from the HTML when content re-initializes dynamically
