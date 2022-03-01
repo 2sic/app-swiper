@@ -45,3 +45,4 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
   * Upgrade to SwiperJS v7
 * 2022-02 Version 2.03
   * Enabled data-optimizations
+  * Fixed a bug that caused single slides to appear as duplicate
