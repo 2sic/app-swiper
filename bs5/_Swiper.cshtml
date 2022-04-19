@@ -1,5 +1,6 @@
 @inherits Custom.Hybrid.Razor12
 @using ToSic.Razor.Blade;
+@using ToSic.Sxc.Services;
 @{
   // Get some helper commands for later on
   var helpers = CreateInstance("Helpers.cs");
@@ -16,6 +17,7 @@
   var isRatio = sliderHeightOrRatio.IndexOf(":") > 0;
   var aspectRatioStyle = isRatio ? "--aspect-ratio:calc(" + sliderHeightOrRatio.Replace(":", "/")  + ")": "";
   var swiperContainerHeight = isRatio ? "" : "height: " + sliderHeightOrRatio + ";";
+  var imgSvc = GetService<IImageService>();
 }
 
 <div class="app-swiper2" @Edit.TagToolbar(swiper, toolbar: new [] { "settings&hover=left&autoAddMore=start" }) style="@aspectRatioStyle">
@@ -39,7 +41,8 @@
           <div class="swiper-slide" data-swiper-autoplay="@duration" @toolbar>
             <div class="image-wrapper @helpers.SlideWrapperClasses(sldSettings)">
               @* Add the <picture> tag with all the sources *@
-              @helpers.PictureTag(slide.Image.ToLower(), slide.Title, sliderHeightOrRatio)
+              @imgSvc.Picture(slide.Image.ToLower(), imgAlt:slide.Title, factor: sliderHeightOrRatio)
+              @* @helpers.PictureTag(slide.Image.ToLower(), slide.Title, sliderHeightOrRatio) *@
 
               @if (Text.Has(slide.Title) || Text.Has(slide.Text) || Text.Has(slide.LinkText)) {
                 @* Show Overlay behind text *@

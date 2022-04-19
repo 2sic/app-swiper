@@ -46,3 +46,7 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
 * 2022-02 Version 2.03
   * Enabled data-optimizations
   * Fixed a bug that caused single slides to appear as duplicate
+* 2022-04 Version 2.04.00
+  * Changed access to Services to ToSic.Sxc.Services
+  * Change all images to use latest Picture-tag technology
+  * Removed the PictureTag helper

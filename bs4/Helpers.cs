@@ -36,30 +36,6 @@ public class Helpers: Custom.Hybrid.Code12
   /// <summary>
   /// Generate a <picture> tag for responsive images, with various resolutions for each screen size
   /// </summary>
-  public dynamic PictureTag(string imgUrlOrig, string title, string probablyRatio) {
-    // The Default Resize-Settings used
-    var resizeSettings = AsDynamic(new {
-      Format = "jpg",
-      Quality = 70,
-      ResizeMode = "crop",
-      ScaleMode = "both",
-      Width = 1600,
-      AspectRatio = probablyRatio // Aspect Ratio like "0.75", "16:9" or "16/9". Values like 100vh will be ignored
-    });
-
-    // All the widths we'll use for <picture><source srcset="...">
-    var widths = new[] { 320, 480, 640, 800, 1000, 1600 };
-
-    var pictureTag = Tag.Picture();
-    var setJpg = string.Join(",\n", widths.Select(width => Link.Image(imgUrlOrig, resizeSettings, width: width)  + " " + width + "w"));
-    pictureTag.Add(Tag.Source().Srcset(setJpg).Type("image/jpeg"));
-
-    pictureTag.Add(
-      Tag.Img().Src(Link.Image(imgUrlOrig, resizeSettings)).Alt(title)
-    );
-    return pictureTag;
-  }
-
 }
 
 
