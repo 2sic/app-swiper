@@ -50,3 +50,4 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
   * Changed access to Services to ToSic.Sxc.Services
   * Change all images to use latest Picture-tag technology
   * Removed the PictureTag helper
+  * Enabled image configuration
