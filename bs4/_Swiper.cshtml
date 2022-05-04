@@ -41,7 +41,7 @@
           <div class="swiper-slide" data-swiper-autoplay="@duration" @toolbar>
             <div class="image-wrapper @helpers.SlideWrapperClasses(sldSettings)">
               @* Add the <picture> tag with all the sources *@
-              @imgSvc.Picture(slide.Image.ToLower(), settings: Settings.Images.Content, imgAlt:slide.Title, factor: sliderHeightOrRatio)
+              @imgSvc.Picture(slide.Field("Image"), settings: Settings.Images.Content, factor: sliderHeightOrRatio)
 
 
               @if (Text.Has(slide.Title) || Text.Has(slide.Text) || Text.Has(slide.LinkText)) {
