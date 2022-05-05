@@ -51,3 +51,5 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
   * Change all images to use latest Picture-tag technology
   * Removed the PictureTag helper
   * Enabled image configuration
+  * Replaced data-enableoptimizations with pageSvc.AssetAttributes()
+  

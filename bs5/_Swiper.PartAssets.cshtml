@@ -26,6 +26,6 @@
     }
   };
 }
-<link rel="stylesheet" href="@App.Path/bs5/dist/styles.min.css" data-enableoptimizations="true">
+<link rel="stylesheet" href="@App.Path/bs5/dist/styles.min.css" @(page.AssetAttributes())>
 <turnOn turn-on='{ "run": "window.appSwiper2.init()", "data": @Html.Raw(Convert.Json.ToJson(swiperData)) }'></turnOn>
-<script src="@App.Path/bs5/dist/scripts.min.js" data-enableoptimizations="true"></script>
+<script src="@App.Path/bs5/dist/scripts.min.js" @(page.AssetAttributes())></script>
