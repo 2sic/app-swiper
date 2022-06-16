@@ -9,7 +9,7 @@ CMS Slider App using the popular [Swiper JS](https://swiperjs.com/). It does not
 
 | Aspect              | Status | Comments or Version |
 | ------------------- | :----: | ------------------- |
-| 2sxc                | ✅    | Swiper v2.01 requires 2sxc v12.05
+| 2sxc                | ✅    | Swiper v2.01 requires 2sxc v13.10
 | Dnn                 | ✅    | For v7, v8 and v9
 | Oqtane 2            | ✅    | Requires v2.02
 | No jQuery           | ✅    | Since v 2.01
@@ -17,7 +17,7 @@ CMS Slider App using the popular [Swiper JS](https://swiperjs.com/). It does not
 | Install Checklist   | ✅    | See [Installation](https://azing.org/2sxc/r/9yfw-D1D) on [azing.org](https://azing.org/2sxc)
 | Source & License    | ✅    | included, MIT
 | App Catalog         | ✅    | See [app catalog](https://2sxc.org/en/apps/app/swiper-image-slider-pro-v2-with-parallax-3d-cubes-coverflow-and-more-hybrid-for-dnn-and-oqtane)
-| Best Practices      | ✅    | Uses v12.05 conventions
+| Best Practices      | ✅    | Uses v13.10 conventions
 | Bootstrap 4         | ✅    | v4 optimized
 | Bootstrap 5         | ✅    | v5 optimized
 
