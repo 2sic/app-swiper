@@ -2,7 +2,7 @@ using ToSic.Razor.Blade;
 using System.Linq;
 using System;
 
-public class Helpers: Custom.Hybrid.Code12
+public class Helpers: Custom.Hybrid.Code14
 {
   /// <summary>
   /// Generate bootstrap4 css class names for the overlay div, based on the settings of the slide
@@ -17,10 +17,9 @@ public class Helpers: Custom.Hybrid.Code12
   /// Generate bootstrap4 css class names for the overlay div, based on the settings of the slide
   /// </summary>
   public dynamic OverlayTextAlignClasses(dynamic settingsStack) {
-    var pageCss = GetService<Connect.Koi.ICss>();         // Service to get CSS information about the current Theme
     var pos = settingsStack.TextPosition ?? "";
     return (pos.EndsWith("c") ? "text-center" : "")    // center: tc, cc, bc
-      + " " + (pos.EndsWith("r") && pageCss.Is("bs4") ? "text-right" : pos.EndsWith("r") && pageCss.Is("bs5") ? "text-end" : ""); // right:  tr, cr, br
+      + " " + (pos.EndsWith("r") && Kit.Css.Is("bs4") ? "text-right" : pos.EndsWith("r") && Kit.Css.Is("bs5") ? "text-end" : ""); // right:  tr, cr, br
   }
 
   /// <summary>

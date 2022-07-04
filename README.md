@@ -52,4 +52,8 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
   * Removed the PictureTag helper
   * Enabled image configuration
   * Replaced data-enableoptimizations with pageSvc.AssetAttributes()
-  
+* 2022-06 Version 2.05.00
+  * Changed all base classes to their 2sxc 14 equivalents
+  * Replaced all GetService<> with the new ServiceKit14
+  * Changed all the toolbar configurations to use the IToolbarService
+  * Updated webpack

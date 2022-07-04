@@ -1,6 +1,5 @@
-@inherits Custom.Hybrid.Razor12
+@inherits Custom.Hybrid.Razor14
 @using ToSic.Razor.Blade;
-@using ToSic.Sxc.Services;
 @{
   // Get some helper commands for later on
   var helpers = CreateInstance("Helpers.cs");
@@ -17,10 +16,13 @@
   var isRatio = sliderHeightOrRatio.IndexOf(":") > 0;
   var aspectRatioStyle = isRatio ? "--aspect-ratio:calc(" + sliderHeightOrRatio.Replace(":", "/")  + ")": "";
   var swiperContainerHeight = isRatio ? "" : "height: " + sliderHeightOrRatio + ";";
-  var imgSvc = GetService<IImageService>();
+
+  var swiperToolbar = Kit.Toolbar.Default().Settings(hover:"left", autoAddMore:"start");
+
+  var slideToolbar = Kit.Toolbar.Default().Delete().Condition(!swiper.IsDemoItem);
 }
 
-<div class="app-swiper2" @Edit.TagToolbar(swiper, toolbar: new [] { "settings&hover=left&autoAddMore=start" }) style="@aspectRatioStyle">
+<div class="app-swiper2" @swiperToolbar.For(swiper) style="@aspectRatioStyle">
     @* Slider main container and wrapper *@
     <div class="swiper swiper-@swiper.EntityId" style="width: @sliderWidth; @swiperContainerHeight">
       <div class="swiper-wrapper">
@@ -36,12 +38,11 @@
           var sldSettings = AsDynamic(slide, swiper, Settings);
           var overlayEffect = sldSettings.OverlayEffect;    // Positioning
           var duration = sldSettings.ShowDuration;          // time the slide will show if auto-playing
-          var toolbar = Edit.TagToolbar(slide, toolbar: new[] { "%delete&show=true" }, condition: !swiper.IsDemoItem );
 
-          <div class="swiper-slide" data-swiper-autoplay="@duration" @toolbar>
+          <div class="swiper-slide" data-swiper-autoplay="@duration" @slideToolbar.For(slide)>
             <div class="image-wrapper @helpers.SlideWrapperClasses(sldSettings)">
               @* Add the <picture> tag with all the sources *@
-              @imgSvc.Picture(slide.Field("Image"), settings: "Contnet", factor: sliderHeightOrRatio)
+              @Kit.Image.Picture(slide.Field("Image"), settings: "Contnet", factor: sliderHeightOrRatio)
 
 
               @if (Text.Has(slide.Title) || Text.Has(slide.Text) || Text.Has(slide.LinkText)) {
