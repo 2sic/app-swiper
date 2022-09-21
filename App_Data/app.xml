@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="14.07.02" ExportDate="2022-07-04T09:41:48.310016+02:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="14.09.00" ExportDate="2022-09-21T08:45:18.7504682+02:00">
   <Header>
     <App Guid="8c3d9f27-4c23-4ac7-a9ea-c7d1551c5ba7" />
     <Language Default="en-us" />
@@ -2099,10 +2099,10 @@
             <Value Key="Name" Value="Slides" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
-            <Value Key="Notes" Value="&lt;p&gt;You can manage the slides here, but usually you will want to use the + and edit buttons in the page toolbars (top right corner).&lt;/p&gt;" Type="String">
+            <Value Key="Notes" Value="&lt;p&gt;&lt;strong&gt;&lt;span style=&quot;color: #e03e2d;&quot;&gt;You can manage the slides here, but usually you will want to use the + and edit buttons in the page toolbars (top right corner).&lt;/span&gt;&lt;/strong&gt;&lt;/p&gt;" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
-            <Value Key="Notes" Value="&lt;p&gt;Sie k&amp;ouml;nnen die Folien hier verwalten, aber normalerweise werden Sie die Schaltfl&amp;auml;chen + und Bearbeiten in den Symbolleisten der Seite (oben rechts) verwenden wollen.&lt;/p&gt;" Type="String">
+            <Value Key="Notes" Value="&lt;p&gt;&lt;span style=&quot;color: #e03e2d;&quot;&gt;&lt;strong&gt;Sie k&amp;ouml;nnen die Folien hier verwalten, aber normalerweise werden Sie die Schaltfl&amp;auml;chen + und Bearbeiten in den Symbolleisten der Seite (oben rechts) verwenden wollen.&lt;/strong&gt;&lt;/span&gt;&lt;/p&gt;" Type="String">
               <Dimension DimensionID="160" ReadOnly="false" />
             </Value>
             <Value Key="Placeholder" Value="" Type="String">
@@ -2278,13 +2278,13 @@
       <Value Key="RequiredOqtaneVersion" Value="03.01.00" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
-      <Value Key="RequiredVersion" Value="14.07.00" Type="String">
+      <Value Key="RequiredVersion" Value="14.09.00" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
       <Value Key="SupportsAjaxReload" Value="True" Type="Boolean">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
-      <Value Key="Version" Value="02.05.00" Type="String">
+      <Value Key="Version" Value="02.05.01" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
     </Entity>
@@ -2478,10 +2478,13 @@
       <Value Key="Description" Value="" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
-      <Value Key="EditInstructions" Value="&lt;p&gt;This configuration is for the &lt;strong&gt;entire slider&lt;/strong&gt; - how the slides should appear, speed etc. To configure a single slide, use the toolbar to the right of the image.&amp;nbsp;&lt;/p&gt;" Type="String">
+      <Value Key="DynamicChildrenField" Value="" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
-      <Value Key="EditInstructions" Value="&lt;p&gt;Diese Konfiguration gilt f&amp;uuml;r den gesamten Slider - wie die Folien erscheinen sollen, Geschwindigkeit usw. Um einen einzelnen Slider zu konfigurieren, verwenden Sie die Symbolleiste rechts neben dem Bild.&amp;nbsp;&lt;/p&gt;" Type="String">
+      <Value Key="EditInstructions" Value="&lt;p&gt;This configuration is for the &lt;span style=&quot;color: #e03e2d;&quot;&gt;&lt;strong&gt;entire slider&lt;/strong&gt;&lt;/span&gt; - how the slides should appear, speed etc. To configure a single slide, use the toolbar to the right of the image.&amp;nbsp;&lt;/p&gt;" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="EditInstructions" Value="&lt;p&gt;Diese Konfiguration &lt;span style=&quot;color: #e03e2d;&quot;&gt;&lt;strong&gt;gilt f&amp;uuml;r den gesamten Slider&lt;/strong&gt;&lt;/span&gt;. Es bestimmt wie die Folien erscheinen sollen, Geschwindigkeit usw. Um einen einzelnen Slider zu konfigurieren, verwenden Sie die Symbolleiste rechts neben dem Bild.&amp;nbsp;&lt;/p&gt;" Type="String">
         <Dimension DimensionID="160" ReadOnly="false" />
       </Value>
       <Value Key="Icon" Value="" Type="Hyperlink">
@@ -3402,19 +3405,209 @@
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
     </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-ContentGroup" AttributeSetName="2SexyContent-ContentGroup" EntityGUID="198e9545-7232-4342-9425-5e63a2a7b869" Json="True">
+      <Value Key="Template" Value="d065b403-0cd0-4110-a3f2-36ffda90781a" Type="Entity" />
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-ContentGroup" AttributeSetName="2SexyContent-ContentGroup" EntityGUID="92f6f8e8-ae13-46bd-be34-dafd7d7751ce" Json="True">
+      <Value Key="Content" Value="6360257b-2926-4e86-b464-56dcec6865d9" Type="Entity" />
+      <Value Key="Presentation" Value="null" Type="Entity" />
+      <Value Key="Template" Value="d065b403-0cd0-4110-a3f2-36ffda90781a" Type="Entity" />
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="4d6daa73-e644-4e33-afed-448c6e1c0e88" AttributeSetName="Slider" EntityGUID="6360257b-2926-4e86-b464-56dcec6865d9">
+      <Value Key="AnimationDuration" Value="" Type="Number">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Autoplay" Value="" Type="Boolean">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="DarkContent" Value="" Type="Boolean">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Effect" Value="7ace9b52-9d89-410e-ace3-2c72dabd4042" Type="Entity" />
+      <Value Key="Height" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="OverlayEffect" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="ShowDuration" Value="" Type="Number">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="ShowPaginationArrows" Value="" Type="Boolean">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="ShowPaginationDots" Value="" Type="Boolean">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Slides" Value="33df9463-0d57-4d68-b2a8-b815e4a968c3" Type="Entity" />
+      <Value Key="TextPosition" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="Test" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Width" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="46bfd97d-7852-48b1-b24d-3415734ca6cd" AttributeSetName="Slide" EntityGUID="33df9463-0d57-4d68-b2a8-b815e4a968c3">
+      <Value Key="DarkContent" Value="" Type="Boolean">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Image" Value="file:6256" Type="Hyperlink">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Link" Value="" Type="Hyperlink">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="LinkBlankTarget" Value="" Type="Boolean">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="LinkText" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="OverlayEffect" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="ShowDuration" Value="" Type="Number">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Text" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="TextPosition" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-ContentGroup" AttributeSetName="2SexyContent-ContentGroup" EntityGUID="ffd911b4-0250-497b-851c-520313d21125" Json="True">
+      <Value Key="Content" Value="d6685cc7-379a-4619-9fa2-f0719d953feb" Type="Entity" />
+      <Value Key="Presentation" Value="null" Type="Entity" />
+      <Value Key="Template" Value="d065b403-0cd0-4110-a3f2-36ffda90781a" Type="Entity" />
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="4d6daa73-e644-4e33-afed-448c6e1c0e88" AttributeSetName="Slider" EntityGUID="d6685cc7-379a-4619-9fa2-f0719d953feb">
+      <Value Key="AnimationDuration" Value="" Type="Number">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Autoplay" Value="" Type="Boolean">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="DarkContent" Value="" Type="Boolean">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Effect" Value="7ace9b52-9d89-410e-ace3-2c72dabd4042" Type="Entity" />
+      <Value Key="Height" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="OverlayEffect" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="ShowDuration" Value="" Type="Number">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="ShowPaginationArrows" Value="" Type="Boolean">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="ShowPaginationDots" Value="" Type="Boolean">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Slides" Value="cb9d56e4-7d76-4903-8d5c-620f3e700d72,79d2a33d-bce7-4796-a186-ceca001156ba" Type="Entity" />
+      <Value Key="TextPosition" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="Test" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Width" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="46bfd97d-7852-48b1-b24d-3415734ca6cd" AttributeSetName="Slide" EntityGUID="cb9d56e4-7d76-4903-8d5c-620f3e700d72">
+      <Value Key="DarkContent" Value="" Type="Boolean">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Image" Value="file:6257" Type="Hyperlink">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Link" Value="" Type="Hyperlink">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="LinkBlankTarget" Value="" Type="Boolean">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="LinkText" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="OverlayEffect" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="ShowDuration" Value="" Type="Number">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Text" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="TextPosition" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="46bfd97d-7852-48b1-b24d-3415734ca6cd" AttributeSetName="Slide" EntityGUID="79d2a33d-bce7-4796-a186-ceca001156ba">
+      <Value Key="DarkContent" Value="" Type="Boolean">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Image" Value="file:6258" Type="Hyperlink">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Link" Value="" Type="Hyperlink">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="LinkBlankTarget" Value="" Type="Boolean">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="LinkText" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="OverlayEffect" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="ShowDuration" Value="" Type="Number">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Text" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="TextPosition" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+    </Entity>
   </Entities>
   <PortalFiles>
     <File Id="4563" RelativePath="adam\Swiper2\Cotm0fBNNUeBpuRpPWkS1g\Image\uhu.jpg" />
     <File Id="4412" RelativePath="adam\Swiper2\Sq3vFNKVkU69-D3X0TRXxw\Image\Demo-1.jpg" />
     <File Id="4411" RelativePath="adam\Swiper2\Cotm0fBNNUeBpuRpPWkS1g\Image\Demo-2.jpg" />
     <File Id="6123" RelativePath="adam\Swiper2\ImwQwCwQ90KBTsfpMlZZVg\Image\Platzhalterbild_Inhalt-1.jpg" />
+    <File Id="6256" RelativePath="adam\Swiper2\Y5TfM1cNaE2yqLgV5Kloww\Image\Demo-2.jpg" />
+    <File Id="6257" RelativePath="adam\Swiper2\5Fady3Z9A0mNXGIPPnANcg\Image\Demo-2.jpg" />
+    <File Id="6258" RelativePath="adam\Swiper2\PaPSeee8lkehhs7KABFWug\Image\Demo-100.jpg" />
     <File Id="4562" RelativePath="adam\Swiper2\Cotm0fBNNUeBpuRpPWkS1g\Image\parrot-3250578_1920.jpg" />
   </PortalFiles>
   <PortalFolders>
     <Folder Id="7833" RelativePath="adam/Swiper2/Cotm0fBNNUeBpuRpPWkS1g/Image/" />
     <Folder Id="7835" RelativePath="adam/Swiper2/Sq3vFNKVkU69-D3X0TRXxw/Image/" />
     <Folder Id="13691" RelativePath="adam/Swiper2/ImwQwCwQ90KBTsfpMlZZVg/Image/" />
+    <Folder Id="13812" RelativePath="adam/Swiper2/Y5TfM1cNaE2yqLgV5Kloww/Image/" />
+    <Folder Id="13814" RelativePath="adam/Swiper2/5Fady3Z9A0mNXGIPPnANcg/Image/" />
+    <Folder Id="13816" RelativePath="adam/Swiper2/PaPSeee8lkehhs7KABFWug/Image/" />
     <Folder Id="7831" RelativePath="adam/Swiper2/" />
+    <Folder Id="13813" RelativePath="adam/Swiper2/5Fady3Z9A0mNXGIPPnANcg/" />
     <Folder Id="12718" RelativePath="adam/Swiper2/Ay_YnyCdB0aYd6z-_Kc4DQ/" />
     <Folder Id="12719" RelativePath="adam/Swiper2/Ay_YnyCdB0aYd6z-_Kc4DQ/Image/" />
     <Folder Id="12720" RelativePath="adam/Swiper2/Ay_YnyCdB0aYd6z-_Kc4DQ/Link/" />
@@ -3430,9 +3623,11 @@
     <Folder Id="12712" RelativePath="adam/Swiper2/OdkXvJzPWU6laqWeXn9cpQ/" />
     <Folder Id="12713" RelativePath="adam/Swiper2/OdkXvJzPWU6laqWeXn9cpQ/Image/" />
     <Folder Id="12714" RelativePath="adam/Swiper2/OdkXvJzPWU6laqWeXn9cpQ/Link/" />
+    <Folder Id="13815" RelativePath="adam/Swiper2/PaPSeee8lkehhs7KABFWug/" />
     <Folder Id="7834" RelativePath="adam/Swiper2/Sq3vFNKVkU69-D3X0TRXxw/" />
     <Folder Id="12715" RelativePath="adam/Swiper2/wddRXFrwuE-VuSq8eJOsKw/" />
     <Folder Id="12716" RelativePath="adam/Swiper2/wddRXFrwuE-VuSq8eJOsKw/Image/" />
     <Folder Id="12717" RelativePath="adam/Swiper2/wddRXFrwuE-VuSq8eJOsKw/Link/" />
+    <Folder Id="13811" RelativePath="adam/Swiper2/Y5TfM1cNaE2yqLgV5Kloww/" />
   </PortalFolders>
 </SexyContent>
