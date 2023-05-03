@@ -6,15 +6,17 @@
   
   var swiperSettings = DynamicModel.SwiperSettings;
 
+  var swiperOptions = new {
+    autoplay = swiperSettings.Autoplay,
+    speed = swiperSettings.AnimationDuration,
+    // The following two values are JSON strings, so we must turn them into an object
+    effectDefaults = AsDynamic(swiperSettings.Effect.Configuration),
+    fallback = AsDynamic(swiperSettings.EffectFallback)
+  };
+
   var data = new {
     moduleId = Content.EntityId,
-    domAttribute = new {
-      autoplay = swiperSettings.Autoplay,
-      speed = swiperSettings.AnimationDuration,
-      // The following two values are JSON strings, so we must turn them into an object
-      effectDefaults = AsDynamic(swiperSettings.Effect.Configuration),
-      fallback = AsDynamic(swiperSettings.EffectFallback)
-    }
+    options = swiperOptions
   };
 }
 
