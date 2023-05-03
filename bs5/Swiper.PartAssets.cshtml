@@ -2,11 +2,7 @@
 @using ToSic.Razor.Blade;
 @{
   // 2. Include Bootstrap4 if the framework isn't known
-  if (Kit.Css.IsUnknown) {
-    Kit.Page.Activate("Bootstrap4");
-  }
-
-  Kit.Page.Activate("turnOn"); // see https://r.2sxc.org/turnon
+  @Kit.Page.Activate(condition: Kit.Css.IsUnknown, features: "Bootstrap5")
   
   var swiperSettings = DynamicModel.SwiperSettings;
 
@@ -21,6 +17,9 @@
     }
   };
 }
-<link rel="stylesheet" href="@App.Path/bs5/dist/styles.min.css" @Kit.Page.AssetAttributes()>
-<turnOn turn-on='{ "run": "window.appSwiper2.init()", "data": @Html.Raw(Kit.Json.ToJson(swiperData)) }'></turnOn>
-<script src="@App.Path/bs5/dist/scripts.min.js" @Kit.Page.AssetAttributes()></script>
+
+<link rel="stylesheet" href="@CmsContext.View.Path/dist/styles.min.css" @Kit.Page.AssetAttributes()/>
+<script src="@CmsContext.View.Path/dist/scripts.min.js" @Kit.Page.AssetAttributes()></script>
+
+@* Activation uses turnOn https://r.2sxc.org/turnon *@
+@Kit.Page.TurnOn("window.appSwiper2.init()", data: swiperData)

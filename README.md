@@ -9,7 +9,7 @@ CMS Slider App using the popular [Swiper JS](https://swiperjs.com/). It does not
 
 | Aspect              | Status | Comments or Version |
 | ------------------- | :----: | ------------------- |
-| 2sxc                | ✅    | Swiper v2.01 requires 2sxc v13.10
+| 2sxc                | ✅    | v16.00
 | Dnn                 | ✅    | For v7, v8 and v9
 | Oqtane 2            | ✅    | Requires v2.02
 | No jQuery           | ✅    | Since v 2.01
@@ -32,28 +32,33 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
 
 ## History
 
-* 2021-05 Version 2.00
+* v.02.00.00 2021-05
   * updated to 2sxc 12.0 standards
   * made hybrid / compatible with Oqtane
   * Removed jQuery
-* 2021-09 Version 2.01
+* v.02.01.00 2021-09
   * updated to 2sxc 12.05 standards
   * updated SwiperJs to V7
   * renamed app-folder to Swiper2
   * css classes now using a no-conflict model allowing side-by-side install with older swiper
   * App has a new GUID for identification allowing side-by-side install with older swiper
   * Upgrade to SwiperJS v7
-* 2022-02 Version 2.03
+* v.02.03.00 2022-02
   * Enabled data-optimizations
   * Fixed a bug that caused single slides to appear as duplicate
-* 2022-04 Version 2.04.00
+* v.02.04.00 2022-04 Version
   * Changed access to Services to ToSic.Sxc.Services
   * Change all images to use latest Picture-tag technology
   * Removed the PictureTag helper
   * Enabled image configuration
   * Replaced data-enableoptimizations with pageSvc.AssetAttributes()
-* 2022-06 Version 2.05.00
+* v.02.05.00 2022-06
   * Changed all base classes to their 2sxc 14 equivalents
   * Replaced all GetService<> with the new ServiceKit14
   * Changed all the toolbar configurations to use the IToolbarService
   * Updated webpack
+* v.02.06.00 2023-05
+  * Removed _ from Filenames
+  * Code in one file the bs5, less duplicated code
+  * Enhanced Kit.Image with `imgAltFallback`
+  * Replaced turnOn Tag with `Kit.Page.TurnOn`

@@ -29,7 +29,7 @@
 
         @* if we don't have slides, show a dummy slide and provide buttons to start adding *@
         @if(swiper.Slides.Count == 0) {
-          @Html.Partial("./_Swiper.PartEmpty.cshtml")
+          @Html.Partial("Swiper.PartEmpty.cshtml")
         }
 
         @* Slides - Add each one (if there are any) *@
@@ -42,7 +42,7 @@
           <div class="swiper-slide" data-swiper-autoplay="@duration" @slideToolbar.For(slide)>
             <div class="image-wrapper @helpers.SlideWrapperClasses(sldSettings)">
               @* Add the <picture> tag with all the sources *@
-              @Kit.Image.Picture(slide.Field("Image"), settings: "Content", factor: sliderHeightOrRatio, imgAlt: slide.Title)
+              @Kit.Image.Picture(slide.Field("Image"), settings: "Content", factor: sliderHeightOrRatio, imgAltFallback: slide.Title)
 
               @if (Text.Has(slide.Title) || Text.Has(slide.Text) || Text.Has(slide.LinkText)) {
                 @* Show Overlay behind text *@
@@ -87,4 +87,4 @@
     </div>
 </div>
 
-@Html.Partial("./_Swiper.PartAssets.cshtml", new { SwiperSettings = swiperSettings })
+@Html.Partial("Swiper.PartAssets.cshtml", new { SwiperSettings = swiperSettings })
