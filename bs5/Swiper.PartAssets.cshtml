@@ -6,9 +6,9 @@
   
   var swiperSettings = DynamicModel.SwiperSettings;
 
-  var swiperData = new {
+  var data = new {
     moduleId = Content.EntityId,
-    options = new {
+    domAttribute = new {
       autoplay = swiperSettings.Autoplay,
       speed = swiperSettings.AnimationDuration,
       // The following two values are JSON strings, so we must turn them into an object
@@ -22,4 +22,4 @@
 <script src="@CmsContext.View.Path/dist/scripts.min.js" @Kit.Page.AssetAttributes()></script>
 
 @* Activation uses turnOn https://r.2sxc.org/turnon *@
-@Kit.Page.TurnOn("window.appSwiper2.init()", data: swiperData)
+@Kit.Page.TurnOn("window.appSwiper2.init()", data: data)
