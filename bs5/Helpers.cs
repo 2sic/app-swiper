@@ -1,40 +1,40 @@
 using ToSic.Razor.Blade;
 using System.Linq;
 using System;
+using ToSic.Sxc.Data;
 
-public class Helpers: Custom.Hybrid.Code14
+public class Helpers: Custom.Hybrid.CodePro
 {
   /// <summary>
-  /// Generate bootstrap4 css class names for the overlay div, based on the settings of the slide
+  /// Generate class names for the overlay div, based on the settings of the slide
   /// </summary>
-  public dynamic OverlayAlignClasses(dynamic settingsStack) {
-    var pos = settingsStack.TextPosition ?? "";
-    return (pos.StartsWith("c") ? "align-items-center" : "")   // center: cl, cc, cr
-      + " " + (pos.StartsWith("b") ? "align-items-end" : "");  // bottom: bl, bc, br
+  public string OverlayAlignClasses(string textPosition) {
+    var pos = textPosition ?? "";
+    if (pos.StartsWith("c")) return "align-items-center";   // center: cl, cc, cr
+    if (pos.StartsWith("b")) return "align-items-end";      // bottom: bl, bc, br
+    return "";
   }
 
   /// <summary>
   /// Generate bootstrap4 css class names for the overlay div, based on the settings of the slide
   /// </summary>
-  public dynamic OverlayTextAlignClasses(dynamic settingsStack) {
-    var pos = settingsStack.TextPosition ?? "";
-    return (pos.EndsWith("c") ? "text-center" : "")    // center: tc, cc, bc
-      + " " + (pos.EndsWith("r") && Kit.Css.Is("bs4") ? "text-right" : pos.EndsWith("r") && Kit.Css.Is("bs5") ? "text-end" : ""); // right:  tr, cr, br
+  public string OverlayTextAlignClasses(string textPosition) {
+    var pos = textPosition ?? "";
+    if (pos.EndsWith("c")) return "text-center";    // center: tc, cc, bc
+    if (pos.EndsWith("r")) return Kit.Css.Is("bs4") // right:  tr, cr, br
+      ? "text-right"  // Bootstrap 4
+      : "text-end";   // Bootstrap 5 / other
+    return "";
   }
 
   /// <summary>
   /// Generate custom css class names for the overlay div, based on the settings of the slide
   /// This changes the effects as well as background gradients
   /// </summary>
-  public dynamic SlideWrapperClasses(dynamic settingsStack) {
-    return "content-position-" + (settingsStack.TextPosition ?? "none")
-      + " content-effect-" + (settingsStack.OverlayEffect ?? "none")
-      + (settingsStack.DarkContent ? " dark-content" : " light-content");
+  public string SlideWrapperClasses(string textPosition, string overlayEffect, bool darkContent) {
+    return "content-position-" + (textPosition ?? "none")
+      + " content-effect-" + (overlayEffect ?? "none")
+      + " " + (darkContent ? "dark" : "light") + "-content";
   }
 
-  /// <summary>
-  /// Generate a <picture> tag for responsive images, with various resolutions for each screen size
-  /// </summary>
 }
-
-

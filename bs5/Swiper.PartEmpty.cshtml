@@ -1,13 +1,17 @@
-@inherits Custom.Hybrid.Razor14
-<div class="app-swiper2-empty-slides container" @Edit.TagToolbar(Content.Slides)>
-    <div class="arrow">
-    <div class="line"></div>
-    <div class="point"></div>
-    </div>
-    <div class="row h-100 align-items-center">
-    <div class="col-12 text-center">
-        <h2>Empty Slider</h2>
-        <p>Please use the toolbar in the top right corner to add new slides.</p>
-    </div>
-    </div>
+@inherits Custom.Hybrid.RazorPro
+@{
+  var swiper = MyItem;
+}
+<div class="app-swiper2-empty-slides container" @Kit.Toolbar.Default(swiper.Children("Slides"))>
+  <h1>@swiper.String("Slides")</h1>
+  <div class="arrow">
+  <div class="line"></div>
+  <div class="point"></div>
+  </div>
+  <div class="row h-100 align-items-center">
+  <div class="col-12 text-center">
+    <h2>@App.Resources.String("EmptySlideTitle")</h2>
+    <p>@App.Resources.String("EmptySlideMessage")</p>
+  </div>
+  </div>
 </div>

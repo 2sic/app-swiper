@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="16.00.00" ExportDate="2023-05-03T15:49:18.8012805+02:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="16.02.00" ExportDate="2023-06-13T13:52:47.4372804+02:00">
   <Header>
     <App Guid="8c3d9f27-4c23-4ac7-a9ea-c7d1551c5ba7" />
     <Language Default="en-us" />
@@ -10,7 +10,29 @@
   </Header>
   <AttributeSets>
     <AttributeSet StaticName="App-Resources" Name="App-Resources" Scope="System.App" AlwaysShareConfiguration="false">
-      <Attributes />
+      <Attributes>
+        <Attribute StaticName="ToolbarSlideIsDemo" Type="String" IsTitle="true">
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="be89896d-bfbd-4c15-8898-95d564605b1f" Json="True" KeyNumber="5792">
+            <Value Key="InputType" Value="string-default" Type="String" />
+            <Value Key="Name" Value="ToolbarSlideIsDemo" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+          </Entity>
+        </Attribute>
+        <Attribute StaticName="EmptySlideTitle" Type="String" IsTitle="false">
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="a53b5f66-1e6b-4bee-99f4-73a32724d336" Json="True" KeyNumber="5793">
+            <Value Key="InputType" Value="string-default" Type="String" />
+            <Value Key="Name" Value="EmptySlideTitle" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+          </Entity>
+        </Attribute>
+        <Attribute StaticName="EmptySlideMessage" Type="String" IsTitle="false">
+          <Entity TargetType="2" AssignmentObjectType="EAV Field Properties" AttributeSetStaticName="@All" AttributeSetName="@All" EntityGUID="66edb413-8611-40b8-be9c-673c1c6ea168" Json="True" KeyNumber="5794">
+            <Value Key="InputType" Value="string-default" Type="String" />
+            <Value Key="Name" Value="EmptySlideMessage" Type="String" />
+            <Value Key="VisibleInEditUI" Value="True" Type="Boolean" />
+          </Entity>
+        </Attribute>
+      </Attributes>
     </AttributeSet>
     <AttributeSet StaticName="App-Settings" Name="App-Settings" Scope="System.App" AlwaysShareConfiguration="false">
       <Attributes>
@@ -2272,13 +2294,13 @@
       <Value Key="OriginalId" Value="" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
-      <Value Key="RequiredDnnVersion" Value="07.04.02" Type="String">
+      <Value Key="RequiredDnnVersion" Value="09.06.01" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
-      <Value Key="RequiredOqtaneVersion" Value="03.01.00" Type="String">
+      <Value Key="RequiredOqtaneVersion" Value="03.04.00" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
-      <Value Key="RequiredVersion" Value="16.00.00" Type="String">
+      <Value Key="RequiredVersion" Value="16.02.00" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
       <Value Key="SupportsAjaxReload" Value="True" Type="Boolean">
@@ -2323,7 +2345,26 @@
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
     </Entity>
-    <Entity TargetType="3" AssignmentObjectType="App" AttributeSetStaticName="App-Resources" AttributeSetName="App-Resources" EntityGUID="ad94c493-bcf2-4b7f-9e42-fe353bd4acc9" KeyNumber="182" />
+    <Entity TargetType="3" AssignmentObjectType="App" AttributeSetStaticName="App-Resources" AttributeSetName="App-Resources" EntityGUID="ad94c493-bcf2-4b7f-9e42-fe353bd4acc9" KeyNumber="182">
+      <Value Key="EmptySlideMessage" Value="Please use the toolbar in the top right corner to add new slides." Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="EmptySlideMessage" Value="Bitte verwenden Sie die Symbolleiste in der oberen rechten Ecke, um neue Bilder hinzuzufügen." Type="String">
+        <Dimension DimensionID="160" ReadOnly="false" />
+      </Value>
+      <Value Key="EmptySlideTitle" Value="Empty Slider" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="EmptySlideTitle" Value="Leere Bild-Sequenz" Type="String">
+        <Dimension DimensionID="160" ReadOnly="false" />
+      </Value>
+      <Value Key="ToolbarSlideIsDemo" Value="Demo Mode. This corner will show the toolbar for each slide, once you have added your own images." Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="ToolbarSlideIsDemo" Value="Demomodus. In dieser Ecke wird die Symbolleiste für jede Folie angezeigt, sobald du eigenen Bilder hinzugefügt hast." Type="String">
+        <Dimension DimensionID="160" ReadOnly="false" />
+      </Value>
+    </Entity>
     <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-Template" AttributeSetName="2SexyContent-Template" EntityGUID="d065b403-0cd0-4110-a3f2-36ffda90781a" Json="True">
       <Value Key="ContentDemoEntity" Value="637b4132-f016-4507-b304-5a9466f40c0c" Type="Entity" />
       <Value Key="ContentTypeStaticName" Value="4d6daa73-e644-4e33-afed-448c6e1c0e88" Type="String">
@@ -3356,10 +3397,10 @@
       <Value Key="DurationUsers" Value="-1" Type="Number">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
-      <Value Key="IsEnabled" Value="False" Type="Boolean">
+      <Value Key="IsEnabled" Value="True" Type="Boolean">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
-      <Value Key="Title" Value="🚫" Type="String">
+      <Value Key="Title" Value="✅ - Users 14400s, Reg 🚫, Editors 300s, SysAdmins 300s" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
       <Value Key="UrlParametersCaseSensitive" Value="False" Type="Boolean">
@@ -3583,6 +3624,47 @@
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
       <Value Key="Title" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="2SexyContent-ContentGroup" AttributeSetName="2SexyContent-ContentGroup" EntityGUID="ef1fc151-cfb9-4793-9609-f0e13ec43248" Json="True">
+      <Value Key="Content" Value="3fd378b9-8513-47f1-9dbd-690a3e52c9b5" Type="Entity" />
+      <Value Key="Presentation" Value="null" Type="Entity" />
+      <Value Key="Template" Value="d065b403-0cd0-4110-a3f2-36ffda90781a" Type="Entity" />
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="4d6daa73-e644-4e33-afed-448c6e1c0e88" AttributeSetName="Slider" EntityGUID="3fd378b9-8513-47f1-9dbd-690a3e52c9b5">
+      <Value Key="AnimationDuration" Value="" Type="Number">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Autoplay" Value="" Type="Boolean">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="DarkContent" Value="" Type="Boolean">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Effect" Value="7ace9b52-9d89-410e-ace3-2c72dabd4042" Type="Entity" />
+      <Value Key="Height" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="OverlayEffect" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="ShowDuration" Value="" Type="Number">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="ShowPaginationArrows" Value="" Type="Boolean">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="ShowPaginationDots" Value="" Type="Boolean">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="TextPosition" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="Just added" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Width" Value="" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
     </Entity>

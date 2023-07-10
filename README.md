@@ -62,3 +62,6 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
   * Code in one file the bs5, less duplicated code
   * Enhanced Kit.Image with `imgAltFallback`
   * Replaced turnOn Tag with `Kit.Page.TurnOn`
+* v02.07.00 2023-07
+  * 2sxc 16.02 coding conventions
+  * everything typed
