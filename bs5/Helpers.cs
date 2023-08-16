@@ -3,7 +3,7 @@ using System.Linq;
 using System;
 using ToSic.Sxc.Data;
 
-public class Helpers: Custom.Hybrid.CodePro
+public class Helpers: Custom.Hybrid.CodeTyped
 {
   /// <summary>
   /// Generate class names for the overlay div, based on the settings of the slide
