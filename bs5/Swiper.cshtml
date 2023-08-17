@@ -55,7 +55,7 @@
         <div class="swiper-slide" data-swiper-autoplay="@duration" @slideToolbar.For(slide)>
           <div class="image-wrapper @helpers.SlideWrapperClasses(textPos, overlayEffect, darkContent)">
             @* Add the <picture> tag with all the sources *@
-            @Kit.Image.Picture(slide.Field("Image"), settings: "Content", factor: sliderHeightOrRatio, imgAltFallback: title)
+            @slide.Picture("Image", settings: "Content", factor: sliderHeightOrRatio, imgAltFallback: title)
 
             @if (Text.Has(anyText)) {
               @* Show Overlay behind text *@
