@@ -9,9 +9,9 @@ CMS Slider App using the popular [Swiper JS](https://swiperjs.com/). It does not
 
 | Aspect              | Status | Comments or Version |
 | ------------------- | :----: | ------------------- |
-| 2sxc                | ✅    | v16.00
-| Dnn                 | ✅    | For v7, v8 and v9
-| Oqtane 2            | ✅    | Requires v2.02
+| 2sxc                | ✅    | Requires v16.04
+| Dnn                 | ✅    | Requires v09.06.01
+| Oqtane 2            | ✅    | Requires v04.00+
 | No jQuery           | ✅    | Since v 2.01
 | Live Demo           | ✅    | See [blog with live demo](https://2sxc.org/en/blog/post/awesome-swiper-js-slider)
 | Install Checklist   | ✅    | See [Installation](https://azing.org/2sxc/r/9yfw-D1D) on [azing.org](https://azing.org/2sxc)
