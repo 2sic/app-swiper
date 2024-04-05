@@ -9,7 +9,7 @@ CMS Slider App using the popular [Swiper JS](https://swiperjs.com/). It does not
 
 | Aspect              | Status | Comments or Version |
 | ------------------- | :----: | ------------------- |
-| 2sxc                | ✅    | Requires v16.04
+| 2sxc                | ✅    | Requires v17.06.02
 | Dnn                 | ✅    | Requires v09.06.01
 | Oqtane 2            | ✅    | Requires v04.00+
 | No jQuery           | ✅    | Since v 2.01
@@ -65,3 +65,5 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
 * v02.07.00 2023-07
   * 2sxc 16.02 coding conventions
   * everything typed
+* v02.07.17 2024-04
+  * strong typed

@@ -1,13 +1,14 @@
-@inherits Custom.Hybrid.RazorTyped
-@using ToSic.Razor.Blade;
+@inherits AppCode.Razor.AppRazor
+@using ToSic.Razor.Blade
+@using AppCode.Data
 @{
   // The current swiper (can also be a demo item, if nothing has been added yet)
-  var swiper = MyItem;
+  var swiper = As<Slider>(MyItem);
   
   // Get some helper commands for later on
-  var helpers = GetCode("Helpers.cs");
 
   // Merge settings on swiper with predefined Settings, so we always have all setting, even if not specified at the item level
+  @* TODO:: *@
   var swiperSettings = AsStack(swiper, App.Settings);
 
   // Figure out width (eg. '100%', '1200px') and height ("100vh" or a ratio like "x:y")
@@ -32,17 +33,17 @@
   <div class="swiper swiper-@swiper.Id" style="width: @sliderWidth; @swiperContainerHeight">
     <div class="swiper-wrapper">
       @* if we don't have slides, show a dummy slide and provide buttons to start adding *@
-      @if (!swiper.Children("Slides").Any()) {
+      @if (!swiper.Slides.Any()) {
         @Html.Partial("Swiper.PartEmpty.cshtml")
       } 
 
       @* Slides - Add each one (if there are any) *@
-      @foreach (var slide in swiper.Children("Slides")) {
+      @foreach (var slide in swiper.Slides) {
 
         // Get all the texts to later check which ones contain real values
-        var title = slide.String("Title");
-        var text = slide.String("Text");
-        var linkText = slide.String("LinkText");
+        var title = slide.Title;
+        var text = slide.Text;
+        var linkText = slide.LinkText;
         var anyText = Text.First(title, text, linkText);
 
         // Merge settings of the current slide, the swiper defaults and the App settings/defaults
@@ -53,29 +54,31 @@
         var darkContent = sldSettings.Bool("DarkContent");
 
         <div class="swiper-slide" data-swiper-autoplay="@duration" @slideToolbar.For(slide)>
-          <div class="image-wrapper @helpers.SlideWrapperClasses(textPos, overlayEffect, darkContent)">
+          <div class="image-wrapper @SlideWrapperClasses(textPos, overlayEffect, darkContent)">
             @* Add the <picture> tag with all the sources *@
             @slide.Picture("Image", settings: "Content", factor: sliderHeightOrRatio, imgAltFallback: title)
-
+            @* TODO:: *@
             @if (Text.Has(anyText)) {
               @* Show Overlay behind text *@
               <div class="overlay overlay-@overlayEffect"></div>
 
-              <div class='d-flex position-relative h-100 @helpers.OverlayAlignClasses(textPos)'>
-                <div class="w-100 py-3 py-md-4 px-3 px-md-5 @helpers.OverlayTextAlignClasses(textPos)">
+              <div class='d-flex position-relative h-100 @OverlayAlignClasses(textPos)'>
+                <div class="w-100 py-3 py-md-4 px-3 px-md-5 @OverlayTextAlignClasses(textPos)">
                   @* Show Title in overlay *@  
+                  @* TODO:: *@
                   @if (Text.Has(title)) {
                     <p class="lead" data-swiper-parallax="-250">@title</p>
                   }
+                  @* TODO:: *@
                   @* Show Description / additional Text in overlay *@  
                   @if (Text.Has(text)) {
                     <div data-swiper-parallax="-500">@Html.Raw(text)</div>
                   }
-
+                  @* TODO:: *@
                   @* Show Link in overlay *@  
                   @if (Text.Has(linkText)) {
                     <div data-swiper-parallax="-750">
-                      <a class="btn btn-primary" href='@slide.Url("Link")' target='@(slide.Bool("LinkBlankTarget") == true ? "_blank" : "")'>@linkText</a>
+                      <a class="btn btn-primary" href='@slide.Url("Link")' target='@(slide.LinkBlankTarget == true ? "_blank" : "")'>@linkText</a>
                     </div>
                   }
                 </div>
@@ -101,4 +104,5 @@
   </div>
 </div>
 
+@* TODO:: *@
 @Html.Partial("Swiper.PartAssets.cshtml", new { swiper, swiperSettings })

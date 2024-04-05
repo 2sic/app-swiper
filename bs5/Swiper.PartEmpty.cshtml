@@ -1,4 +1,6 @@
-@inherits Custom.Hybrid.RazorTyped
+@inherits AppCode.Razor.AppRazor
+@using AppCode.Data
+@* TODO:: *@
 @{
   var swiper = MyItem;
 }
@@ -10,8 +12,8 @@
   </div>
   <div class="row h-100 align-items-center">
   <div class="col-12 text-center">
-    <h2>@App.Resources.String("EmptySlideTitle")</h2>
-    <p>@App.Resources.String("EmptySlideMessage")</p>
+    <h2>@App.Resources.EmptySlideTitle</h2>
+    <p>@App.Resources.EmptySlideMessage</p>
   </div>
   </div>
 </div>
