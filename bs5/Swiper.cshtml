@@ -5,10 +5,7 @@
   // The current swiper (can also be a demo item, if nothing has been added yet)
   var swiper = As<Slider>(MyItem);
   
-  // Get some helper commands for later on
-
   // Merge settings on swiper with predefined Settings, so we always have all setting, even if not specified at the item level
-  @* TODO:: *@
   var swiperSettings = AsStack(swiper, App.Settings);
 
   // Figure out width (eg. '100%', '1200px') and height ("100vh" or a ratio like "x:y")
@@ -57,7 +54,6 @@
           <div class="image-wrapper @SlideWrapperClasses(textPos, overlayEffect, darkContent)">
             @* Add the <picture> tag with all the sources *@
             @slide.Picture("Image", settings: "Content", factor: sliderHeightOrRatio, imgAltFallback: title)
-            @* TODO:: *@
             @if (Text.Has(anyText)) {
               @* Show Overlay behind text *@
               <div class="overlay overlay-@overlayEffect"></div>
@@ -65,16 +61,13 @@
               <div class='d-flex position-relative h-100 @OverlayAlignClasses(textPos)'>
                 <div class="w-100 py-3 py-md-4 px-3 px-md-5 @OverlayTextAlignClasses(textPos)">
                   @* Show Title in overlay *@  
-                  @* TODO:: *@
                   @if (Text.Has(title)) {
                     <p class="lead" data-swiper-parallax="-250">@title</p>
                   }
-                  @* TODO:: *@
                   @* Show Description / additional Text in overlay *@  
                   @if (Text.Has(text)) {
                     <div data-swiper-parallax="-500">@Html.Raw(text)</div>
                   }
-                  @* TODO:: *@
                   @* Show Link in overlay *@  
                   @if (Text.Has(linkText)) {
                     <div data-swiper-parallax="-750">
@@ -104,5 +97,4 @@
   </div>
 </div>
 
-@* TODO:: *@
 @Html.Partial("Swiper.PartAssets.cshtml", new { swiper, swiperSettings })

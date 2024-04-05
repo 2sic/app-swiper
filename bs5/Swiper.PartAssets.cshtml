@@ -1,12 +1,12 @@
 @inherits Custom.Hybrid.RazorTyped
 @using ToSic.Razor.Blade;
-
+@using ToSic.Sxc.Data
 @{
   // 2. Include Bootstrap4 if the framework isn't known
   @Kit.Page.Activate(condition: Kit.Css.IsUnknown, features: "Bootstrap5")
   
   var swiper = MyModel.Item("Swiper");
-  var swiperSettings = AsStack(MyModel.Get("SwiperSettings"));
+  var swiperSettings = MyModel.Get("SwiperSettings") as ITypedStack;
 
   var data = new {
     moduleId = swiper.Id,

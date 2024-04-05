@@ -1,8 +1,7 @@
 @inherits AppCode.Razor.AppRazor
 @using AppCode.Data
-@* TODO:: *@
 @{
-  var swiper = MyItem;
+  var swiper = As<Slider>(MyItem);
 }
 <div class="app-swiper2-empty-slides container" @Kit.Toolbar.Default(swiper.Children("Slides"))>
   <h1>@swiper.String("Slides")</h1>
