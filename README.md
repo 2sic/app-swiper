@@ -7,11 +7,11 @@
 CMS Slider App using the popular [Swiper JS](https://swiperjs.com/). It does not use jQuery 😉.
 
 
-| Aspect              | Status | Comments or Version |
-| ------------------- | :----: | ------------------- |
-| 2sxc                | ✅    | Requires v17.06.02
+| Aspect              | Status | Comments or Version
+| ------------------- | :----: | -------------------
+| 2sxc                | ✅    | Requires v17.07.00
 | Dnn                 | ✅    | Requires v09.06.01
-| Oqtane 2            | ✅    | Requires v04.00+
+| Oqtane              | ✅    | Requires v04.00+
 | No jQuery           | ✅    | Since v 2.01
 | Live Demo           | ✅    | See [blog with live demo](https://2sxc.org/en/blog/post/awesome-swiper-js-slider)
 | Install Checklist   | ✅    | See [Installation](https://azing.org/2sxc/r/9yfw-D1D) on [azing.org](https://azing.org/2sxc)
@@ -67,3 +67,4 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
   * everything typed
 * v02.07.17 2024-04
   * strong typed
+  * Auto Generated Class

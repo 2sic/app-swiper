@@ -29,6 +29,7 @@
   @* Slider main container and wrapper *@
   <div class="swiper swiper-@swiper.Id" style="width: @sliderWidth; @swiperContainerHeight">
     <div class="swiper-wrapper">
+
       @* if we don't have slides, show a dummy slide and provide buttons to start adding *@
       @if (!swiper.Slides.Any()) {
         @Html.Partial("Swiper.PartEmpty.cshtml")
@@ -36,12 +37,6 @@
 
       @* Slides - Add each one (if there are any) *@
       @foreach (var slide in swiper.Slides) {
-
-        // Get all the texts to later check which ones contain real values
-        var title = slide.Title;
-        var text = slide.Text;
-        var linkText = slide.LinkText;
-        var anyText = Text.First(title, text, linkText);
 
         // Merge settings of the current slide, the swiper defaults and the App settings/defaults
         var sldSettings = AsStack(slide, swiper, App.Settings);
@@ -53,31 +48,31 @@
         <div class="swiper-slide" data-swiper-autoplay="@duration" @slideToolbar.For(slide)>
           <div class="image-wrapper @SlideWrapperClasses(textPos, overlayEffect, darkContent)">
             @* Add the <picture> tag with all the sources *@
-            @slide.Picture("Image", settings: "Content", factor: sliderHeightOrRatio, imgAltFallback: title)
-            @if (Text.Has(anyText)) {
+            @slide.Picture("Image", settings: "Content", factor: sliderHeightOrRatio, imgAltFallback: slide.Title)
+            @* Check if Text has real Values *@
+            @if (Text.Has(Text.First(slide.Title, slide.Text, slide.LinkText))) {
               @* Show Overlay behind text *@
               <div class="overlay overlay-@overlayEffect"></div>
 
               <div class='d-flex position-relative h-100 @OverlayAlignClasses(textPos)'>
                 <div class="w-100 py-3 py-md-4 px-3 px-md-5 @OverlayTextAlignClasses(textPos)">
                   @* Show Title in overlay *@  
-                  @if (Text.Has(title)) {
-                    <p class="lead" data-swiper-parallax="-250">@title</p>
+                  @if (Text.Has(slide.Title)) {
+                    <p class="lead" data-swiper-parallax="-250">@slide.Title</p>
                   }
                   @* Show Description / additional Text in overlay *@  
-                  @if (Text.Has(text)) {
-                    <div data-swiper-parallax="-500">@Html.Raw(text)</div>
+                  @if (Text.Has(slide.Text)) {
+                    <div data-swiper-parallax="-500">@Html.Raw(slide.Text)</div>
                   }
                   @* Show Link in overlay *@  
-                  @if (Text.Has(linkText)) {
+                  @if (Text.Has(slide.LinkText)) {
                     <div data-swiper-parallax="-750">
-                      <a class="btn btn-primary" href='@slide.Url("Link")' target='@(slide.LinkBlankTarget == true ? "_blank" : "")'>@linkText</a>
+                      <a class="btn btn-primary" href='@slide.Url("Link")' target='@(slide.LinkBlankTarget == true ? "_blank" : "")'>@slide.LinkText</a>
                     </div>
                   }
                 </div>
               </div>
             }
-
           </div>
         </div>
       }
