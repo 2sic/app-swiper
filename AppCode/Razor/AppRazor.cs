@@ -1,6 +1,4 @@
 using AppCode.Data;
-using ToSic.Razor.Blade;
-using ToSic.Sxc.Data;
 
 namespace AppCode.Razor
 {
@@ -35,11 +33,11 @@ namespace AppCode.Razor
     /// Generate custom css class names for the overlay div, based on the settings of the slide
     /// This changes the effects as well as background gradients
     /// </summary>
-    public string SlideWrapperClasses(string textPosition, string overlayEffect, bool darkContent)
+    public string SlideWrapperClasses(Slide settings)
     {
-      return "content-position-" + (textPosition ?? "none")
-        + " content-effect-" + (overlayEffect ?? "none")
-        + " " + (darkContent ? "dark" : "light") + "-content";
+      return "content-position-" + (settings.TextPosition ?? "none")
+        + " content-effect-" + (settings.OverlayEffect ?? "none")
+        + " " + (settings.DarkContent ? "dark" : "light") + "-content";
     }
 
   }

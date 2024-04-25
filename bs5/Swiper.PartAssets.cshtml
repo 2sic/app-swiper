@@ -1,21 +1,21 @@
-@inherits Custom.Hybrid.RazorTyped
-@using ToSic.Razor.Blade;
-@using ToSic.Sxc.Data
+@inherits AppCode.Razor.AppRazor
+@using ToSic.Razor.Blade
+@using AppCode.Data
 @{
   // 2. Include Bootstrap4 if the framework isn't known
   @Kit.Page.Activate(condition: Kit.Css.IsUnknown, features: "Bootstrap5")
   
-  var swiper = MyModel.Item("Swiper");
-  var swiperSettings = MyModel.Get("SwiperSettings") as ITypedStack;
+  var slider = MyModel.Get<Slider>("Slider");
+  var settings = MyModel.Get<Slider>("SwiperSettings");
 
   var data = new {
-    moduleId = swiper.Id,
+    moduleId = slider.Id,
     options = new {
-      autoplay = swiperSettings.Bool("Autoplay"),
-      speed = swiperSettings.Int("AnimationDuration"),
+      autoplay = settings.Autoplay,
+      speed = settings.AnimationDuration,
       // The following two values are JSON strings, so we must turn them into an object
-      effectDefaults = Kit.Json.ToTyped(swiperSettings.String("Effect.Configuration")),
-      fallback = Kit.Json.ToTyped(App.Settings.String("EffectFallback"))
+      effectDefaults = Kit.Json.ToTyped(settings.String("Effect.Configuration")),
+      fallback = Kit.Json.ToTyped(App.Settings.EffectFallback)
     },
   };
 }
