@@ -68,3 +68,4 @@ If you want to customize the CSS, you will usually follow the ["Create Custom St
 * v02.17.00 2024-04
   * strong typed
   * Auto Generated Class
+  * Typed MyItem
