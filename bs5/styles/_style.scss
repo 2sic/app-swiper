@@ -88,26 +88,26 @@
 
       p {
         color: #fff;
-        font-size: $font-size-base*1.25;
+        font-size: calc(var(--bs-body-font-size, var(--bs-body-font-size-fallback-app-swiper)) * 1.25);
         text-shadow: 0px 0px 16px rgba(0, 0, 0, 0.8);
-        margin: 0 0 $font-size-base * 0.6875;
+        margin: 0 0 calc(var(--bs-body-font-size, var(--bs-body-font-size-fallback-app-swiper))  * 0.6875);
         
         &.lead { 
           margin-bottom: $grid-gutter-width/2;
-          font-size: $font-size-base*1.8;	
+          font-size: calc(var(--bs-body-font-size, var(--bs-body-font-size-fallback-app-swiper)) * 1.8);
           font-weight: 600;
 
           @include media-breakpoint-up(md)  {
             line-height: 1.2em;
-            font-size: $font-size-base*3;	
+            font-size: calc(var(--bs-body-font-size, var(--bs-body-font-size-fallback-app-swiper)) * 3);
           }		
           @include media-breakpoint-up(lg)  {
             line-height: 1.2em;
-            font-size: $font-size-base*4;	
+            font-size: calc(var(--bs-body-font-size, var(--bs-body-font-size-fallback-app-swiper)) * 4);
           }				
           @include media-breakpoint-up(xl)  {
             line-height: 1.2em;
-            font-size: $font-size-base*5;	
+            font-size: calc(var(--bs-body-font-size, var(--bs-body-font-size-fallback-app-swiper)) *5);
           }				
         }
       }	
