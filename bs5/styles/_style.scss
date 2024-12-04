@@ -93,7 +93,7 @@
         margin: 0 0 calc(var(--bs-body-font-size, var(--bs-body-font-size-fallback-app-swiper))  * 0.6875);
         
         &.lead { 
-          margin-bottom: $grid-gutter-width/2;
+          margin-bottom: calc($grid-gutter-width / 2);
           font-size: calc(var(--bs-body-font-size, var(--bs-body-font-size-fallback-app-swiper)) * 1.8);
           font-weight: 600;
 

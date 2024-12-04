@@ -1,4 +1,5 @@
-import Swiper, { Navigation, Pagination, Parallax, EffectCoverflow, EffectCube, EffectFade, EffectFlip, Autoplay } from 'swiper';
+import Swiper from 'swiper';
+import { Navigation, Pagination, Parallax, EffectCoverflow, EffectCube, EffectFade, EffectFlip, Autoplay } from 'swiper/modules';
 
 interface SwiperOptions {
   autoplay: string;

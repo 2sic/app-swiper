@@ -1,8 +1,12 @@
 const path = require('path');
+const webpack = require('webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 
 module.exports = (env) => {
+  let lastMessage = '';
+  
   return {
+    mode: 'production',
     entry: {
       styles: `./${env.style}/styles/${env.style}.scss`,      
       scripts: './src/ts/index.ts',
@@ -11,26 +15,28 @@ module.exports = (env) => {
       path: path.resolve(__dirname, `${env.style}/dist`),
       filename: '[name].min.js',
     },
-    mode: 'production',
     devtool: 'source-map',
     watch: true,
-    stats: {
-      warnings: false,
-      cachedModules: false,
-      groupModulesByCacheStatus: false
-    },
     cache: {
       type: 'filesystem',
       cacheDirectory: path.resolve(__dirname, '.temp_cache'),
       compression: 'gzip',
     },
     resolve: {
-      extensions: ['.ts', '.tsx', '.js', '.scss', '.css']
+      extensions: ['.ts', '.js', '.scss', '.css']
     },
     plugins: [
       new MiniCssExtractPlugin({
         filename: 'styles.min.css',
       }),
+      new webpack.ProgressPlugin((percentage, message) => {
+        const progress = Math.round(percentage * 100);
+        const progressBar = `[${'='.repeat(progress / 2)}${' '.repeat(50 - progress / 2)}]`;
+        if (message !== lastMessage) {
+          console.log(`${progress}% ${progressBar} ${message}`);
+          lastMessage = message;
+        }
+      }),      
     ],
     module: {
       rules: [{
@@ -57,7 +63,10 @@ module.exports = (env) => {
             }, {
               loader: 'sass-loader',
               options: {
-                sourceMap: true
+                sourceMap: true,
+                sassOptions: {
+                  silenceDeprecations: ['mixed-decls', 'color-functions', 'global-builtin', 'import'],
+                }
               }
             }
           ],
