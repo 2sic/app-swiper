@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
-<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="18.00.00" ExportDate="2024-07-25T10:19:36.9977471+02:00">
+<SexyContent FileVersion="07.00.00" MinimumRequiredVersion="07.04.02" ModuleVersion="21.06.00" ExportDate="2026-03-31T14:57:54.0927972+02:00">
   <Header>
     <App Guid="8c3d9f27-4c23-4ac7-a9ea-c7d1551c5ba7" />
     <Language Default="en-us" />
@@ -927,12 +927,6 @@
             <Value Key="DisableTranslation" Value="False" Type="Boolean">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
-            <Value Key="HelpLink" Value="" Type="Hyperlink">
-              <Dimension DimensionID="159" ReadOnly="false" />
-            </Value>
-            <Value Key="Information" Value="" Type="String">
-              <Dimension DimensionID="159" ReadOnly="false" />
-            </Value>
             <Value Key="InputType" Value="hyperlink-default" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
@@ -946,9 +940,6 @@
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
             <Value Key="Required" Value="False" Type="Boolean">
-              <Dimension DimensionID="159" ReadOnly="false" />
-            </Value>
-            <Value Key="Tooltip" Value="" Type="String">
               <Dimension DimensionID="159" ReadOnly="false" />
             </Value>
             <Value Key="ValidationRegExJavaScript" Value="" Type="String">
@@ -2371,13 +2362,13 @@
       <Value Key="RequiredOqtaneVersion" Value="05.00.00" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
-      <Value Key="RequiredVersion" Value="17.07.00" Type="String">
+      <Value Key="RequiredVersion" Value="21.05.00" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
       <Value Key="SupportsAjaxReload" Value="True" Type="Boolean">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
-      <Value Key="Version" Value="02.17.01" Type="String">
+      <Value Key="Version" Value="02.21.00" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
     </Entity>
@@ -2682,7 +2673,7 @@
       <Value Key="ShowPaginationDots" Value="True" Type="Boolean">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
-      <Value Key="Slides" Value="14efad4a-95d2-4e91-bdf8-3dd7d13457c7,d1668b0a-4df0-4735-81a6-e4693d6912d6" Type="Entity" />
+      <Value Key="Slides" Value="14efad4a-95d2-4e91-bdf8-3dd7d13457c7,faa30dad-c925-442a-aa19-3c840d401fc0,d1668b0a-4df0-4735-81a6-e4693d6912d6" Type="Entity" />
       <Value Key="TextPosition" Value="" Type="String">
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
@@ -3739,6 +3730,61 @@
         <Dimension DimensionID="159" ReadOnly="false" />
       </Value>
     </Entity>
+    <Entity TargetType="10" AssignmentObjectType="CmsObject" AttributeSetStaticName="cb27a0f2-f921-48d0-a3bc-37c0e77b1d0c" AttributeSetName="ImageDecorator" EntityGUID="7dca812f-ef18-4cd5-a7e9-31d9cb3e5616" Json="True" KeyString="file:4563">
+      <Value Key="CropBehavior" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="CropTo" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Description" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="DescriptionExtended" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="LightboxGroup" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="ResizeSettings" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="SkipFallbackTitle" Value="False" Type="Boolean">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+    </Entity>
+    <Entity TargetType="1" AssignmentObjectType="Default" AttributeSetStaticName="46bfd97d-7852-48b1-b24d-3415734ca6cd" AttributeSetName="Slide" EntityGUID="faa30dad-c925-442a-aa19-3c840d401fc0">
+      <Value Key="DarkContent" Value="" Type="Boolean">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Image" Value="file:6635" Type="Hyperlink">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Link" Value="" Type="Hyperlink">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="LinkBlankTarget" Value="" Type="Boolean">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="LinkText" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="OverlayEffect" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="ShowDuration" Value="" Type="Number">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Text" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="TextPosition" Value="" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+      <Value Key="Title" Value="Demo 3" Type="String">
+        <Dimension DimensionID="159" ReadOnly="false" />
+      </Value>
+    </Entity>
   </Entities>
   <PortalFiles>
     <File Id="4563" RelativePath="adam\Swiper2\Cotm0fBNNUeBpuRpPWkS1g\Image\uhu.jpg" />
@@ -3751,6 +3797,7 @@
     <File Id="6272" RelativePath="adam\Swiper2\fylpwl5260uyxNwTFGvvHQ\Image\Demo-2.jpg" />
     <File Id="6273" RelativePath="adam\Swiper2\ABb-aU8V-0W3QEhyeSqUKQ\Image\Demo-100.jpg" />
     <File Id="6274" RelativePath="adam\Swiper2\dEmA1r3t3ESVVKIc9Z1qYQ\Image\Demo-1.jpg" />
+    <File Id="6635" RelativePath="adam\Swiper2\rQ2j-iXJKkSqGTyEDUAfwA\Image\IMAGE-01.jpg" />
     <File Id="4562" RelativePath="adam\Swiper2\Cotm0fBNNUeBpuRpPWkS1g\Image\parrot-3250578_1920.jpg" />
   </PortalFiles>
   <PortalFolders>
@@ -3763,6 +3810,7 @@
     <Folder Id="13839" RelativePath="adam/Swiper2/fylpwl5260uyxNwTFGvvHQ/Image/" />
     <Folder Id="13841" RelativePath="adam/Swiper2/ABb-aU8V-0W3QEhyeSqUKQ/Image/" />
     <Folder Id="13843" RelativePath="adam/Swiper2/dEmA1r3t3ESVVKIc9Z1qYQ/Image/" />
+    <Folder Id="14562" RelativePath="adam/Swiper2/rQ2j-iXJKkSqGTyEDUAfwA/Image/" />
     <Folder Id="7831" RelativePath="adam/Swiper2/" />
     <Folder Id="13813" RelativePath="adam/Swiper2/5Fady3Z9A0mNXGIPPnANcg/" />
     <Folder Id="13840" RelativePath="adam/Swiper2/ABb-aU8V-0W3QEhyeSqUKQ/" />
@@ -3784,6 +3832,7 @@
     <Folder Id="12713" RelativePath="adam/Swiper2/OdkXvJzPWU6laqWeXn9cpQ/Image/" />
     <Folder Id="12714" RelativePath="adam/Swiper2/OdkXvJzPWU6laqWeXn9cpQ/Link/" />
     <Folder Id="13815" RelativePath="adam/Swiper2/PaPSeee8lkehhs7KABFWug/" />
+    <Folder Id="14561" RelativePath="adam/Swiper2/rQ2j-iXJKkSqGTyEDUAfwA/" />
     <Folder Id="7834" RelativePath="adam/Swiper2/Sq3vFNKVkU69-D3X0TRXxw/" />
     <Folder Id="12715" RelativePath="adam/Swiper2/wddRXFrwuE-VuSq8eJOsKw/" />
     <Folder Id="12716" RelativePath="adam/Swiper2/wddRXFrwuE-VuSq8eJOsKw/Image/" />
