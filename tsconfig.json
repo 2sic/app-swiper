@@ -1,17 +1,14 @@
 {
-    "compilerOptions": {
-      "sourceMap": true,
-      "noImplicitAny": true,
-      "module": "commonjs",
-      "lib": ["es6", "dom"],
-      "target": "es6",
-      "allowJs": true,
-      "strict": true,
-      "moduleResolution": "node",
-      "esModuleInterop": true, // Helps with default imports from CommonJS modules
-      "skipLibCheck": true, // Speeds up compilation by skipping type-checking for .d.ts files
-      "outDir": "./dist"      
-    },
-    "include": ["src/**/*"], // Include all source files
-    "exclude": ["node_modules", "dist"] // Exclude build artifacts and dependencies      
-  }
+  "compilerOptions": {
+    "sourceMap": true,
+    "noImplicitAny": true,
+    "module": "ESNext",
+    "lib": ["ES2020", "dom"],
+    "target": "ES2020",
+    "allowJs": true,
+    "moduleResolution": "bundler",
+    "skipLibCheck": true
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}
