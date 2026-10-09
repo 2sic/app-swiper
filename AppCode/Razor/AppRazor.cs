@@ -17,15 +17,13 @@ namespace AppCode.Razor
     }
 
     /// <summary>
-    /// Generate bootstrap4 css class names for the overlay div, based on the settings of the slide
+    /// Generate Bootstrap 5 CSS class names for the overlay div, based on the settings of the slide
     /// </summary>
     public string OverlayTextAlignClasses(string textPosition)
     {
       var pos = textPosition ?? "";
       if (pos.EndsWith("c")) return "text-center";    // center: tc, cc, bc
-      if (pos.EndsWith("r")) return Kit.Css.Is("bs4") // right:  tr, cr, br
-        ? "text-right"  // Bootstrap 4
-        : "text-end";   // Bootstrap 5 / other
+      if (pos.EndsWith("r")) return "text-end";       // right: tr, cr, br
       return "";
     }
 
